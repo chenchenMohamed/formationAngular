@@ -1,0 +1,154 @@
+<app-navbar-site-formation></app-navbar-site-formation>
+
+
+
+  <!-- catg header banner section -->
+  <section id="aa-catg-head-banner">
+    <img src="./assets/img/fashion/fashion-header-bg-8.jpg" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+      <div class="container">
+       <div class="aa-catg-head-banner-content">
+         <h2>Formation</h2>
+         <ol class="breadcrumb">
+           <li><a href="index.html">Home</a></li>         
+           <li class="active">Formation</li>
+         </ol>
+       </div>
+      </div>
+    </div>
+   </section>
+   <!-- / catg header banner section -->
+ 
+   <!-- Blog Archive -->
+   <section id="aa-blog-archive" *ngIf="formation">
+     <div class="container">
+       <div class="row">
+         <div class="col-md-12">
+           <div class="aa-blog-archive-area">
+             <div class="row">
+               <div class="col-md-12">
+                 <!-- Blog details -->
+                 <div class="aa-blog-content aa-blog-details">
+                   <article class="aa-blog-content-single">                        
+                     <h2><a href="#">{{formation.titre}}</a></h2>
+                      <div class="aa-article-bottom">
+                       <div class="aa-post-author">
+                         Formateur <a href="#">{{formation.coach.nom}}</a>
+                       </div>
+                       <div class="aa-post-date">
+                         March 26th 2016
+                       </div>
+                     </div>
+                     <figure class="aa-blog-img">
+                       <a href="#"><img [src]="formation.image" alt="fashion img"></a>
+                     </figure>
+                     <p > {{formation.descriptionGenerale}} </p>
+                    
+                    <ul>
+                      <li *ngFor="let ligne of formation.description"> {{ligne.ligne}} </li>
+                    </ul>
+
+                   
+                    
+                   </article>
+                   <!-- blog navigation -->
+                   <div class="aa-blog-navigation">
+                     <a class="aa-blog-prev" href="#"><span class="fa fa-arrow-left"></span>Chapitre présedent</a>
+                     <a class="aa-blog-next" href="#">Chapitre suivant<span class="fa fa-arrow-right"></span></a>
+                   </div>
+                   <!-- Blog Comment threats -->
+                   <div class="aa-blog-comment-threat">
+                     <h3>Chapitres (4)</h3>
+                     <div class="comments">
+                       <ul class="commentlist">
+                         <li>
+                           <div class="media">
+                             <div class="media-left">    
+                                 <img class="media-object news-img" src="img/testimonial-img-3.jpg" alt="img">      
+                             </div>
+                             <div class="media-body">
+                              <h4 class="author-name">Charlie Balley</h4>
+                              <span class="comments-date"> March 26th 2016</span>
+                              <p>Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English</p>
+                              <a href="#" class="reply-btn">Reply</a>
+                             </div>
+                           </div>
+                         </li>
+                         <li>
+                           <div class="media">
+                             <div class="media-left">    
+                                 <img class="media-object news-img" src="img/testimonial-img-2.jpg" alt="img">      
+                             </div>
+                             <div class="media-body">
+                              <h4 class="author-name">Charlie Balley</h4>
+                              <span class="comments-date"> March 26th 2016</span>
+                              <p>Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English</p>
+                              <a href="#" class="reply-btn">Reply</a>
+                             </div>
+                           </div>
+                         </li>
+                         <ul class="children">
+                           <li class="author-comments">
+                             <div class="media">
+                               <div class="media-left">    
+                                   <img class="media-object news-img" src="img/testimonial-img-3.jpg" alt="img">      
+                               </div>
+                               <div class="media-body">
+                                <h4 class="author-name">Admin</h4>
+                                <span class="comments-date"> March 26th 2016</span>
+                                <span class="author-tag">Author</span>
+                                <p>Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English</p>
+                                <a href="#" class="reply-btn">Reply</a>
+                               </div>
+                             </div>
+                           </li>
+                           <ul class="children">
+                             <li>
+                               <div class="media">
+                                 <div class="media-left">    
+                                     <img class="media-object news-img" src="img/testimonial-img-2.jpg" alt="img">      
+                                 </div>
+                                 <div class="media-body">
+                                  <h4 class="author-name">Charlie Balley</h4>
+                                  <span class="comments-date"> March 26th 2016</span>
+                                  <p>Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English</p>
+                                  <a href="#" class="reply-btn">Reply</a>
+                                 </div>
+                               </div>
+                             </li>
+                           </ul>
+                         </ul>
+                         <li>
+                           <div class="media">
+                             <div class="media-left">    
+                                 <img class="media-object news-img" src="img/testimonial-img-2.jpg" alt="img">      
+                             </div>
+                             <div class="media-body">
+                              <h4 class="author-name">Charlie Balley</h4>
+                              <span class="comments-date"> March 26th 2016</span>
+                              <p>Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English</p>
+                              <a href="#" class="reply-btn">Reply</a>
+                             </div>
+                           </div>
+                         </li>
+                       </ul>
+                     </div>
+                   
+                   </div>
+                   <!-- blog comments form -->
+                   
+                 </div>
+               </div>
+ 
+              
+             </div>           
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+
+   
+    
+  
+   <app-footer-formation></app-footer-formation>
