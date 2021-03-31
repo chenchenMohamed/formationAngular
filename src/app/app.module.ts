@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { FormsModule } from "@angular/forms";
 
 import { HttpClientModule } from '@angular/common/http';
@@ -10,10 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilFormationComponent } from './siteFormation/accueil-formation/accueil-formation.component';
-import { LoginFormationComponent } from './siteFormation/compteFormation/login-formation/login-formation.component';
-import { InscriptionFormationComponent } from './siteFormation/compteFormation/inscription-formation/inscription-formation.component';
-import { ProfilEtudiantFormationComponent } from './siteFormation/compteFormation/profil-etudiant-formation/profil-etudiant-formation.component';
-import { ProfilEnseignantFormationComponent } from './siteFormation/compteFormation/profil-enseignant-formation/profil-enseignant-formation.component';
 import { NavbarSiteFormationComponent } from './shared/navbarsFormation/navbar-site-formation/navbar-site-formation.component';
 import { FooterFormationComponent } from './shared/footer-formation/footer-formation.component';
 import { ListEnseignantsFormationComponent } from './adminFormation/list-enseignants-formation/list-enseignants-formation.component';
@@ -24,9 +19,6 @@ import { Galerie3Component } from './siteFormation/accueil-formation/components/
 import { Galerie4Component } from './siteFormation/accueil-formation/components/galerie4/galerie4.component';
 import { Galerie5Component } from './siteFormation/accueil-formation/components/galerie5/galerie5.component';
 import { TopCategoriesComponent } from './shared/categories/top-categories/top-categories.component';
-import { CategorieDetailsFormationComponent } from './siteFormation/categorie-details-formation/categorie-details-formation.component';
-import { FormationDetailsFormationComponent } from './siteFormation/formation-details-formation/formation-details-formation.component';
-import { FormateurDetailsFormationComponent } from './siteFormation/formateur-details-formation/formateur-details-formation.component';
 import { FomationsFormationComponent } from './shared/componentsFormation/fomations-formation/fomations-formation.component';
 import { FormationsVoisinComponent } from './shared/componentsFormation/formations-voisin/formations-voisin.component';
 import { IdaretAmelComponent } from './siteFormation/pages-categories/idaret-amel/idaret-amel.component';
@@ -35,20 +27,43 @@ import { FormationAccueilComponent } from './siteFormation/accueil-formation/com
 import { FormateursAccueilComponent } from './siteFormation/accueil-formation/components/formateurs-accueil/formateurs-accueil.component';
 import { ListFormationsComponent } from './shared/formations/list-formations/list-formations.component';
 import { ListFormateursComponent } from './shared/formateur/list-formateurs/list-formateurs.component';
-import { LoginEtudiantComponent } from './compte/login-etudiant/login-etudiant.component';
-import { LoginEnseignantComponent } from './compte/login-enseignant/login-enseignant.component';
-import { RegisterEtudiantComponent } from './compte/register-etudiant/register-etudiant.component';
-import { NewFormationComponent } from './adminFormation/new-formation/new-formation.component';
-import { UpdateFormationComponent } from './adminFormation/update-formation/update-formation.component';
+
+import { LoginFormationComponent } from './siteFormation/compteFormation/login-formation/login-formation.component';
+import { InscriptionFormationComponent } from './siteFormation/compteFormation/inscription-formation/inscription-formation.component';
+
+//enseignat
+import { ListFormationEnseignantComponent } from './adminEnseignant/list-formation-enseignant/list-formation-enseignant.component';
+import { ProfilEnseignantComponent } from './adminEnseignant/profil-enseignant/profil-enseignant.component';
+import { ListEtudiantEnseignantComponent } from './adminEnseignant/list-etudiant-enseignant/list-etudiant-enseignant.component';
+import { NewFormationComponent } from './adminEnseignant/new-formation/new-formation.component';
+import { UpdateFormationComponent } from './adminEnseignant/update-formation/update-formation.component';
+
+import {SidebarEnseignantComponent} from './shared/sidebars/sidebar-enseignant/sidebar-enseignant.component';
+import {SidebarEtudiantComponent} from './shared/sidebars/sidebar-etudiant/sidebar-etudiant.component';
+
+import { EtudiantDetailsFormationComponent } from './siteFormation/etudiant-details-formation/etudiant-details-formation.component';
+import { CategorieDetailsFormationComponent } from './siteFormation/categorie-details-formation/categorie-details-formation.component';
+import { FormationDetailsFormationComponent } from './siteFormation/formation-details-formation/formation-details-formation.component';
+import { FormateurDetailsFormationComponent } from './siteFormation/formateur-details-formation/formateur-details-formation.component';
+import { AddEtudiantEnseignantComponent } from './adminEnseignant/add-etudiant-enseignant/add-etudiant-enseignant.component';
+
+//etudiant
+import { ListFormationEtudiantComponent } from './adminEtudiant/list-formation-etudiant/list-formation-etudiant.component';
+import { ProfilEtudiantComponent } from './adminEtudiant/profil-etudiant/profil-etudiant.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    
+    ListFormationEtudiantComponent,
+    ProfilEtudiantComponent,
+    
+    SidebarEnseignantComponent,
+    SidebarEtudiantComponent,
+    
     AccueilFormationComponent,
     LoginFormationComponent,
     InscriptionFormationComponent,
-    ProfilEtudiantFormationComponent,
-    ProfilEnseignantFormationComponent,
     NavbarSiteFormationComponent,
     FooterFormationComponent,
     ListEnseignantsFormationComponent,
@@ -70,11 +85,13 @@ import { UpdateFormationComponent } from './adminFormation/update-formation/upda
     FormateursAccueilComponent,
     ListFormationsComponent,
     ListFormateursComponent,
-    LoginEtudiantComponent,
-    LoginEnseignantComponent,
-    RegisterEtudiantComponent,
     NewFormationComponent,
-    UpdateFormationComponent
+    UpdateFormationComponent,
+    ListFormationEnseignantComponent,
+    ProfilEnseignantComponent,
+    ListEtudiantEnseignantComponent,
+    EtudiantDetailsFormationComponent,
+    AddEtudiantEnseignantComponent
   ],
   imports: [
     BrowserModule,
