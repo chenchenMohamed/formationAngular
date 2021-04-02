@@ -11,8 +11,6 @@ import { AppComponent } from './app.component';
 import { AccueilFormationComponent } from './siteFormation/accueil-formation/accueil-formation.component';
 import { NavbarSiteFormationComponent } from './shared/navbarsFormation/navbar-site-formation/navbar-site-formation.component';
 import { FooterFormationComponent } from './shared/footer-formation/footer-formation.component';
-import { ListEnseignantsFormationComponent } from './adminFormation/list-enseignants-formation/list-enseignants-formation.component';
-import { ListEtudiantsFormationComponent } from './adminFormation/list-etudiants-formation/list-etudiants-formation.component';
 import { Slider1Component } from './siteFormation/accueil-formation/components/slider1/slider1.component';
 import { Slider2Component } from './siteFormation/accueil-formation/components/slider2/slider2.component';
 import { Galerie3Component } from './siteFormation/accueil-formation/components/galerie3/galerie3.component';
@@ -40,6 +38,7 @@ import { UpdateFormationComponent } from './adminEnseignant/update-formation/upd
 
 import {SidebarEnseignantComponent} from './shared/sidebars/sidebar-enseignant/sidebar-enseignant.component';
 import {SidebarEtudiantComponent} from './shared/sidebars/sidebar-etudiant/sidebar-etudiant.component';
+import {SidebarAdminComponent} from './shared/sidebars/sidebar-admin/sidebar-admin.component';
 
 import { EtudiantDetailsFormationComponent } from './siteFormation/etudiant-details-formation/etudiant-details-formation.component';
 import { CategorieDetailsFormationComponent } from './siteFormation/categorie-details-formation/categorie-details-formation.component';
@@ -51,6 +50,19 @@ import { AddEtudiantEnseignantComponent } from './adminEnseignant/add-etudiant-e
 import { ListFormationEtudiantComponent } from './adminEtudiant/list-formation-etudiant/list-formation-etudiant.component';
 import { ProfilEtudiantComponent } from './adminEtudiant/profil-etudiant/profil-etudiant.component';
 
+//admin
+import { ListEnseignantsFormationComponent } from './adminFormation/list-enseignants-formation/list-enseignants-formation.component';
+import { ListEtudiantsFormationComponent } from './adminFormation/list-etudiants-formation/list-etudiants-formation.component';
+import { ListFormationsFormationComponent } from './adminFormation/list-formations-formation/list-formations-formation.component';
+import { ProfilAdminComponent } from './adminFormation/profil-admin/profil-admin.component';
+
+import { CategoriesPageComponent } from './siteFormation/categories-page/categories-page.component';
+import { FormateursPageComponent } from './siteFormation/formateurs-page/formateurs-page.component';
+import { FormationsPageComponent } from './siteFormation/formations-page/formations-page.component';
+import { CenterFormationPageComponent } from './siteFormation/center-formation-page/center-formation-page.component';
+import { ProposPageComponent } from './siteFormation/propos-page/propos-page.component';
+import { ContactPageComponent } from './siteFormation/contact-page/contact-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +70,7 @@ import { ProfilEtudiantComponent } from './adminEtudiant/profil-etudiant/profil-
     ListFormationEtudiantComponent,
     ProfilEtudiantComponent,
     
+    SidebarAdminComponent,
     SidebarEnseignantComponent,
     SidebarEtudiantComponent,
     
@@ -91,7 +104,15 @@ import { ProfilEtudiantComponent } from './adminEtudiant/profil-etudiant/profil-
     ProfilEnseignantComponent,
     ListEtudiantEnseignantComponent,
     EtudiantDetailsFormationComponent,
-    AddEtudiantEnseignantComponent
+    AddEtudiantEnseignantComponent,
+    ListFormationsFormationComponent,
+    ProfilAdminComponent,
+    CategoriesPageComponent,
+    FormateursPageComponent,
+    FormationsPageComponent,
+    CenterFormationPageComponent,
+    ProposPageComponent,
+    ContactPageComponent
   ],
   imports: [
     BrowserModule,

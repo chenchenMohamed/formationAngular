@@ -29,17 +29,36 @@ import { AddEtudiantEnseignantComponent } from './adminEnseignant/add-etudiant-e
 import { ListFormationEtudiantComponent } from './adminEtudiant/list-formation-etudiant/list-formation-etudiant.component';
 import { ProfilEtudiantComponent } from './adminEtudiant/profil-etudiant/profil-etudiant.component';
 
+//admin
+import { ListEnseignantsFormationComponent } from './adminFormation/list-enseignants-formation/list-enseignants-formation.component';
+import { ListEtudiantsFormationComponent } from './adminFormation/list-etudiants-formation/list-etudiants-formation.component';
+import { ListFormationsFormationComponent } from './adminFormation/list-formations-formation/list-formations-formation.component';
+import { ProfilAdminComponent } from './adminFormation/profil-admin/profil-admin.component';
+
+import { CategoriesPageComponent } from './siteFormation/categories-page/categories-page.component';
+import { FormateursPageComponent } from './siteFormation/formateurs-page/formateurs-page.component';
+import { FormationsPageComponent } from './siteFormation/formations-page/formations-page.component';
+import { CenterFormationPageComponent } from './siteFormation/center-formation-page/center-formation-page.component';
+import { ProposPageComponent } from './siteFormation/propos-page/propos-page.component';
+import { ContactPageComponent } from './siteFormation/contact-page/contact-page.component';
+
 const routes: Routes = [
-  
+
+  {path: 'CategoriesPage' , component: CategoriesPageComponent },
+  {path: 'FormateursPage' , component: FormateursPageComponent },
+  {path: 'FormationsPage' , component: FormationsPageComponent },
+  {path: 'CenterFormationPage' , component: CenterFormationPageComponent },
+  {path: 'ProposPage' , component: ProposPageComponent },
+  {path: 'ContactPage' , component: ContactPageComponent },
+
+
   {path: '',redirectTo:'accueil',pathMatch:"full"},
   {path: 'accueil' , component: AccueilFormationComponent },
 
- 
   {path: 'CategorieDetails' , component: CategorieDetailsFormationComponent },
   {path: 'FormationDetails' , component: FormationDetailsFormationComponent },
   {path: 'FormateurDetails' , component: FormateurDetailsFormationComponent },
   {path: 'EtudiantDetails' , component: EtudiantDetailsFormationComponent },
-
 
   //pages categories
   {path: 'IdaretAmel' , component: IdaretAmelComponent },
@@ -61,6 +80,11 @@ const routes: Routes = [
  {path: 'ListFormationEtudiant' , component: ListFormationEtudiantComponent },
  {path: 'ProfilEtudiant' , component: ProfilEtudiantComponent },
 
+ //admin
+ {path: 'ListEnseignantsFormation' , component: ListEnseignantsFormationComponent },
+ {path: 'ListEtudiantsFormation' , component: ListEtudiantsFormationComponent },
+ {path: 'ListFormationsFormation' , component: ListFormationsFormationComponent },
+ {path: 'ProfilAdmin' , component: ProfilAdminComponent },
 
   { path: '**', component: AccueilFormationComponent }
 ];
