@@ -1,17 +1,4 @@
-  <section id="aa-banner">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">        
-          <div class="row">
-            <div class="aa-banner-area">
-            <a href="#"><img src="./assets/img/fashion-banner.jpg" alt="fashion banner img"></a>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- popular section -->
+ 
 
   <section id="aa-popular-category">
     
@@ -19,12 +6,17 @@
       <div class="row">
         <div class="col-md-12">
           <div class="aa-latest-blog-area">
+
             <div class="row">
-              
               <div style="text-align: center;">
                 <h2>Les centres de formations</h2>
                 <br>
               </div>
+            </div>
+            
+            <div class="row" style="overflow-x: auto; display: flex; flex-direction: row; flex-wrap: nowrap;">
+              
+              
               <!-- single latest blog -->
               <div class="col-md-4 col-sm-4" *ngFor="let item of centerFormations" style="margin-bottom: 20px;">
                 <div class="aa-latest-blog-single">
@@ -40,18 +32,15 @@
                   <div class="aa-blog-info">
                     <h3 class="aa-blog-title"><a href="#">{{item.titre}}</a></h3>
                     <p>  </p> 
-                    <a href="#" class="aa-read-mor-btn" style="float: left;">Inscrire<span class="fa fa-long-arrow-right"></span></a>
+                    <a href="#" class="aa-read-mor-btn" style="float: left;">Plus de details<span class="fa fa-long-arrow-right"></span></a>
                   </div>
                 </div>
               </div>
   
-              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   
   </section>
-
-
-  
