@@ -10,7 +10,7 @@
             <div class="row">
 
               <!-- single latest blog -->
-              <div class="col-md-4 col-sm-4" *ngFor="let item of categories" style="margin-bottom: 10px;">
+              <div class="col-md-4 col-sm-4" *ngFor="let item of formations" style="margin-bottom: 10px;">
                 <div class="aa-latest-blog-single">
                   <figure class="aa-blog-img">                    
                     <a href="#"><img [src]="item.image" alt="img"></a>  
@@ -22,8 +22,10 @@
                     </figcaption>                          
                   </figure>
                   <div class="aa-blog-info">
-                    <h3 class="aa-blog-title"><a [routerLink]="['/FormationDetails']">Lorem ipsum dolor sit amet</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae, fugiat odit vel impedit dicta enim repellendus animi. Expedita quas reprehenderit incidunt, voluptates corporis.</p> 
+                    <h3 class="aa-blog-title"><a [routerLink]="['/FormationDetails']">{{item.titre}}</a></h3>
+                    
+                    <p> {{item.descriptionPrincipale}}</p>
+                      
                     <a [routerLink]="['/FormationDetails']" class="aa-read-mor-btn">Read more <span class="fa fa-long-arrow-right"></span></a>
                   </div>
                 </div>

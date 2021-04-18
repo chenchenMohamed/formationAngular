@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoriesFormationService} from '../../../servicesFormation/categoriesFormation/categories-formation.service'
+import {ProduitsFormationService} from '../../../servicesFormation/produitsFormation/produits-formation.service'
 import { Router, Event } from '@angular/router';
 
 @Component({
@@ -9,15 +9,15 @@ import { Router, Event } from '@angular/router';
 })
 export class FomationsFormationComponent implements OnInit {
 
-  constructor(private categoriesFormationService:CategoriesFormationService, private router:Router) {
+  constructor(private categoriesFormationService:ProduitsFormationService, private router:Router) {
     
   }
 
-  categories = []
+  formations = []
 
   ngOnInit(): void {
-     this.categoriesFormationService.categories.subscribe(res => {
-        this.categories = res
+     this.categoriesFormationService.formations.subscribe(res => {
+        this.formations = res
      })
   }
 

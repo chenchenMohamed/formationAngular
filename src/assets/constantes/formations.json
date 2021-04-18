@@ -2,7 +2,9 @@
 
     {
         "id":1,
-        "titre":"إدارة الاعمال",
+        "titre":"إدارة الاعمال", 
+        "descriptionPrincipale":"description",
+        
         "image":"./assets/img/categories/téléchargement.png",
         "route":"/FormationDetails",
         "prixVente": 500,
@@ -59,7 +61,9 @@
     },
     {
         "id":2,
-        "titre":"إدارة الاعمال",
+        "titre":"إدارة الاعمال", 
+        "descriptionPrincipale":"description",
+        
         "image":"./assets/img/categories/téléchargement.png",
         "route":"/FormationDetails",
         "prixVente": 500,
@@ -75,6 +79,11 @@
                 "categorie" : "إدارة الاعمال"
             }
         ],
+
+        "descriptionGenerale":" bla bla",
+        
+
+
         "description":[
             {
                 "ligne":"Eligendi sunt ratione praesentium, tempore esse, iure ut dolor consequuntur eum ducimus commodi sequi beatae."
@@ -116,7 +125,9 @@
 
     {
         "id":3,
-        "titre":"إدارة الاعمال",
+        "titre":"إدارة الاعمال", 
+        "descriptionPrincipale":"description",
+        
         "image":"./assets/img/categories/téléchargement.png",
         "route":"/FormationDetails",
         "prixVente": 500,
@@ -172,7 +183,9 @@
     },
     {
         "id":4,
-        "titre":"إدارة الاعمال",
+        "titre":"إدارة الاعمال", 
+        "descriptionPrincipale":"description",
+        
         "image":"./assets/img/categories/téléchargement.png",
         "route":"/FormationDetails",
         "prixVente": 500,
@@ -228,7 +241,9 @@
     },
     {
         "id":5,
-        "titre":"إدارة الاعمال",
+        "titre":"إدارة الاعمال", 
+        "descriptionPrincipale":"description",
+        
         "image":"./assets/img/categories/téléchargement.png",
         "route":"/FormationDetails",
         "prixVente": 500,
@@ -284,7 +299,9 @@
     },
     {
         "id":6,
-        "titre":"إدارة الاعمال",
+        "titre":"إدارة الاعمال", 
+        "descriptionPrincipale":"description",
+        
         "image":"./assets/img/categories/téléchargement.png",
         "route":"/FormationDetails",
         "prixVente": 500,
@@ -341,6 +358,8 @@
     {
         "id":7,
         "titre":"إدارة الاعمال",
+        "descriptionPrincipale":"description",
+        
         "image":"./assets/img/categories/téléchargement.png",
         "route":"/FormationDetails",
         "prixVente": 500,
@@ -397,6 +416,8 @@
     {
         "id":8,
         "titre":"إدارة الاعمال",
+        "descriptionPrincipale":"description",
+       
         "image":"./assets/img/categories/téléchargement.png",
         "route":"/FormationDetails",
         "prixVente": 500,
@@ -452,7 +473,9 @@
     },
     {
         "id":9,
-        "titre":"إدارة الاعمال",
+        "titre":"إدارة الاعمال", 
+        "descriptionPrincipale":"description",
+        
         "image":"./assets/img/categories/téléchargement.png",
         "route":"/FormationDetails",
         "prixVente": 500,
@@ -470,7 +493,7 @@
     },
     {
         "id":10,
-        "titre":"إدارة الاعمال",
+        "titre":"إدارة الاعمال", "descriptionPrincipale":"description",
         "image":"./assets/img/categories/téléchargement.png",
         "route":"/FormationDetails",
         "prixVente": 500,
@@ -488,7 +511,9 @@
     },
     {
         "id":11,
-        "titre":"إدارة الاعمال",
+        "titre":"إدارة الاعمال", 
+        "descriptionPrincipale":"description",
+        
         "image":"./assets/img/categories/téléchargement.png",
         "route":"/FormationDetails",
         "prixVente": 500,

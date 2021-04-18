@@ -19,7 +19,7 @@
   </section>
    <!-- / catg header banner section -->
  
-
+<!--
   <section id="aa-product-category">
     <div class="container">
       <div class="row">
@@ -28,34 +28,354 @@
             
             <div class="col-md-12">
               <div class="aa-myaccount-login">
-              <h2>Nouveau formation</h2>
-               <form action="" class="aa-login-form">
-                
-                 <label for="">Nom<span>*</span></label>
-                 <input type="text" placeholder="Username or email">
-                 
-                 <label for="">Description<span>*</span></label>
-                 <input type="password" placeholder="Password">
-                 
-                 <label for="">Image<span>*</span></label>
-                 <input type="file" placeholder="Password">
-                 
-                 <label for="">chapitres<span>*</span></label>
-                 <input type="text" placeholder="Password">
-                
-                 <label for="">videos<span>*</span></label>
-                 <input type="text" placeholder="Password">
-                
-                 <label for="">descriptions chapitres<span>*</span></label>
-                 <input type="text" placeholder="Password">
-            
-                 <label for="">PDF de chapitres<span>*</span></label>
-                 <input type="file" placeholder="Password">
-            
-                      
-                  <button type="submit" class="aa-browse-btn">ajouter</button>
+              
+                <h1>Nouveau formation</h1>
+                <form class="form-horizontal" [formGroup]="formC">
+                    
+                     <fieldset id="account">
+                         <legend>Informations Générales</legend>
+                        
+                         <div class="form-group required">
+                             <label for="input-firstname" class="col-sm-2 control-label">Nom</label>
+                             <div class="col-sm-10">
+                                 <input type="text" class="form-control" formControlName="nom" placeholder="Nom" value="" name="firstname">
+                             </div>
+                         </div>
+                       
+                         <div class="form-group required">
+                             <label for="input-email" class="col-sm-2 control-label">Prix de vente</label>
+                             <div class="col-sm-5">
+                                 <input type="number" class="form-control" formControlName="prixVente" placeholder="Prix en dinar tunisien" value="" name="email">
+                             </div>
+                             <div class="col-sm-5 control-label">
+                                 <span style="font-weight: 900; margin-left: 10px;">DT</span>
+                             </div>
+                         </div>
 
-               </form>
+                         <div class="form-group required">
+                          <label for="input-email" class="col-sm-2 control-label">Prix de promo</label>
+                          <div class="col-sm-5">
+                              <input type="number" class="form-control" formControlName="prixPromo" placeholder="Prix en dinar tunisien" value="" name="email">
+                          </div>
+                          <div class="col-sm-5 control-label">
+                              <span style="font-weight: 900; margin-left: 10px;">DT</span>
+                          </div>
+                        </div>
+  
+                       
+                     </fieldset>
+                    
+                     <fieldset id="address">
+                         <legend>Déscriptions au dessus</legend>
+                         <p> Cette description affiche sous forme des paragraphes </p>
+                         
+                         <div class="class-slected">
+                             <div class="form-group">
+                                 <label for="input-company" class="col-sm-2 control-label">Paragraphe</label>
+                                 <div class="col-sm-10">
+                                     <textarea class="form-control" formControlName="description" rows="10" name="enquiry"></textarea>
+                                 </div>
+                             </div>
+         
+                             
+                             <button type="button" class="btn btn-danger" (click)="ajouteDescriptionDessus()" *ngIf="descriptionDessusSelected.id == -1"> Ajouter Paragraphe</button>
+                             <button type="button" class="btn btn-danger" (click)="modifieDescriptionDessus()" *ngIf="descriptionDessusSelected.id != -1"> Modifier Paragraphe</button>
+                         </div>
+     
+                         <table class="table table-bordered">
+                             
+                             <tbody>
+                                 <tr *ngFor='let item of listDescriptionsDessus'>
+                                     <td class="text-center">{{item.ligne}}</td>
+                                     <td class="text-center">
+                                         <button class="btn btn-danger"  title="" data-toggle="tooltip" type="button" data-original-title="Modifier quantite" (click)="selectedDescriptionDessus(item.id)"><i class="fa fa-refresh" style="color: white;"></i></button>
+                                         <button class="btn btn-danger" title="" data-toggle="tooltip" type="button" data-original-title="Supprimer" (click)="removeDescriptionDessus(item.id)"><i class="fa fa-times-circle" style="color: white;"></i></button>
+                                     </td>
+                                 
+                                 </tr>
+                             </tbody>
+     
+                         </table>
+     
+                     </fieldset>
+     
+                     
+                     <fieldset id="address">
+                         <legend>Blocks images </legend>
+                         
+                         <div class="class-slected">
+                             <div class="form-group">
+                                 <label for="input-company" class="col-sm-2 control-label">image</label>
+                                 <div class="col-sm-5">
+                                     
+                                     <input 
+                                         formControlName="fileBlockImg"
+                                         id="file" 
+                                         type="file" 
+                                         class="form-control"
+                                         multiple="" 
+                                         (change)="selectedMBlockImg($event)">
+     -->
+                                 <!--<div *ngIf="f.fileBlockImg.touched && f.fileBlockImg.invalid" class="alert alert-danger">
+                                           <div *ngIf="f.fileBlockImg.errors.required">File is required.</div>
+                                     </div>-->
+    <!--                              </div>
+    
+                                 <div class="col-sm-5">
+                                     <img [src]="imageBlockImg" style="max-width: 100%;">
+                                 </div>
+                             </div>
+                         
+     
+                             <div class="form-group">
+                                 <label for="input-company" class="col-sm-2 control-label">Déscription</label>
+                                 <div class="col-sm-10">
+                                     <textarea class="form-control" formControlName="descriptionBlockImg" rows="10" name="enquiry"></textarea>
+                                 </div>
+                             </div>
+           
+           
+                             <button type="button" class="btn btn-danger" (click)="ajouterBlock()" *ngIf="idBlockImg == -1"> Ajouter Block</button>
+                             <button type="button" class="btn btn-danger" (click)="updateBlock()" *ngIf="idBlockImg != -1"> Modifier Block</button>
+                         </div>
+     
+                         <table class="table table-bordered">
+                             
+                             <tbody>
+                                 <tr *ngFor='let item of blockImgs'>
+                                     <td class="text-center"> <img [src]="item.image" style="max-width: 200px;"> </td>
+                                     <td class="text-center"> {{item.description}} </td>
+                                     <td class="text-center">
+                                         
+                                         <button class="btn btn-danger"  title="" data-toggle="tooltip" type="button" data-original-title="Modifier quantite" (click)="selectBlock(item.id)"><i class="fa fa-refresh" style="color: white;"></i></button>
+                                         <button class="btn btn-danger" title="" data-toggle="tooltip" type="button" data-original-title="Supprimer" (click)="removeBlock(item.id)"><i class="fa fa-times-circle" style="color: white;"></i></button>
+                                   
+                                     </td>
+                                 </tr>
+                             </tbody>
+     
+                         </table>
+     
+                     </fieldset>
+                     
+                     <fieldset id="address">
+                         <legend>Description au dessous</legend>
+                         <p> Cette description affiche sous forme d'un tableaux</p>
+                         
+                         <div class="class-slected">
+                             <div class="form-group">
+                                 <label for="input-company" class="col-sm-2 control-label">Titre</label>
+                                 <div class="col-sm-10">
+                                     <input type="text" class="form-control" formControlName="descriptionTitle" placeholder="Ex: Couleur" value="" name="email">
+                                 </div>
+                             </div>
+         
+                             <div class="form-group">
+                                 <label for="input-company" class="col-sm-2 control-label">Valeur</label>
+                                 <div class="col-sm-10">
+                                     <input type="text" class="form-control" formControlName="descriptionValue" placeholder="Ex: Jaune" value="" name="email">
+                                 </div>
+                             </div>
+         
+                               
+                             <button type="button" class="btn btn-danger" (click)="ajouteDescriptionDessous()" *ngIf="descriptionDessousSelected.id == -1"> Ajouter Ligne</button>
+                             <button type="button" class="btn btn-danger" (click)="modifieDescriptionDessous()" *ngIf="descriptionDessousSelected.id != -1"> Modifier Ligne</button>
+                         </div>
+     
+                         <table class="table table-bordered">
+                             
+                             <tbody>
+                                 <tr *ngFor='let item of listDescriptionsDessous'>
+                                     <th class="text-center">{{item.title}}</th>
+                                     <td class="text-center">{{item.value}}</td>
+                                     <td class="text-center">
+                           
+                                         <button class="btn btn-danger"  title="" data-toggle="tooltip" type="button" data-original-title="Modifier quantite" (click)="selectedDescriptionDessous(item.id)"><i class="fa fa-refresh" style="color: white;"></i></button>
+                                         <button class="btn btn-danger" title="" data-toggle="tooltip" type="button" data-original-title="Supprimer" (click)="removeDescriptionDessous(item.id)"><i class="fa fa-times-circle" style="color: white;"></i></button>
+                           
+                                     </td>
+                                 </tr>
+                             </tbody>
+     
+                         </table>
+     
+                     </fieldset>
+     
+                     <fieldset>
+                         <legend>Categories</legend>
+     
+                         <div class="form-group">
+                             
+                             <div class="col-sm-5">
+                                 <div *ngFor="let categorie of categories" >
+                             
+                                     <label class="checkbox" *ngIf="categorie.isActive"><input (change)="selectCategorie($event)" name="filter[]" type="checkbox" [value]="categorie.id"  checked/>{{categorie.id}}</label>
+                                     <label class="checkbox" *ngIf="!categorie.isActive"><input (change)="selectCategorie($event)" name="filter[]" type="checkbox" [value]="categorie.id" />{{categorie.id}}</label>
+                                    
+                                     <div *ngIf="categorie.isActive" >
+                                        
+                                         <div *ngFor="let sousCategorie of categorie.categories" class="div-sous-categories" [id]="categorie.id" >
+                                             <label class="checkbox" *ngIf="sousCategorie.isActive"><input (click)="selectSousCategorie($event)" name="filter[]" type="checkbox" [value]="sousCategorie.id" checked/>{{sousCategorie.id}}</label>
+                                             <label class="checkbox" *ngIf="!sousCategorie.isActive"><input (click)="selectSousCategorie($event)" name="filter[]" type="checkbox" [value]="sousCategorie.id" />{{sousCategorie.id}}</label>
+                                          
+                                             <div *ngIf="sousCategorie.isActive" >
+                                                 <div *ngFor="let sousSousCategorie of sousCategorie.categories" style="margin-left: 20px;" class="div-sous-sous-categories" [id]="sousCategorie.id" >
+                                                 
+                                                    
+                                                     <label class="checkbox" *ngIf="sousSousCategorie.isActive"><input (click)="selectSousSousCategorie($event)" name="filter[]" type="checkbox" [value]="sousSousCategorie.id"  checked />{{sousSousCategorie.id}}</label>
+                                                     <label class="checkbox" *ngIf="!sousSousCategorie.isActive"><input (click)="selectSousSousCategorie($event)" name="filter[]" type="checkbox" [value]="sousSousCategorie.id"  />{{sousSousCategorie.id}}</label>
+                                                 
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+     
+                             <div class="col-sm-5">
+                                 <table class="table table-bordered">
+                             
+                                     <tbody>
+                                         <tr *ngFor='let item of listCategoriesShema'>
+                                             <td class="text-center">{{item.categorie}}</td>
+                                             <td class="text-center"><button type="button" class="btn btn-info"  (click)="ajouterCategorie(item.categorie)"  title="Categorie"> Ajouter </button></td>
+                                        </tr>
+                                     </tbody>
+             
+                                 </table>
+                             </div>
+                         
+                         </div>
+                         
+                         
+                       
+                         <br> <br>
+                         <label class="checkbox" *ngIf="isSpecialsProduct"><input (click)="selectOptionProduct($event)" name="filter[]" type="checkbox" value="0" title="Specials" checked />Specials-Produit</label>
+                         <label class="checkbox" *ngIf="!isSpecialsProduct"><input (click)="selectOptionProduct($event)" name="filter[]" type="checkbox" value="1" title="Specials" />Specials-Produit</label>
+     
+                         <label class="checkbox" *ngIf="isNewProduct"><input (click)="selectOptionProduct($event)" name="filter[]" type="checkbox" value="0" title="Nouveau"  checked />Nouveau-Produit</label>
+                         <label class="checkbox" *ngIf="!isNewProduct"><input (click)="selectOptionProduct($event)" name="filter[]" type="checkbox" value="1" title="Nouveau" />Nouveau-Produit</label>
+                     
+                         <label class="checkbox" *ngIf="isMeilleurVenteProduct"><input (click)="selectOptionProduct($event)" name="filter[]" type="checkbox" value="0" title="Meilleur-Vente"  checked />Meilleur-Vente-Produit</label>
+                         <label class="checkbox" *ngIf="!isMeilleurVenteProduct"><input (click)="selectOptionProduct($event)" name="filter[]" type="checkbox" value="1" title="Meilleur-Vente" />Meilleur-Vente-Produit</label>
+                     
+                         <br>
+                         <p> <span class="style-title-resultat">Resultat :</span></p>
+                         <table class="table table-bordered">
+                             
+                             <tbody>
+                                 <tr *ngFor='let item of listCategories'>
+                                     <td class="text-center">{{item.categorie}}</td>
+                                     <td class="text-center"><button type="button" class="btn btn-danger"  (click)="removeCategorie($event)" [value]="item.categorie" title="Categorie"> supprimer </button></td>
+                                </tr>
+                             </tbody>
+     
+                         </table>
+     
+                     </fieldset>
+     
+                     <fieldset style="margin-top: 15px;">
+                         
+                         <legend style="margin-bottom: 0px;">Filtrer par</legend>
+                         <div *ngFor="let caracteristique of caracteristiques" style="margin-top:30px" >
+                             
+                             <h2>{{caracteristique.id}}</h2>
+                            
+                             <div *ngFor="let item of caracteristique.items" >
+                                
+                                 <label class="checkbox" *ngIf="verifierCaracteristique(item)"><input  name="filter[]" type="checkbox" [value]="item" (change)="selectCaracteristique($event)" [title]="caracteristique.id" checked/>{{item}}</label>
+                                 <label class="checkbox" *ngIf="!verifierCaracteristique(item)"><input  name="filter[]" type="checkbox" [value]="item" (change)="selectCaracteristique($event)" [title]="caracteristique.id" />{{item}}</label>
+     
+                             </div>
+     
+                         </div>
+                         <br>
+                         <p> <span class="style-title-resultat">Resultat :</span></p>
+                         
+                         <table class="table table-bordered">
+                             
+                             <tbody>
+                                 <tr *ngFor='let item of listCaracteristiques'>
+                                     <td class="text-center">{{item.caracteristique}}</td>
+                                     <td class="text-center"><button type="button" class="btn btn-danger"   [value]="item.caracteristique" (click)="selectCaracteristique($event)"> supprimer </button></td>
+                                 </tr>
+                             </tbody>
+     
+                         </table>
+                     
+                     </fieldset>
+     
+                     <fieldset style="margin-top: 30px;">
+                         <legend>Photos</legend>
+                         
+                             <div class="class-slected">
+                                 <div class="form-group">
+                                     <label for="input-company" class="col-sm-2 control-label">image</label>
+                                     <div class="col-sm-5">
+                                         <input 
+                                         formControlName="file"
+                                         id="file" 
+                                         type="file" 
+                                         class="form-control"
+                                         multiple="" 
+                                         (change)="selectedM($event)">
+          
+                                     </div>
+     
+                                     <div class="col-sm-5">
+                                         <img [src]="imageSelected" style="max-width:100%; margin-bottom: 20px;">
+                                     </div>
+                                 </div>
+                                 <br>
+                                 <button type="button" class="btn btn-danger" (click)="ajouterImage()" *ngIf="idImage == -1"> Ajouter Image</button>
+                                 <button type="button" class="btn btn-danger" (click)="updateImage()" *ngIf="idImage != -1"> Modifier Image</button>
+            
+                             </div>
+                           
+                             <div style="width: 100%; overflow-x: scroll;" >
+                                 <table class="table table-bordered" >
+                                     
+                                     <thead>
+                                       <tr>
+                                         <th class="text-center">Image</th>
+                                         <th class="text-left">ordeur</th>
+                                         <th class="text-left"></th>
+                                       </tr>
+                                     </thead>
+                                     <tbody>
+                                       <tr *ngFor='let image of images'>
+                                         <td class="text-center"><a><img class="img-thumbnail" title="iPhone" alt="iPhone" [src]="image.image" style="max-width: 200px;"></a></td>
+                                         <td class="text-left"> {{image.ordeur}}</td>
+                                         <td class="text-left">
+                                             <button class="btn btn-danger"  title="" data-toggle="tooltip" type="button" data-original-title="Modifier quantite" (click)="selectedImage(image.ordeur)"><i class="fa fa-refresh" style="color: white;"></i></button>
+                                             <button class="btn btn-danger" title="" data-toggle="tooltip" type="button" data-original-title="Supprimer" (click)="onFileDelete(image.ordeur)"><i class="fa fa-times-circle" style="color: white;"></i></button>
+                                         </td>
+                                       </tr>
+                                     </tbody>
+     
+                                 </table>
+                             </div>
+                         
+                     </fieldset>
+                    
+                     <div class="form-group" style="border:red solid 2px;" *ngIf="isErreurs">
+                         <p style="color: red; padding: 2px 5px;">
+                           <span *ngFor="let e of erreurString">  {{e}} <br> </span> 
+                         </p>
+                     </div>
+       
+                     <app-loading *ngIf="isLoading"></app-loading>
+     
+                     <div class="buttons">
+                         <div class="pull-right">
+                             <input type="submit" class="btn btn-primary" value="Ajouter" (click)="addProduit()">
+                         </div>
+                     </div>
+                 </form>
+     
+
+
+
               </div>
             </div>
 
@@ -73,3 +393,4 @@
   </section>
  
   <app-footer-formation></app-footer-formation>
+-->

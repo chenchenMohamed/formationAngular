@@ -6,6 +6,9 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilFormationComponent } from './siteFormation/accueil-formation/accueil-formation.component';
@@ -62,6 +65,7 @@ import { FormationsPageComponent } from './siteFormation/formations-page/formati
 import { CenterFormationPageComponent } from './siteFormation/center-formation-page/center-formation-page.component';
 import { ProposPageComponent } from './siteFormation/propos-page/propos-page.component';
 import { ContactPageComponent } from './siteFormation/contact-page/contact-page.component';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -112,13 +116,17 @@ import { ContactPageComponent } from './siteFormation/contact-page/contact-page.
     FormationsPageComponent,
     CenterFormationPageComponent,
     ProposPageComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
     HttpClientModule,
     FormsModule, ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

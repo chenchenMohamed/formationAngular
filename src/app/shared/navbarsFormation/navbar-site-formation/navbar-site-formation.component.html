@@ -47,15 +47,17 @@
               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  <li><a href="account.html">My Account</a></li>
+                  
                   <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
-                  <li class="hidden-xs"><a href="cart.html">My Cart</a></li>
-                  <li><a [routerLink]="['/LoginFormation']" >Login</a></li>
-                  <li><a [routerLink]="['/InscriptionFormation']" >Register</a></li>
-                  <li><a [routerLink]="['/ListFormationEnseignant']" >Formateur</a></li>
-                  <li><a [routerLink]="['/ListFormationEtudiant']" >Etudiant</a></li>
-                  <li><a [routerLink]="['/ListEnseignantsFormation']" >Admin</a></li>
-
+                  <li><a [routerLink]="['/LoginFormation']" *ngIf="role == ''" >Login</a></li>
+                  <li><a [routerLink]="['/InscriptionFormation']" *ngIf="role == ''" >Register</a></li>
+                  
+                  <li><a [routerLink]="['/ListFormationEnseignant']" *ngIf="role == userService.roleFormateur">{{email}}</a></li>
+                  <li><a [routerLink]="['/ListFormationEtudiant']" *ngIf="role == userService.roleEtudiant">{{email}}</a></li>
+                  <li><a [routerLink]="['/ListEnseignantsFormation']" *ngIf="role == userService.roleAdmin" >{{email}}</a></li>
+                  
+                  <li style="cursor: pointer;" (click)="deconnexion()" *ngIf="role != ''"><a style=" color: red; font-weight: 700;">Deconnexion</a></li>
+                  
                 </ul>
               </div>
             </div>

@@ -14,6 +14,11 @@ export class ProduitsFormationService {
   formations=new BehaviorSubject(this.varFormations)
   formationsChange=this.formations.asObservable()  
  
+  produitPromoString
+  produitSpecialsString
+  produitNouveauString
+  produitMeilleurVenteString
+
   constructor(private http: HttpClient) {
      
      this.newFormations = this.http.get("./assets/constantes/formations.json").subscribe(res => {
