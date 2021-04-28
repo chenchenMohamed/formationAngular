@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+
+import { Router, Event } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
+import { UserService } from '../../servicesFormation/user/user.service'
+import { NotificationService } from '../../servicesFormation/notification/notification.service'
+
+
+
 declare var CKEDITOR: any;
 @Component({
   selector: 'app-formation-details-formation',
@@ -15,17 +24,9 @@ export class FormationDetailsFormationComponent implements OnInit {
  
   ckeditorConten
   
-  constructor(public formBuilder:FormBuilder, private http: HttpClient) {
+  constructor(private notificationService:NotificationService, public userService:UserService, private _Activatedroute:ActivatedRoute,  private router:Router, public formBuilder:FormBuilder, private http: HttpClient) {
      
-    this.http.get("./assets/constantes/formations.json").subscribe(res => {
-      
-      this.formations = res
-      if(this.formations.length > 0){
-        this.formation = this.formations.filter(x=> x.id == 1)[0]
-      }
-      
-    })
-
+   
     this.myForm = this.formBuilder.group({
       content: [null,Validators.required]
     });
@@ -33,7 +34,38 @@ export class FormationDetailsFormationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._Activatedroute.paramMap.subscribe(params => { 
+      this.inisialiserProduit(params.get('id')); 
+    });
   }
+  
+  isLoading = false
+
+  formateur
+
+  inisialiserProduit(idProduit){
+    
+    this.isLoading = true
+    this.http.get(this.userService.baseURL+"/produit/getById/"+idProduit).subscribe(
+      res => {
+        let response:any = res
+        this.isLoading = false; 
+        if(response.status){
+          this.formation = response.resultat
+          this.formateur = response.formateur
+          console.log(response)
+        }else{
+         // alert(this.notificationService.alertNotConnexion)
+        }
+      }, err => {
+        //alert(this.notificationService.alertNotConnexion)
+        this.isLoading = false; 
+      }
+    );
+
+  }
+
+
 
   contentChanged(){
     console.log(this.myForm.value.content);

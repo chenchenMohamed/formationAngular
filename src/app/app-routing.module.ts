@@ -56,7 +56,7 @@ const routes: Routes = [
   {path: 'accueil' , component: AccueilFormationComponent },
 
   {path: 'CategorieDetails' , component: CategorieDetailsFormationComponent },
-  {path: 'FormationDetails' , component: FormationDetailsFormationComponent },
+  {path: 'FormationDetails/:id' , component: FormationDetailsFormationComponent },
   {path: 'FormateurDetails' , component: FormateurDetailsFormationComponent },
   {path: 'EtudiantDetails' , component: EtudiantDetailsFormationComponent },
 

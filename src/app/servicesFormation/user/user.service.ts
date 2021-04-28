@@ -11,9 +11,10 @@ export class UserService {
     this.inisialiseRoleAndEmail()
   }
   
-  //baseURL = "https://arcane-temple-57309.herokuapp.com"
+  //baseURL = "https://formations.herokuapp.com"
   baseURL = "http://localhost:3000"
   baseURLAngular = "http://localhost:4200"
+  
   tokenString = "tokenString"
   roleString = "roleString"
   emailString = "emailString"

@@ -8,7 +8,7 @@
             <div class="col-md-4 col-sm-4" *ngFor="let item of formations" style="margin-bottom: 20px;">
               <div class="aa-latest-blog-single">
                 <figure class="aa-blog-img">                    
-                  <a href="#"><img [src]="item.image" alt="img"></a>  
+                  <a href="#"><img [src]="userService.baseURL +'/'+ item.imagePrincipale" alt="img"></a>  
                     <figcaption class="aa-blog-img-caption">
                     <span href="#"><i class="fa fa-eye"></i>5K</span>
                     <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
@@ -17,9 +17,9 @@
                   </figcaption>                          
                 </figure>
                 <div class="aa-blog-info">
-                  <h3 class="aa-blog-title"><a href="#">{{item.titre}}</a></h3>
+                  <h3 class="aa-blog-title"><a href="#">{{item.nom}}</a></h3>
                   <p>  </p> 
-                  <a [routerLink]="['/FormationDetails']" class="aa-read-mor-btn" style="float: left;">Inscrire<span class="fa fa-long-arrow-right"></span></a>
+                  <a [routerLink]="'/FormationDetails/'+item.id" class="aa-read-mor-btn" style="float: left;">Inscrire<span class="fa fa-long-arrow-right"></span></a>
                 </div>
               </div>
             </div>

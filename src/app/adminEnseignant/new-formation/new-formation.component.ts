@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { CategoriesFormationService } from '../../servicesFormation/categoriesFormation/categories-formation.service';
-import { UserService } from '../../servicesFormation/user/user.service';
-import { NotificationService } from '../../servicesFormation/notification/notification.service'
+import { CategoriesFormationService } from '../../servicesFormation/categoriesFormation/categories-formation.service'
+import { UserService } from '../../servicesFormation/user/user.service'
 import { ProduitsFormationService } from '../../servicesFormation/produitsFormation/produits-formation.service'
+import { NotificationService } from '../../servicesFormation/notification/notification.service'
+
+import { DomSanitizer } from "@angular/platform-browser";
 
 
 
@@ -28,41 +30,63 @@ export class NewFormationComponent implements OnInit {
   listDescriptionsDessous=[]
   listDescriptionsDessus=[]
   
-  constructor( private notificationService:NotificationService, private http: HttpClient, private categoriesServices: CategoriesFormationService, private userService:UserService, private productService:ProduitsFormationService) { 
+  longDesc
+
+  constructor( private domSanitizer:DomSanitizer, private notificationService:NotificationService, private http: HttpClient, private categoriesServices: CategoriesFormationService, private userService:UserService, public productService:ProduitsFormationService) { 
     
     this.formC = new FormGroup({
       nom:new FormControl('',[Validators.required, Validators.min(1)]),
+      fournisseur:new FormControl('',[Validators.required, Validators.min(1)]),
+      ref:new FormControl('',[Validators.required, Validators.min(1)]),
+      disponibilite:new FormControl('',[Validators.required, Validators.min(1)]),
+      prixAchat:new FormControl(0,[Validators.required, Validators.min(1)]),
       prixVente:new FormControl(0,[Validators.required, Validators.min(1)]),
       description:new FormControl('',[Validators.required, Validators.min(1)]),
       descriptionTitle:new FormControl('',[Validators.required, Validators.min(1)]),
       descriptionValue:new FormControl('',[Validators.required, Validators.min(1)]),
       prixPromo:new FormControl(0,[Validators.required, Validators.min(1)]),
+      quantite:new FormControl(0,[Validators.required, Validators.min(1)]),
+      dateFinPromo:new FormControl('',[Validators.required, Validators.min(1)]),
+      marque:new FormControl('',[Validators.required, Validators.min(1)]),
+      couleur:new FormControl('',[Validators.required, Validators.min(1)]),
       file: new FormControl('', [Validators.required]),
-      fileBlockImg: new FormControl('', [Validators.required]),
-      descriptionBlockImg:new FormControl('',[Validators.required, Validators.min(1)]),
-      images: new FormControl('', [Validators.required]),
+      
+      fileVideo: new FormControl('', [Validators.required]),
+      videoYoutube: new FormControl('', [Validators.required]),
+      coursPdf: new FormControl('', [Validators.required]),
+      descriptionChapitre:new FormControl('',[Validators.required, Validators.min(1)]),
+      titreChapitre:new FormControl('',[Validators.required, Validators.min(1)]),
+      modeRessource:new FormControl('',[Validators.required, Validators.min(1)]),
+     
+      reference:new FormControl('',[Validators.required, Validators.min(1)]),
     })
 
     this.categoriesServices.categories.subscribe(res =>{
       if(res.length > 0){
-        this.insialiseCategories(res)     
+        this.insialiseCategories(res)    
       }
     })
 
+
   }
 
+  photoURL(url) {
+    return this.domSanitizer.bypassSecurityTrustUrl(url);
+  }
+
+  isOnLine=1
+  setOnline(pos){
+    this.isOnLine = pos
+  }
+
+  
+ videoexemple = "https://www.youtube.com/embed/AsNeE_95QBA"
+
   insialiseCategories(encienCategories){
+ 
     let newCategories = []
     for(let i = 0; i < encienCategories.length; i++){
-      let itemsSousCategories = []
-      for(let j = 0; j < encienCategories[i].categories.length; j++){
-        let itemsSousSousCategories = []
-        for(let k = 0; k < encienCategories[i].categories[j].categories.length; k++){
-          itemsSousSousCategories.push({id:encienCategories[i].categories[j].categories[k].id, isActive:false})
-        }  
-        itemsSousCategories.push({id:encienCategories[i].categories[j].id, isActive:false, className:"div-sous-sous-categories", categories:itemsSousSousCategories})
-      }  
-      newCategories.push({id:encienCategories[i].id, isActive:false, className:"div-sous-categories", categories:itemsSousCategories})
+      newCategories.push({id:encienCategories[i].titre, className:"div-sous-categories", categories:[]})
     }
     
     this.categories = newCategories
@@ -75,174 +99,28 @@ export class NewFormationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectCategorie(event){
-    this.caracteristiques = []
-    this.listCategoriesShema = []
-    
-    let encienCategories = this.categoriesServices.varCategories
-
-    let newCategories = []
-    for(let i = 0; i < encienCategories.length; i++){
-      let itemsSousCategories = []
-      for(let j = 0; j < encienCategories[i].categories.length; j++){
-        let itemsSousSousCategories = []
-        for(let k = 0; k < encienCategories[i].categories[j].categories.length; k++){
-          itemsSousSousCategories.push({id:encienCategories[i].categories[j].categories[k].id, isActive:false})
-        }  
-        itemsSousCategories.push({id:encienCategories[i].categories[j].id, isActive:false, className:"div-sous-sous-categories", categories:itemsSousSousCategories})
-      }  
-      
-      if(event.target.value == encienCategories[i].id){
-        newCategories.push({id:encienCategories[i].id, isActive:true, className:"div-sous-categories", categories:itemsSousCategories})
-        this.listCategoriesShema.push({categorie:encienCategories[i].id})
-      }else{
-        newCategories.push({id:encienCategories[i].id, isActive:false, className:"div-sous-categories", categories:itemsSousCategories})
-      }
-    }
-    
-    this.categories = newCategories
-  }
-
-  selectSousCategorie(event){
-    this.caracteristiques = []
-    this.listCategoriesShema = []
-    let encienCategories = this.categoriesServices.varCategories
-
-    let newCategories = []
-    for(let i = 0; i < encienCategories.length; i++){
-      let itemsSousCategories = []
-      let okCategorie = false
-      for(let j = 0; j < encienCategories[i].categories.length; j++){
-        let itemsSousSousCategories = []
-        
-        for(let k = 0; k < encienCategories[i].categories[j].categories.length; k++){
-          itemsSousSousCategories.push({id:encienCategories[i].categories[j].categories[k].id, isActive:false})
-        }  
-        
-        if(event.target.value == encienCategories[i].categories[j].id){
-          this.caracteristiques = encienCategories[i].categories[j].caracteristiques
-          okCategorie = true
-          itemsSousCategories.push({id:encienCategories[i].categories[j].id, isActive:true, className:"div-sous-sous-categories", categories:itemsSousSousCategories})
-          this.listCategoriesShema.push({categorie:encienCategories[i].categories[j].id})
-        }else{
-          itemsSousCategories.push({id:encienCategories[i].categories[j].id, isActive:false, className:"div-sous-sous-categories", categories:itemsSousSousCategories})
-        }
-      
-      }  
-      
-      if(okCategorie){
-         newCategories.push({id:encienCategories[i].id, isActive:true, className:"div-sous-categories", categories:itemsSousCategories})
-         this.listCategoriesShema.push({categorie:encienCategories[i].id})
-        }else{
-        newCategories.push({id:encienCategories[i].id, isActive:false, className:"div-sous-categories", categories:itemsSousCategories})
-      }
-    }
-    
-    this.categories = newCategories
-  }
-
-  isSpecialsProduct = false
-  isNewProduct = false
-  isMeilleurVenteProduct = false
   
-  selectOptionProduct(event){
-    
-    if(event.target.title == "Specials"){
-      this.isSpecialsProduct = event.target.value == "1" 
-      if(this.isSpecialsProduct){
-        this.listCategories.push({categorie:this.productService.produitSpecialsString})
-      }else{
-        this.listCategories = this.listCategories.filter(x => x.categorie != this.productService.produitSpecialsString)
-      }
-    }else if(event.target.title == "Nouveau"){
-      this.isNewProduct  = event.target.value == "1"
-      if(this.isNewProduct){
-        this.listCategories.push({categorie:this.productService.produitNouveauString})
-      }else{
-        this.listCategories = this.listCategories.filter(x => x.categorie != this.productService.produitNouveauString)
-      }
-    }else if(event.target.title == "Meilleur-Vente"){
-      this.isMeilleurVenteProduct  = event.target.value == "1"
-      if(this.isMeilleurVenteProduct){
-        this.listCategories.push({categorie:this.productService.produitMeilleurVenteString})
-      }else{
-        this.listCategories = this.listCategories.filter(x => x.categorie != this.productService.produitMeilleurVenteString)
-      }
+  
+  selectCategories2(id){
+  
+    if(this.listCategories.filter(x => x.categorie == id).length > 0){
+      this.listCategories = this.listCategories.filter(x => x.categorie != id)
+      this.caracteristiques = this.caracteristiques.filter(x => x.id != id)
+    }else{
+      this.listCategories.push({categorie : id})
     }
 
   }
 
-  ajouterCategorie(categorie){
- 
-    let item = this.listCategories.filter(x => x.categorie == categorie)
-    if(item.length == 0){
-      this.listCategories.push({categorie:categorie})
+  verifierCategories2(categorie){
+    if(this.listCategories.filter(x => x.categorie == categorie).length > 0){
+      return true
     }
-  
+    return false
   }
   
-  removeCategorie(event){
-    this.listCategories = this.listCategories.filter(x => x.categorie != event.target.value)
   
-    if(event.target.value == this.productService.produitSpecialsString){
-      this.isSpecialsProduct = false
-    }else if(event.target.value == this.productService.produitNouveauString){
-      this.isNewProduct  = false
-    }else if(event.target.value == this.productService.produitMeilleurVenteString){
-      this.isMeilleurVenteProduct  = false
-    }
-  }
-
- 
-  selectSousSousCategorie(event){
     
-    this.caracteristiques = []
-    this.listCategoriesShema = []
-    let encienCategories = this.categoriesServices.varCategories
-
-    let newCategories = []
-    for(let i = 0; i < encienCategories.length; i++){
-      let itemsSousCategories = []
-      let okCategorie = false
-      for(let j = 0; j < encienCategories[i].categories.length; j++){
-        let itemsSousSousCategories = []
-        let okSousCategorie = false
-        for(let k = 0; k < encienCategories[i].categories[j].categories.length; k++){
-          if(event.target.value == encienCategories[i].categories[j].categories[k].id){
-            this.caracteristiques = encienCategories[i].categories[j].categories[k].caracteristiques
-            okSousCategorie = true 
-            itemsSousSousCategories.push({id:encienCategories[i].categories[j].categories[k].id, isActive:true})
-            this.listCategoriesShema.push({categorie:encienCategories[i].categories[j].categories[k].id})
-          }else{
-            itemsSousSousCategories.push({id:encienCategories[i].categories[j].categories[k].id, isActive:false})
-          }
-        }  
-        
-        if(okSousCategorie){
-          okCategorie = true
-          itemsSousCategories.push({id:encienCategories[i].categories[j].id, isActive:true, className:"div-sous-sous-categories", categories:itemsSousSousCategories})
-          this.listCategoriesShema.push({categorie:encienCategories[i].categories[j].id})
-        }else{
-          itemsSousCategories.push({id:encienCategories[i].categories[j].id, isActive:false, className:"div-sous-sous-categories", categories:itemsSousSousCategories})
-        }
-      
-      }  
-      
-      if(okCategorie){
-        newCategories.push({id:encienCategories[i].id, isActive:true, className:"div-sous-categories", categories:itemsSousCategories})
-        this.listCategoriesShema.push({categorie:encienCategories[i].id})
-      }else{
-        newCategories.push({id:encienCategories[i].id, isActive:false, className:"div-sous-categories", categories:itemsSousCategories})
-      }
-    }
-    
-    this.categories = newCategories
-  }
-
-  
-  
-  
-  
   // Gestion des DescriptionDessus --debut--
   descriptionDessusSelected = {id:-1, ligne:""}
 
@@ -327,7 +205,6 @@ export class NewFormationComponent implements OnInit {
   // Gestion des DescriptionDessus --fin--
 
   // Gestion des photos --debut--
-  images = []
   multiImage
   imageSelected
   imageSelectedSource
@@ -355,80 +232,22 @@ export class NewFormationComponent implements OnInit {
      }
   }
 
-  onFileDelete(id) {
-    
-    this.images = this.images.filter(x => x.ordeur != id)
-
-    this.formC.patchValue({
-      images: this.fileSources
-    });
-
-    this.formC.patchValue({
-      file: ""
-    });
-  }
-
-  ajouterImage() {
-    if(this.imageSelectedSource == {} || this.imageSelected == ""){
-      return
-    }
-   
-    this.images.push({imageSource:this.imageSelectedSource, image:this.imageSelected, ordeur:this.images.length})
-  
-    this.initialiseImage()
-  }
-
-  idImage = -1
-  selectedImage(id) {
-    this.initialiseImage()
-
-    let images = this.images.filter(x => x.ordeur == id)
-
-    if(images.length > 0 ){
-      this.idImage = images[0].ordeur
-      this.imageSelectedSource = images[0].imageSource
-      this.imageSelected = images[0].image
-    }
-  }
-
-  updateImage() {
-    
-    for(let i = 0; i < this.images.length; i++){
-      if(this.images[i].ordeur == this.idImage){
-        this.images[i].imageSource = this.imageSelectedSource
-        this.images[i].image = this.imageSelected
-      }
-    }
-    
-    this.initialiseImage()
-  }
-
-  initialiseImage(){
-
-    this.idImage = -1
-    this.imageSelectedSource = {}
-    this.imageSelected = ""
-
-    this.formC.patchValue({
-      file: ""
-    });
-  }
 
   // Gestion des photos --fin--
 
-  // Gestion des BlockImages --debut--
+  // Gestion des Chapitres --debut--
 
   multiImageBlockImg
-  imageBlockImg
-  fileSourceBocksImg
-  selectedMBlockImg(event) {
+  fileCoursPdf
+  fileSourceCoursPdf
+  selectedCoursPdf(event) {
      this.multiImageBlockImg = event.target.files;
      
      var files = event.target.files;
      if (files.length === 0)
      return;
 
-     this.fileSourceBocksImg = files[0]
+     this.fileSourceCoursPdf = files[0]
      
      var mimeType = files[0].type;
      if (mimeType.match(/image\/*/) == null) {
@@ -439,66 +258,130 @@ export class NewFormationComponent implements OnInit {
      
      reader.readAsDataURL(files[0]); 
      reader.onload = (_event) => { 
-       this.imageBlockImg = reader.result; 
+       this.fileCoursPdf = reader.result; 
      }
 
   }
 
-  blockImgs = []
-  idBlockImg = -1
 
-  ajouterBlock(){
-    if(!this.imageBlockImg && !this.fileSourceBocksImg){
+  fileVideo
+  fileSourceVideo
+  selectedFileVideo(event) {
+     this.multiImageBlockImg = event.target.files;
+     
+     var files = event.target.files;
+     if (files.length === 0)
+     return;
+
+     this.fileSourceVideo = files[0]
+     
+     var mimeType = files[0].type;
+     if (mimeType.match(/image\/*/) == null) {
+       return;
+     }
+
+     var reader = new FileReader();
+     
+     reader.readAsDataURL(files[0]); 
+     reader.onload = (_event) => { 
+       this.fileVideo = reader.result; 
+     }
+
+  }
+
+
+  chapitres = []
+  idChapitre = -1
+  chapitre = {id:-1, videoYoutube:"", titreChapitre:"", descriptionChapitre:"",  fileVideo:"", fileSourceVideo:"", fileCoursPdf:"", fileSourceCoursPdf:""}
+  counterChapitre = 0
+  
+  ajouterChapitre(){
+    if(!this.fileCoursPdf && !this.fileSourceCoursPdf){
       return  
-    }else if(this.formC.value.descriptionBlockImg == ""){
+    }else if(this.formC.value.titreChapitre == ""){
       return     
     }
-   
-    this.blockImgs.push({id:this.blockImgs.length, imageSource:this.fileSourceBocksImg, image:this.imageBlockImg, description:this.formC.value.descriptionBlockImg})
-    this.initialiserBlock()
+    this.counterChapitre++
+    
+    this.chapitres.push({
+       id:this.counterChapitre,
+       videoYoutube:this.formC.value.videoYoutube, 
+       titreChapitre:this.formC.value.titreChapitre, 
+       descriptionChapitre:this.formC.value.descriptionChapitre,
+       fileVideo:this.fileVideo,
+       fileSourceVideo:this.fileSourceVideo,
+       fileCoursPdf:this.fileCoursPdf,
+       fileSourceCoursPdf:this.fileSourceCoursPdf
+    })
+
+    this.initialiserChapitre()
   }
 
-  removeBlock(id){
-    this.blockImgs = this.blockImgs.filter(x => x.id != id)
-    this.initialiserBlock()
+  removeChapitre(id){
+    this.chapitres = this.chapitres.filter(x => x.id != id)
+    this.initialiserChapitre()
   }
 
-  selectBlock(id){
-    this.idBlockImg = id
-    console.log(this.idBlockImg)
-    let blockImgs = this.blockImgs.filter(x => x.id == id)
+  selectChapitre(id){
+    let blockImgs = this.chapitres.filter(x => x.id == id)
     if(blockImgs.length > 0){
-      this.fileSourceBocksImg = blockImgs[0].imageSource
-      this.imageBlockImg = blockImgs[0].image
-      this.formC.patchValue({descriptionBlockImg: blockImgs[0].description});
+      this.chapitre = blockImgs[0]
+      this.fileSourceCoursPdf = blockImgs[0].fileSourceCoursPdf
+      this.fileSourceVideo = blockImgs[0].fileSourceVideo
+      this.fileCoursPdf = blockImgs[0].fileCoursPdf
+      this.fileVideo = blockImgs[0].fileVideo
+      
+
+      this.formC.patchValue({
+        descriptionChapitre: blockImgs[0].descriptionChapitre,
+        titreChapitre: blockImgs[0].titreChapitre,
+        videoYoutube: blockImgs[0].videoYoutube
+      });
     }
   }
 
-  updateBlock(){
-    if(this.idBlockImg == -1){
+  updateChapitre(){
+    if(this.chapitre.id == -1){
       return
     }
 
-    for(let i = 0; i < this.blockImgs.length; i++){
-      if(this.blockImgs[i].id == this.idBlockImg){
-          this.blockImgs[i].imageSource = this.fileSourceBocksImg 
-          this.blockImgs[i].image = this.imageBlockImg
-          this.blockImgs[i].description = this.formC.value.descriptionBlockImg 
+    for(let i = 0; i < this.chapitres.length; i++){
+      if(this.chapitres[i].id == this.chapitre.id){
+        this.chapitres[i].videoYoutube=this.formC.value.videoYoutube, 
+        this.chapitres[i].titreChapitre=this.formC.value.titreChapitre, 
+        this.chapitres[i].descriptionChapitre=this.formC.value.descriptionChapitre,
+        this.chapitres[i].fileVideo=this.fileVideo,
+        this.chapitres[i].fileSourceVideo=this.fileSourceVideo,
+        this.chapitres[i].fileCoursPdf=this.fileCoursPdf,
+        this.chapitres[i].fileSourceCoursPdf=this.fileSourceCoursPdf
+      
       }
     }
 
-    this.initialiserBlock()
+    this.initialiserChapitre()
   }
 
-  initialiserBlock(){
-    this.idBlockImg = -1
-    this.formC.patchValue({descriptionBlockImg: ""});
-    this.formC.patchValue({fileBlockImg: ""});
-    this.fileSourceBocksImg = ""
-    this.imageBlockImg = ""
+  initialiserChapitre(){
+    
+    this.fileSourceCoursPdf = ""
+    this.fileSourceVideo = ""
+    this.fileCoursPdf = ""
+    this.fileVideo = ""
+    
+
+    this.formC.patchValue({
+      descriptionChapitre: "",
+      titreChapitre: "",
+      videoYoutube: "",
+      fileVideo:"",
+      coursPdf:""
+    }); 
+    this.chapitre = {id:-1, videoYoutube:"", titreChapitre:"", descriptionChapitre:"",  fileVideo:"", fileSourceVideo:"", fileCoursPdf:"", fileSourceCoursPdf:""}
+   
+    console.log(this.chapitres)
   }
 
-  // Gestion des BlockImages --fin--
+  // Gestion des Chapitre --fin--
 
   
   isLoading = false;
@@ -510,15 +393,9 @@ export class NewFormationComponent implements OnInit {
     this.isErreurs = false
   
     if(this.formC.controls.nom.status != "VALID") this.erreurString.push(this.notificationService.errorNomProduit)  
-    if(this.formC.controls.ref.status != "VALID") this.erreurString.push(this.notificationService.errorRefProduit)
-    if(this.formC.controls.disponibilite.status != "VALID") this.erreurString.push(this.notificationService.errorDisponibiliteProduit)
-    if(this.formC.controls.prixAchat.status != "VALID") this.erreurString.push(this.notificationService.errorPrixAchatProduit)
     if(this.formC.controls.prixVente.status != "VALID") this.erreurString.push(this.notificationService.errorPrixVenteProduit)
     if(this.listCategories.length == 0) this.erreurString.push(this.notificationService.errorCategoriesProduit)
-    if(this.formC.value.marque == "") this.erreurString.push(this.notificationService.errorMarqueProduit)
-    if(this.formC.value.couleur == "") this.erreurString.push(this.notificationService.errorCouleurProduit)
-    if(this.images.length == 0) this.erreurString.push(this.notificationService.errorImagesProduit)
-
+    
     if(this.erreurString.length > 0){
       this.isErreurs = true 
       return true
@@ -526,8 +403,10 @@ export class NewFormationComponent implements OnInit {
     return false
   }
 
+
+
   addProduit(){
-    
+
     if(this.isLoading){
       return 
     }
@@ -538,19 +417,18 @@ export class NewFormationComponent implements OnInit {
   
     this.isLoading = true;
 
-    let request =  this.formC.value
+   
   
     var newImages = []
-    var newBlocks = []
+    var newChapitres = []
 
     var allImages = []
 
-    for(let i = 0; i < this.images.length; i++){
-      allImages.push({image:this.images[i].imageSource})
-    }
-
-    for(let i = 0; i < this.blockImgs.length; i++){
-      allImages.push({image:this.blockImgs[i].imageSource})
+    allImages.push({image:this.imageSelectedSource})
+   
+    for(let i = 0; i < this.chapitres.length; i++){
+      allImages.push({image:this.chapitres[i].fileSourceCoursPdf})
+      allImages.push({image:this.chapitres[i].fileSourceVideo})
     }
 
     if(allImages.length > 0){
@@ -567,17 +445,26 @@ export class NewFormationComponent implements OnInit {
           var arrayImages: any = res
           
           if(arrayImages.length > 0){
-            for(let k=0; k < this.images.length; k++){
-              newImages.push({image:arrayImages[k], ordeur : k})
-            }
-
             let i = 0;
-            for(let k=this.images.length; k < arrayImages.length; k++){
-              newBlocks.push({image:arrayImages[k], description : this.blockImgs[i].description})
+            console.log(arrayImages)
+            this.imageSelected = arrayImages[i]
+
+            for(let k=0; k < this.chapitres.length; k++){
+              
               i++
+              newChapitres.push({
+                titre:this.chapitres[k].titreChapitre, 
+                description:this.chapitres[k].descriptionChapitre, 
+                videoYoutube:this.chapitres[k].videoYoutube,  
+                coursPdf:arrayImages[i], 
+                video:arrayImages[i+1], 
+              })
+              i++
+             
             }
 
-            this.envoyerRequest(request, newImages, newBlocks)
+            console.log(newChapitres)
+            this.envoyerRequest(this.imageSelected,  newChapitres)
           }else{
             alert(this.notificationService.alertNotConnexion)
             this.isLoading = false;
@@ -595,9 +482,10 @@ export class NewFormationComponent implements OnInit {
 
   }
 
-  envoyerRequest(request, newImages, newBlocks){
+  envoyerRequest(image, newchapitres){
     
-    request = this.getRequest(request, newImages, newBlocks)
+    console.log(newchapitres)
+    let request:any = this.getRequest(image, newchapitres)
 
     if(request.prixPromo != 0){
       if(request.categories.filter(x => x.categorie == this.productService.produitPromoString).length == 0){
@@ -607,7 +495,7 @@ export class NewFormationComponent implements OnInit {
       request.categories = request.categories.filter(x => x.categorie != this.productService.produitPromoString)
     }
 
-    this.http.post(this.userService.baseURL+"/produit/newProduit", request, 
+    this.http.post(this.userService.baseURL+"/produit/newFormation", request, 
     {
       headers: {
           "authorization": 'Bearer '+localStorage.getItem(this.userService.tokenString)
@@ -617,7 +505,6 @@ export class NewFormationComponent implements OnInit {
         this.notificationService.showSuccess(this.notificationService.sucessProduitEnregistrer, "Message")
         this.formC.patchValue({nom: ""});
         //this.formC.body.reset()
-        this.images = []
         this.fileSources = []
         this.isLoading = false; 
       }, err => {
@@ -630,13 +517,9 @@ export class NewFormationComponent implements OnInit {
   }
 
   
-  getRequest(request, newImages, newBlocks){
-    delete(request["file"])
-    delete(request["description"])
-    delete(request["descriptionTitle"])
-    delete(request["descriptionValue"])
-    delete(request["fileBlockImg"])
-    delete(request["descriptionBlockImg"])
+  getRequest(image, newchapitres){
+
+    console.log(newchapitres)
     
     let newlistDescriptionsDessous = []
     for(let i = 0; i < this.listDescriptionsDessous.length; i++){
@@ -647,14 +530,21 @@ export class NewFormationComponent implements OnInit {
     for(let i = 0; i < this.listDescriptionsDessus.length; i++){
       newlistDescriptionsDessus.push({ligne:this.listDescriptionsDessus[i].ligne})
     }
+    
+    let request = {chapitres:[], categories:[], descriptionsDessous:[], descriptionsDessus:[], imagePrincipale:"",  nom:"", prixVente:"", prixPromo:""}
 
+    request["chapitres"] = newchapitres
 
-    request["images"] = newImages
-    request["imgBlocks"] = newBlocks
     request["categories"] = this.listCategories
     request["descriptionsDessous"] = newlistDescriptionsDessous 
     request["descriptionsDessus"] = newlistDescriptionsDessus
-
+    request["imagePrincipale"] = image
+   
+    
+    request["nom"] = this.formC.value.nom
+    request["prixVente"] = this.formC.value.prixVente
+    request["prixPromo"] = this.formC.value.prixPromo
+    
     return request
   }
 

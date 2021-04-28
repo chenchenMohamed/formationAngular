@@ -66,9 +66,14 @@ import { CenterFormationPageComponent } from './siteFormation/center-formation-p
 import { ProposPageComponent } from './siteFormation/propos-page/propos-page.component';
 import { ContactPageComponent } from './siteFormation/contact-page/contact-page.component';
 import { LoadingComponent } from './shared/loading/loading.component';
+import { SafePipe } from './safe.pipe';
+import { PaginationComponent } from './shared/pagination/pagination.component';
 
 @NgModule({
   declarations: [
+    
+    SafePipe,
+      
     AppComponent,
     
     ListFormationEtudiantComponent,
@@ -117,7 +122,9 @@ import { LoadingComponent } from './shared/loading/loading.component';
     CenterFormationPageComponent,
     ProposPageComponent,
     ContactPageComponent,
-    LoadingComponent
+    LoadingComponent,
+    SafePipe,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

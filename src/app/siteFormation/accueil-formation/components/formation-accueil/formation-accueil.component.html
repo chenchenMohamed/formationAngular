@@ -12,24 +12,24 @@
               <div class="aa-product-inner">
                 <!-- start prduct navigation -->
                  <ul class="nav nav-tabs aa-products-tab">
-                    <li class="active"><a href="#men" data-toggle="tab">Men</a></li>
-                    <li><a href="#women" data-toggle="tab">Women</a></li>
-                    <li><a href="#sports" data-toggle="tab">Sports</a></li>
-                    <li><a href="#electronics" data-toggle="tab">Electronics</a></li>
+                    <li class="active"><a href="#men" data-toggle="tab">Top categories</a></li>
+                    <li><a href="#women" data-toggle="tab">Nouveaux</a></li>
+                    <li><a href="#sports" data-toggle="tab">Speciales</a></li>
+                    <li><a href="#electronics" data-toggle="tab">Promotions</a></li>
                   </ul>
                   <!-- Tab panes -->
                   <div class="tab-content">
                     <!-- Start men product category -->
                     <div class="tab-pane fade in active" id="men">
                       
-                      <app-list-formations></app-list-formations>
+                      <app-list-formations [categories]="categories1"></app-list-formations>
 
                     </div>
                     <!-- / men product category -->
                     <!-- start women product category -->
                     <div class="tab-pane fade" id="women">
                     
-                      <app-list-formations></app-list-formations>
+                      <app-list-formations [categories]="categories1"></app-list-formations>
 
                     
                     </div>
@@ -37,7 +37,7 @@
                     <!-- start sports product category -->
                     <div class="tab-pane fade" id="sports">
 
-                      <app-list-formations></app-list-formations>
+                      <app-list-formations [categories]="categories1"></app-list-formations>
 
                     </div>
                     <!-- / electronic product category -->

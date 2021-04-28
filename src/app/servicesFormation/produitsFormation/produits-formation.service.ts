@@ -14,10 +14,10 @@ export class ProduitsFormationService {
   formations=new BehaviorSubject(this.varFormations)
   formationsChange=this.formations.asObservable()  
  
-  produitPromoString
-  produitSpecialsString
-  produitNouveauString
-  produitMeilleurVenteString
+  produitPromoString = " Promotions"
+  produitSpecialsString = "Speciales"
+  produitNouveauString = "Nouvelles"
+  produitMeilleurVenteString = "Top categorie"
 
   constructor(private http: HttpClient) {
      
