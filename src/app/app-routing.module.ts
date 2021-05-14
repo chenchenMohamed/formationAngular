@@ -42,6 +42,9 @@ import { CenterFormationPageComponent } from './siteFormation/center-formation-p
 import { ProposPageComponent } from './siteFormation/propos-page/propos-page.component';
 import { ContactPageComponent } from './siteFormation/contact-page/contact-page.component';
 
+import { DeleteFormationComponent } from './adminEnseignant/delete-formation/delete-formation.component';
+import { ListInscriptionEnseignantComponent } from './adminEnseignant/list-inscription-enseignant/list-inscription-enseignant.component';
+
 const routes: Routes = [
 
   {path: 'CategoriesPage' , component: CategoriesPageComponent },
@@ -55,9 +58,9 @@ const routes: Routes = [
   {path: '',redirectTo:'accueil',pathMatch:"full"},
   {path: 'accueil' , component: AccueilFormationComponent },
 
-  {path: 'CategorieDetails' , component: CategorieDetailsFormationComponent },
+  {path: 'CategorieDetails/:id' , component: CategorieDetailsFormationComponent },
   {path: 'FormationDetails/:id' , component: FormationDetailsFormationComponent },
-  {path: 'FormateurDetails' , component: FormateurDetailsFormationComponent },
+  {path: 'FormateurDetails/:id' , component: FormateurDetailsFormationComponent },
   {path: 'EtudiantDetails' , component: EtudiantDetailsFormationComponent },
 
   //pages categories
@@ -70,9 +73,13 @@ const routes: Routes = [
 
 //enseignant  
   {path: 'NewFormation' , component: NewFormationComponent },
-  {path: 'UpdateFormation' , component: UpdateFormationComponent },
+  {path: 'UpdateFormation/:id' , component: UpdateFormationComponent },
+  {path: 'DeleteFormation/:id' , component: DeleteFormationComponent },
+  
   {path: 'ListFormationEnseignant' , component: ListFormationEnseignantComponent },
-  {path: 'ListEtudiantEnseignant' , component: ListEtudiantEnseignantComponent },
+  {path: 'ListEtudiantEnseignant/:id' , component: ListEtudiantEnseignantComponent },
+  {path: 'ListInscriptionEnseignant/:id' , component: ListInscriptionEnseignantComponent },
+  
   {path: 'ProfilEnseignant' , component: ProfilEnseignantComponent },
   {path: 'AddEtudiantEnseignant' , component: AddEtudiantEnseignantComponent },
 
@@ -86,7 +93,7 @@ const routes: Routes = [
  {path: 'ListFormationsFormation' , component: ListFormationsFormationComponent },
  {path: 'ProfilAdmin' , component: ProfilAdminComponent },
 
-  { path: '**', component: AccueilFormationComponent }
+ {path: '**', component: AccueilFormationComponent }
 ];
 
 @NgModule({

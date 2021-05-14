@@ -68,6 +68,9 @@ import { ContactPageComponent } from './siteFormation/contact-page/contact-page.
 import { LoadingComponent } from './shared/loading/loading.component';
 import { SafePipe } from './safe.pipe';
 import { PaginationComponent } from './shared/pagination/pagination.component';
+import { DeleteFormationComponent } from './adminEnseignant/delete-formation/delete-formation.component';
+import { InscriptionFormationModalComponent } from './shared/popups/inscription-formation-modal/inscription-formation-modal.component';
+import { ListInscriptionEnseignantComponent } from './adminEnseignant/list-inscription-enseignant/list-inscription-enseignant.component';
 
 @NgModule({
   declarations: [
@@ -124,7 +127,10 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
     ContactPageComponent,
     LoadingComponent,
     SafePipe,
-    PaginationComponent
+    PaginationComponent,
+    DeleteFormationComponent,
+    InscriptionFormationModalComponent,
+    ListInscriptionEnseignantComponent
   ],
   imports: [
     BrowserModule,

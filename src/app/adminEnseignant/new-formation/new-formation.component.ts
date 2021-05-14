@@ -9,7 +9,6 @@ import { NotificationService } from '../../servicesFormation/notification/notifi
 import { DomSanitizer } from "@angular/platform-browser";
 
 
-
 @Component({
   selector: 'app-new-formation',
   templateUrl: './new-formation.component.html',

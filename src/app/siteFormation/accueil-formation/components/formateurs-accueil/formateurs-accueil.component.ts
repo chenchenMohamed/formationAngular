@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import {CategoriesFormationService} from '../../../../servicesFormation/categoriesFormation/categories-formation.service'
 @Component({
   selector: 'app-formateurs-accueil',
   templateUrl: './formateurs-accueil.component.html',
@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormateursAccueilComponent implements OnInit {
 
-  constructor() { }
+  constructor(private categoriesFormationService:CategoriesFormationService) {
+    
+  }
+
+  categories = []
+  categorie2
 
   ngOnInit(): void {
+     this.categoriesFormationService.categories.subscribe(res => {
+       this.categories = res
+       this.categorie2 = this.categories[0]
+       this.categories = this.categories.filter(x => x.id != this.categorie2.id) 
+     })
   }
+
+
+
+
+
+
 
 }

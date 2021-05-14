@@ -11,14 +11,13 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { Router, Event } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
-    
-
+   
 @Component({
-  selector: 'app-update-formation',
-  templateUrl: './update-formation.component.html',
-  styleUrls: ['./update-formation.component.scss']
+  selector: 'app-delete-formation',
+  templateUrl: './delete-formation.component.html',
+  styleUrls: ['./delete-formation.component.scss']
 })
-export class UpdateFormationComponent implements OnInit {
+export class DeleteFormationComponent implements OnInit {
 
  
   formC:FormGroup
@@ -475,146 +474,26 @@ export class UpdateFormationComponent implements OnInit {
   erreurString = []
   isErreurs = false;
 
-  chargerErreurs(){
-    this.erreurString = []
-    this.isErreurs = false
-  
-    if(this.formC.controls.nom.status != "VALID") this.erreurString.push(this.notificationService.errorNomProduit)  
-    if(this.formC.controls.prixVente.status != "VALID") this.erreurString.push(this.notificationService.errorPrixVenteProduit)
-    if(this.listCategories.length == 0) this.erreurString.push(this.notificationService.errorCategoriesProduit)
+
+  isDelete = false
+  envoyerRequest(){
     
-    if(this.erreurString.length > 0){
-      this.isErreurs = true 
-      return true
-    }
-    return false
-  }
-
-
-
-  addProduit(){
-
     if(this.isLoading){
-      return 
-    }
-
-    if (this.chargerErreurs()) {
-      return
-    }
-  
-    this.isLoading = true;
-
-   
-  
-    var newImages = []
-    var newChapitres = []
-
-    var allImages = []
-
-    if(this.imageSelectedSource){
-      allImages.push({image:this.imageSelectedSource})
-    }
-    
-    for(let i = 0; i < this.chapitres.length; i++){
-      if(this.chapitres[i].fileSourceCoursPdf != ""){
-        allImages.push({image:this.chapitres[i].fileSourceCoursPdf})
-      }
-      if(this.chapitres[i].fileSourceVideo != ""){
-        allImages.push({image:this.chapitres[i].fileSourceVideo})
-      }
-    }
-
-    if(allImages.length == 0){
-      this.envoyerRequest(this.imageSelected,  this.chapitres)
       return
     }
 
-      const formData = new FormData();
-      this.isLoading = true
-      for (let img of allImages){
-        formData.append('myFiles', img.image)
-      }
-      
-      this.http.post(this.userService.baseURL+"/produit/upload", formData).subscribe(
-        res => {
-          
-          var arrayImages: any = res
-          
-          if(arrayImages.length > 0){
-            let i = 0;
-            console.log(arrayImages)
-         
-            if(this.imageSelectedSource){
-              this.imageSelected = arrayImages[i]
-              i++
-            }
-         
-            for(let k=0; k < this.chapitres.length; k++){
-              
-              let pdf = this.chapitres[i].fileCoursPdf
-              let video = this.chapitres[i].fileVideo
-
-              if(this.chapitres[i].fileSourceCoursPdf != ""){
-                pdf = arrayImages[i]
-                i++
-              }
-              
-              if(this.chapitres[i].fileSourceVideo != ""){
-                video = arrayImages[i]
-                i++
-              }
-              
-              newChapitres.push({
-                titre:this.chapitres[k].titreChapitre, 
-                description:this.chapitres[k].descriptionChapitre, 
-                videoYoutube:this.chapitres[k].videoYoutube,  
-                coursPdf:pdf, 
-                video:video, 
-              })
-             
-            }
-
-            console.log(newChapitres)
-            this.envoyerRequest(this.imageSelected,  newChapitres)
-          }else{
-            alert(this.notificationService.alertNotConnexion)
-            this.isLoading = false;
-            return 
-          }
-
-        }, err => {
-          alert(this.notificationService.alertNotConnexion)
-          this.isLoading = false;
-          return 
-        }
-      );
-
+    this.isLoading = true
     
-  }
-
-  envoyerRequest(image, newchapitres){
-    
-    console.log(newchapitres)
-    let request:any = this.getRequest(image, newchapitres)
-
-    if(request.prixPromo != 0){
-      if(request.categories.filter(x => x.categorie == this.productService.produitPromoString).length == 0){
-         request.categories.push({categorie: this.productService.produitPromoString})
-      }
-    }else{
-      request.categories = request.categories.filter(x => x.categorie != this.productService.produitPromoString)
-    }
-
-    this.http.post(this.userService.baseURL+"/produit/modifierFormation/"+this.formation.id, request, 
+    this.http.get(this.userService.baseURL+"/produit/deleteFormation/"+this.formation.id,
     {
       headers: {
           "authorization": 'Bearer '+localStorage.getItem(this.userService.tokenString)
       }
     }).subscribe(
       res => {
-        this.notificationService.showSuccess(this.notificationService.sucessProduitEnregistrer, "Message")
-         this.inisialiserProduit(this.formation.id)
+        this.notificationService.showSuccess(this.notificationService.successSaveUpdate, "Message")
          this.isLoading = false; 
+         this.isDelete = true
       }, err => {
         alert(this.notificationService.alertNotConnexion)
         console.log(err)
@@ -624,50 +503,5 @@ export class UpdateFormationComponent implements OnInit {
     
   }
 
-  
-  getRequest(image, newchapitres){
-
-    console.log(newchapitres)
-    
-    let newlistDescriptionsDessous = []
-    for(let i = 0; i < this.listDescriptionsDessous.length; i++){
-      newlistDescriptionsDessous.push({title: this.listDescriptionsDessous[i].title, value:this.listDescriptionsDessous[i].value})
-    }
-
-    let newChapitres2 = []
-    for(let i = 0; i < newchapitres.length; i++){
-     
-      newChapitres2.push({
-         videoYoutube:"",
-         titre:newchapitres[i].titre, 
-         description:newchapitres[i].description,
-         video:newchapitres[i].video,
-         coursPdf:newchapitres.coursPdf,
-      })
-    }
-
-    
-
-    let newlistDescriptionsDessus = []
-    for(let i = 0; i < this.listDescriptionsDessus.length; i++){
-      newlistDescriptionsDessus.push({ligne:this.listDescriptionsDessus[i].ligne})
-    }
-    
-    let request = {chapitres:[], categories:[], descriptionsDessous:[], descriptionsDessus:[], imagePrincipale:"",  nom:"", prixVente:"", prixPromo:""}
-
-    request["chapitres"] = newChapitres2
-
-    request["categories"] = this.listCategories
-    request["descriptionsDessous"] = newlistDescriptionsDessous 
-    request["descriptionsDessus"] = newlistDescriptionsDessus
-    request["imagePrincipale"] = image
-   
-    
-    request["nom"] = this.formC.value.nom
-    request["prixVente"] = this.formC.value.prixVente
-    request["prixPromo"] = this.formC.value.prixPromo
-    
-    return request
-  }
 
 }

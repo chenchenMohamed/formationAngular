@@ -22,11 +22,13 @@ export class FormationDetailsFormationComponent implements OnInit {
   formations:any=[]
   myForm: FormGroup;
  
-  ckeditorConten
+  
+
+  
+  
   
   constructor(private notificationService:NotificationService, public userService:UserService, private _Activatedroute:ActivatedRoute,  private router:Router, public formBuilder:FormBuilder, private http: HttpClient) {
      
-   
     this.myForm = this.formBuilder.group({
       content: [null,Validators.required]
     });
@@ -70,5 +72,21 @@ export class FormationDetailsFormationComponent implements OnInit {
   contentChanged(){
     console.log(this.myForm.value.content);
   }
+
+
+  idCommande = "222"
+  isOpenCommande = false;
+
+  closeCommande(){
+    this.idCommande = "0";
+    this.isOpenCommande = false;
+  }
+
+  openCommande(id){
+    this.idCommande = id;
+    this.isOpenCommande = true;
+  }
+
+
 
 }

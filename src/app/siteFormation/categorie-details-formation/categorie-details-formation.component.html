@@ -9,20 +9,27 @@
     <div class="aa-catg-head-banner-area">
       <div class="container">
        <div class="aa-catg-head-banner-content">
-         <h2>Fashion</h2>
+         <h2>{{categories[0].categories}}</h2>
          <ol class="breadcrumb">
            <li><a href="index.html">Home</a></li>         
-           <li class="active">Women</li>
+           <li class="active">{{categories[0].categories}}</li>
          </ol>
        </div>
       </div>
     </div>
 </section>
-   <!-- / catg header banner section -->
+  
+<div class="row" style="height:20px; width: 100%;">
 
-   
-   <app-fomations-formation></app-fomations-formation>
-             
+</div><!-- / catg header banner section -->
+
+<h1 style="padding: 10px; font-weight: 800;">{{categories[0].categories}}:</h1>
+
+  <div class="row" style="padding-top: 20px;">
+    <app-list-formations [categories]="categories"></app-list-formations>
+  </div>
+
+          
     
    
   <!-- footer -->  

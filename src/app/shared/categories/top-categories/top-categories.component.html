@@ -16,7 +16,7 @@
                     <img [src]="item.image" alt="img">                    
                     <div class="aa-prom-content">
                       <span>75% Off</span>
-                      <h4><button class="btn btn-primary class-button" (click)="selectCategorie(item.route)">{{item.titre}}</button></h4>                     
+                      <h4><a class="btn btn-primary class-button" [routerLink]="'/CategorieDetails/'+item.titre">{{item.titre}}</a></h4>                     
                     </div>
                   </div>
                 </div>

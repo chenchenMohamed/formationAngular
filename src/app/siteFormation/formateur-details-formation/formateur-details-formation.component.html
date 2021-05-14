@@ -19,8 +19,10 @@
   </section>
   <!-- / catg header banner section -->
 
+  <app-loading *ngIf="isLoading"></app-loading>
+             
   <!-- product category -->
-  <section id="aa-product-category">
+  <section id="aa-product-category" *ngIf="!isLoading">
     <div class="container">
       <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-8 col-md-push-3">
@@ -28,63 +30,49 @@
             
             <div class="aa-product-catg-body">
             
-            <h2>Présentation</h2>
-
-            <p> 
-              Bonjour Madame, Monsieur,
-
-              Je suis activement à la recherche d'une opportunité professionnelle en tant que développeur #javasript full stack.
-              
-              Je suis aussi particulièrement intéressé par: #HTML, #CSS, #Bootstrap, #Angular , #nodejs, #Express, #MongoDB.
-              
-              Je suis ouvert à toute proposition.
-              
-              * Poste souhaité: Développeur Full stack javascript
-              * Mon adresse e-mail: chenchenmohamedhedi@gmail.com
-              * Mon numéro : +21654603585
-              
-              Bonne journée. 
-            </p> 
-             
-            
+           
             <h2>Experiences professionelles</h2>
 
            
-            <h4>Stage d'ete MediaPlus
-          
-            </h4>
-            <p>
-              rourou ddezze efeerf erferferf fefrerf erfeferf referf erferfer 
-            </p> 
-            
-            <h4>Photoshop</h4>
-            <p>
-              rourou ddezze efeerf erferferf fefrerf erfeferf referf erferfer 
-            </p> 
-            
-            <h4>Photoshop</h4>
-            <p>
-              rourou ddezze efeerf erferferf fefrerf erfeferf referf erferfer 
-            </p> 
-            
-            <h2>Deplomes et formations</h2>
+            <div *ngFor="let item of formateur.experiences">
+               <h4 style="font-weight: 800;">
+                 {{item.title}}
+               </h4>
+               
+               <p>
+                {{item.value}} 
+               </p> 
+            </div>
 
-            <h4>Photoshop</h4>
-            <p>
-              rourou ddezze efeerf erferferf fefrerf erfeferf referf erferfer 
-            </p> 
-            
-            <h4>Photoshop</h4>
-            <p>
-              rourou ddezze efeerf erferferf fefrerf erfeferf referf erferfer 
-            </p> 
-            
-            <h4>Photoshop</h4>
-            <p>
-              rourou ddezze efeerf erferferf fefrerf erfeferf referf erferfer 
-            </p>
+
+            <h2>Stages</h2>
 
            
+            <div *ngFor="let item of formateur.stages">
+               <h4 style="font-weight: 800;">
+                 {{item.title}}
+               </h4>
+               
+               <p>
+                {{item.value}} 
+               </p> 
+            </div>
+
+            <h2>Formations</h2>
+
+           
+            <div *ngFor="let item of formateur.formations">
+               <h4 style="font-weight: 800;">
+                 {{item.title}}
+               </h4>
+               
+               <p>
+                {{item.value}} 
+               </p> 
+            </div>
+
+
+          
              <!-- quick view modal -->                  
               <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -174,14 +162,15 @@
         
         <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9">
           <br><br>
-          <h2>
-            Coach Hussen 
-          </h2>
 
-          <p> Email: CoachHussen@gmail.com</p>
-          <p> Tel: 54603585</p>
-          <p> Specialite: Photoshop</p>
-          <p> Date Naisance: 27-08-1992</p>
+          <img style="max-width: 100%;" [src]="userService.baseURL +'/'+ formateur.image" alt="fashion img">
+          <h2>
+            {{formateur.nom}} 
+          </h2>
+          <p> <span style="font-weight: 700;">Specialites:</span> {{formateur.specialites}}</p>
+          <p> <span style="font-weight: 700;">Email:</span> {{formateur.email}} </p>
+          <p> <span style="font-weight: 700;">Tel:</span> {{formateur.telephone}}</p>
+          <p> <span style="font-weight: 700;">Adresse:</span> {{formateur.adresse}} {{formateur.ville}} {{formateur.codePostal}} {{formateur.pays}}</p>
          
         </div>
        
@@ -189,6 +178,41 @@
     </div>
   </section>
  
-  <app-fomations-formation></app-fomations-formation>
+  <div class="container">
+  
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-latest-blog-area">
+            <div class="row">
+    
+              <br> 
+              <h2>Liste de formations proposées</h2>
+             
+             <br>
+              <!-- single latest blog -->
+              <div class="col-md-4 col-sm-4" *ngFor="let item of formations" style="margin-bottom: 20px;">
+                <div class="aa-latest-blog-single">
+                  <figure class="aa-blog-img">                    
+                    <a href="#"><img [src]="userService.baseURL +'/'+ item.imagePrincipale" alt="img"></a>  
+                      <figcaption class="aa-blog-img-caption">
+                      <span href="#"><i class="fa fa-eye"></i>5K</span>
+                      <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
+                      <a href="#"><i class="fa fa-comment-o"></i>20</a>
+                      <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+                    </figcaption>                          
+                  </figure>
+                  <div class="aa-blog-info">
+                    <h3 class="aa-blog-title"><a href="#">{{item.nom}}</a></h3>
+                    <p>  </p> 
+                    <a [routerLink]="'/FormationDetails/'+item.id" class="aa-read-mor-btn" style="float: left;">Inscrire<span class="fa fa-long-arrow-right"></span></a>
+                  </div>
+                </div>
+              </div>
+    
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
    
   <app-footer-formation></app-footer-formation>

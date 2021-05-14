@@ -4,11 +4,14 @@
         <div class="aa-latest-blog-area">
           <div class="row">
 
+                                          
+            <app-loading *ngIf="isLoading"></app-loading>
+          
             <!-- single latest blog -->
             <div class="col-md-4 col-sm-4" *ngFor="let item of formateurs" style="margin-bottom: 20px;">
               <div class="aa-latest-blog-single">
                 <figure class="aa-blog-img">                    
-                  <a href="#"><img [src]="item.image" alt="img"></a>  
+                  <a href="#"><img [src]="userService.baseURL+'/'+item.image" alt="img"></a>  
                     <figcaption class="aa-blog-img-caption">
                     <span href="#"><i class="fa fa-eye"></i>5K</span>
                     <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
@@ -19,12 +22,18 @@
                 <div class="aa-blog-info">
                   <h3 class="aa-blog-title"><a href="#">{{item.nom}}</a></h3>
                   <p>  </p> 
-                  <a href="#" class="aa-read-mor-btn" style="float: left;">Inscrire<span class="fa fa-long-arrow-right"></span></a>
+                  <a [routerLink]="'/FormateurDetails/'+item.id" class="aa-read-mor-btn" style="float: left;">Profil<span class="fa fa-long-arrow-right"></span></a>
                 </div>
               </div>
             </div>
 
+            
           </div>
+
+          <div class="row">
+            <app-pagination *ngIf="!isLoading" [page]="page" [totalPage]="totalPage" (setPageEvent)="setPage($event)"></app-pagination>
+          </div>
+
         </div>
       </div>
     </div>

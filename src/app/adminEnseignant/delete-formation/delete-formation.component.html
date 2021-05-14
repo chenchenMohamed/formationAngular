@@ -1,6 +1,4 @@
-
-
- <app-navbar-site-formation></app-navbar-site-formation>
+<app-navbar-site-formation></app-navbar-site-formation>
 
 
  <section id="aa-catg-head-banner">
@@ -8,10 +6,10 @@
      <div class="aa-catg-head-banner-area">
       <div class="container">
        <div class="aa-catg-head-banner-content">
-         <h2>Modifier formation</h2>
+         <h2>Suppression formation</h2>
          <ol class="breadcrumb">
            <li><a href="index.html">Home</a></li>                   
-           <li class="active">Modifier formation</li>
+           <li class="active">Suppression formation</li>
          </ol>
        </div>
       </div>
@@ -28,9 +26,26 @@
             
             <div class="col-md-12">
              
-                <h1>Modifier Formation</h1>
+                <h1>Suppression Formation</h1>
                 <form class="form-horizontal" [formGroup]="formC">
                     
+
+                    <fieldset id="account" style="background-color: gray; margin:20px 0; padding:10px">
+                        <h3>Confirmation</h3>
+                        
+                         <p *ngIf="isDelete">Votre formation est bien supprimer.</p>     
+                     
+                         <p *ngIf="!isDelete">Vous etez sure de supprimer cette formation.</p>     
+                     
+                         <button class="btn btn-danger" *ngIf="!isDelete" (click)="envoyerRequest()" > OUI </button>
+
+                         <app-loading *ngIf="isLoading"></app-loading>
+
+                         <br>
+     
+                    </fieldset>
+                   
+
                      <fieldset id="account">
                          <legend>Informations Générales</legend>
                         
@@ -365,11 +380,9 @@
                          </p>
                      </div>
        
-                     <app-loading *ngIf="isLoading"></app-loading>
-     
+                  
                      <div class="buttons">
                          <div class="pull-right">
-                             <input type="submit" class="btn btn-primary" value="Ajouter" (click)="addProduit()">
                          </div>
                      </div>
                  </form>

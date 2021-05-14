@@ -31,7 +31,7 @@
              
 
 
-              <h2>Liste de clients</h2>
+              <h2>Liste de Formations</h2>
                                         
                                        
               <app-loading *ngIf="isLoading"></app-loading>
@@ -43,7 +43,7 @@
                     <tr>
                       <th>Nom</th>
                       <th>Date</th>
-                      <th>nbr Participant</th>
+                      <th>nbr</th>
                       <th>Prix</th>
                       <th></th>
                       <th></th>
@@ -63,19 +63,27 @@
                       <td>{{item.nbrParticipant}}</td>
                       <td>{{item.prixVente}} DT</td>
                       <td>
-                         <a [routerLink]="'/FormationDetails/'+item.id" >Afficher</a>
-                      </td>
-                   
-                      <td>
                         <button class="btn btn-danger "  >
-                             Nouveau
-                         </button>
+                          Participants
+                        </button>
                       </td>
                    
                       <td>
-                        <button class="btn btn-danger " >
-                            <i class="fa fa-eye" style="color: white;" ></i>
+                        <button class="btn btn-danger " [routerLink]="'/ListInscriptionEnseignant/'+item.id" >
+                             Inscriptions
                         </button>
+                      </td>
+                   
+                      <td>
+                        <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/DeleteFormation/'+item.id" >
+                          <i class="fa fa-trash" style="color: white;" ></i>
+                        </a>
+                        <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/UpdateFormation/'+item.id" >
+                          <i class="fa fa-edit" style="color: white;" ></i>
+                        </a>
+                        <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/FormationDetails/'+item.id" >
+                            <i class="fa fa-eye" style="color: white;" ></i>
+                        </a>
                       </td>
                        
                    </tr>
