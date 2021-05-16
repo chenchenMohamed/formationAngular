@@ -63,7 +63,7 @@
                       <td>{{item.nbrParticipant}}</td>
                       <td>{{item.prixVente}} DT</td>
                       <td>
-                        <button class="btn btn-danger "  >
+                        <button class="btn btn-danger "  [routerLink]="'/ListEtudiantEnseignant/'+item.id">
                           Participants
                         </button>
                       </td>

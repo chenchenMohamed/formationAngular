@@ -19,6 +19,9 @@
    </section>
    <!-- / catg header banner section -->
  
+
+   <app-loading *ngIf="isLoading"></app-loading>
+
    <!-- Blog Archive -->
    <section id="aa-blog-archive" *ngIf="formation">
      <div class="container">
@@ -32,8 +35,9 @@
                    <article class="aa-blog-content-single">                        
                      <h2><a href="#">{{formation.nom}}</a></h2>
                       <div class="aa-article-bottom">
-                       <div class="aa-post-author">
-                         Formateur <a href="#">{{formateur.nom}}</a>
+                       <div class="aa-post-author" style="font-size: 20px;">
+                         Formateur : <a [routerLink]="'/FormateurDetails/'+formateur.id">{{formateur.nom}}</a> <br>
+                         Specialites : <a [routerLink]="'/FormateurDetails/'+formateur.id">{{formateur.specialites}}</a>
                        </div>
                        
                      </div>
@@ -55,7 +59,7 @@
                               </ul>
           
                               <br>
-                              <button (click)="openCommande(formation.id)" class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Inscrire </button>
+                              <button *ngIf="!autorized"  (click)="openCommande(formation.id)" class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Inscrire </button>
                             
                             </div>
 
@@ -76,12 +80,12 @@
                     
                    </article>
                    <!-- blog navigation -->
-                   <div class="aa-blog-navigation">
+                   <div class="aa-blog-navigation"  *ngIf="autorized" >
                      <a class="aa-blog-prev" href="#"><span class="fa fa-arrow-left"></span>Chapitre présedent</a>
                      <a class="aa-blog-next" href="#">Chapitre suivant<span class="fa fa-arrow-right"></span></a>
                    </div>
                    <!-- Blog Comment threats -->
-                   <div class="aa-blog-comment-threat">
+                   <div class="aa-blog-comment-threat" *ngIf="autorized">
                      <h3>Chapitres ({{formation.chapitres.length}})</h3>
                      <div class="comments">
                        <ul class="commentlist">

@@ -69,6 +69,37 @@ export class ListInscriptionEnseignantComponent implements OnInit {
   }
  
 
+  activerEtudiant(idInscription){
+    
+    if(this.isLoading){
+      return
+    }
+
+    this.isLoading = true
+
+    this.http.post(this.userService.baseURL+"/etudiantFormation/activerEtudiant/"+idInscription, {}, 
+    {
+      headers: {
+          "authorization": 'Bearer '+localStorage.getItem(this.userService.tokenString)
+      }
+    }).subscribe(
+
+      res => {
+        this.isLoading = false
+        let resultat:any
+        console.log(resultat)
+        resultat = res
+        if(resultat.status){
+           alert("Votre etudiant est activé")
+        }
+
+      }, err => {
+        this.isLoading = false
+        alert("Désole, ilya un problème de connexion internet")
+      }
+    );
+  }
+
   setPage(newPage: number) {
     //    this.scrollTop()
         this.page = newPage
