@@ -5,42 +5,45 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="aa-latest-blog-area">
 
-            <div class="row">
-              <div style="text-align: center;">
-                <h2>Les centres de formations</h2>
-                <br>
-              </div>
-            </div>
-            
-            <div class="row" style="overflow-x: auto; display: flex; flex-direction: row; flex-wrap: nowrap;">
-              
-              
-              <!-- single latest blog -->
-              <div class="col-md-4 col-sm-4" *ngFor="let item of centerFormations" style="margin-bottom: 20px;">
-                <div class="aa-latest-blog-single">
-                  <figure class="aa-blog-img">                    
-                    <a href="#"><img [src]="item.image" alt="img"></a>  
-                      <figcaption class="aa-blog-img-caption">
-                      <span href="#"><i class="fa fa-eye"></i>5K</span>
-                      <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
-                      <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                      <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
-                    </figcaption>                          
-                  </figure>
-                  <div class="aa-blog-info">
-                    <h3 class="aa-blog-title"><a href="#">{{item.titre}}</a></h3>
-                    <p>  </p> 
-                    <a href="#" class="aa-read-mor-btn" style="float: left;">Plus de details<span class="fa fa-long-arrow-right"></span></a>
-                  </div>
-                </div>
-              </div>
-  
-            </div>
-          </div>
+          <h1 style="text-align: center;"> Les centres de formations</h1>
+         
+          <div class="controls pull-right" style="padding-bottom: 5px;" *ngIf="!isLoading">
+            <button class="left fa fa-chevron-left btn " style="margin-right:5px;" (click)="scrollManuelle(-1)"></button>
+            <button class="left fa fa-chevron-right btn " (click)="scrollManuelle(1)"></button>
+        </div>
+        
+        <hr width="100%" style="margin:0px;">
+        
+        <div *ngIf="!isLoading" class="scroll-container" style="width: 100%; overflow-x: scroll; position: relative;" id="foo" (touchstart)="setTimePauseAnimation()"  (mousedown)="setTimePauseAnimation()" >
+          
+           
+            <ul style="display:inline-flex;" (mousedown)="setTimePauseAnimation()">
+                <li *ngFor="let e of centerFormations" class="items-list style-item" style="margin:10px;width:250px; display:inline; position: relative; " >
+                    
+                    <a><img   style="width: 100% !important;" [src]="userService.baseURL+'/'+e.image" alt="">
+                    <h3 class="item-text">{{e.nom}}</h3></a>
+        
+                  
+        
+                </li>
+
+                <li *ngFor="let e of centerFormations" class="items-list style-item" style="margin:10px;width:250px; display:inline; position: relative; " >
+                    
+                  <a><img   style="width: 100% !important;" [src]="userService.baseURL+'/'+e.image" alt="">
+                  <h3 class="item-text">{{e.nom}}</h3></a>
+      
+                
+      
+                </li>
+            </ul>
+        </div>
+
         </div>
       </div>
     </div>
   
   </section>
+
+
+

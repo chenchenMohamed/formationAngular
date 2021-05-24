@@ -20,10 +20,7 @@ import { Galerie3Component } from './siteFormation/accueil-formation/components/
 import { Galerie4Component } from './siteFormation/accueil-formation/components/galerie4/galerie4.component';
 import { Galerie5Component } from './siteFormation/accueil-formation/components/galerie5/galerie5.component';
 import { TopCategoriesComponent } from './shared/categories/top-categories/top-categories.component';
-import { FomationsFormationComponent } from './shared/componentsFormation/fomations-formation/fomations-formation.component';
-import { FormationsVoisinComponent } from './shared/componentsFormation/formations-voisin/formations-voisin.component';
-import { IdaretAmelComponent } from './siteFormation/pages-categories/idaret-amel/idaret-amel.component';
-import { PnlComponent } from './siteFormation/pages-categories/pnl/pnl.component';
+import { FormationsVoisinComponent } from './shared/formations/formations-voisin/formations-voisin.component';
 import { FormationAccueilComponent } from './siteFormation/accueil-formation/components/formation-accueil/formation-accueil.component';
 import { FormateursAccueilComponent } from './siteFormation/accueil-formation/components/formateurs-accueil/formateurs-accueil.component';
 import { ListFormationsComponent } from './shared/formations/list-formations/list-formations.component';
@@ -71,6 +68,11 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
 import { DeleteFormationComponent } from './adminEnseignant/delete-formation/delete-formation.component';
 import { InscriptionFormationModalComponent } from './shared/popups/inscription-formation-modal/inscription-formation-modal.component';
 import { ListInscriptionEnseignantComponent } from './adminEnseignant/list-inscription-enseignant/list-inscription-enseignant.component';
+import { ListInscriptionEtudiantComponent } from './adminEtudiant/list-inscription-etudiant/list-inscription-etudiant.component';
+import { NewCentreFormationComponent } from './adminFormation/new-centre-formation/new-centre-formation.component';
+import { ListCentreFormationComponent } from './adminFormation/list-centre-formation/list-centre-formation.component';
+import { UpdateCentreFormationComponent } from './adminFormation/update-centre-formation/update-centre-formation.component';
+import { DeleteCentreFormationComponent } from './adminFormation/delete-centre-formation/delete-centre-formation.component';
 
 @NgModule({
   declarations: [
@@ -102,10 +104,7 @@ import { ListInscriptionEnseignantComponent } from './adminEnseignant/list-inscr
     CategorieDetailsFormationComponent,
     FormationDetailsFormationComponent,
     FormateurDetailsFormationComponent,
-    FomationsFormationComponent,
     FormationsVoisinComponent,
-    IdaretAmelComponent,
-    PnlComponent,
     FormationAccueilComponent,
     FormateursAccueilComponent,
     ListFormationsComponent,
@@ -130,7 +129,12 @@ import { ListInscriptionEnseignantComponent } from './adminEnseignant/list-inscr
     PaginationComponent,
     DeleteFormationComponent,
     InscriptionFormationModalComponent,
-    ListInscriptionEnseignantComponent
+    ListInscriptionEnseignantComponent,
+    ListInscriptionEtudiantComponent,
+    NewCentreFormationComponent,
+    ListCentreFormationComponent,
+    UpdateCentreFormationComponent,
+    DeleteCentreFormationComponent
   ],
   imports: [
     BrowserModule,

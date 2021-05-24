@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import {CategoriesFormationService} from '../../servicesFormation/categoriesFormation/categories-formation.service'
 
 @Component({
   selector: 'app-formations-page',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormationsPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private categoriesFormationService:CategoriesFormationService) {
+    
+  }
+
+  categories = []
+  categorie2
 
   ngOnInit(): void {
+     this.categoriesFormationService.categories.subscribe(res => {
+       this.categories = res
+       this.categorie2 = this.categories[0]
+       this.categories = this.categories.filter(x => x.id != this.categorie2.id) 
+     })
   }
 
 }

@@ -11,7 +11,7 @@
             <div class="col-md-4 col-sm-4" *ngFor="let item of formateurs" style="margin-bottom: 20px;">
               <div class="aa-latest-blog-single">
                 <figure class="aa-blog-img">                    
-                  <a href="#"><img [src]="userService.baseURL+'/'+item.image" alt="img"></a>  
+                  <a [routerLink]="'/FormateurDetails/'+item.id"><img [src]="userService.baseURL+'/'+item.image" alt="img"></a>  
                     <figcaption class="aa-blog-img-caption">
                     <span href="#"><i class="fa fa-eye"></i>5K</span>
                     <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
@@ -20,7 +20,7 @@
                   </figcaption>                          
                 </figure>
                 <div class="aa-blog-info">
-                  <h3 class="aa-blog-title"><a href="#">{{item.nom}}</a></h3>
+                  <h3 class="aa-blog-title"><a [routerLink]="'/FormateurDetails/'+item.id">{{item.nom}}</a></h3>
                   <p>  </p> 
                   <a [routerLink]="'/FormateurDetails/'+item.id" class="aa-read-mor-btn" style="float: left;">Profil<span class="fa fa-long-arrow-right"></span></a>
                 </div>

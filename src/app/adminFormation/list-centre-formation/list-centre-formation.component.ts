@@ -7,26 +7,25 @@ import { ProduitsFormationService } from '../../servicesFormation/produitsFormat
 import { NotificationService } from '../../servicesFormation/notification/notification.service'
 
 @Component({
-  selector: 'app-list-etudiants-formation',
-  templateUrl: './list-etudiants-formation.component.html',
-  styleUrls: ['./list-etudiants-formation.component.scss']
+  selector: 'app-list-centre-formation',
+  templateUrl: './list-centre-formation.component.html',
+  styleUrls: ['./list-centre-formation.component.scss']
 })
-export class ListEtudiantsFormationComponent implements OnInit {
-
+export class ListCentreFormationComponent implements OnInit {
   constructor(private notificationService:NotificationService, private http: HttpClient, private categoriesServices: CategoriesFormationService, private userService:UserService, public productService:ProduitsFormationService) { 
   }
 
   ngOnInit(): void {
-    this.getEtudiants()
+    this.getFormations()
   }
 
   isLoading = false
   page=1
   totalPage=1
 
-  etudiants=[]
+  formations=[]
 
-  getEtudiants(){
+  getFormations(){
     
     if(this.isLoading){
       return
@@ -36,7 +35,7 @@ export class ListEtudiantsFormationComponent implements OnInit {
 
     let request = {page:this.page, limitItems: 10, listCategories:[]}
     
-    this.http.post(this.userService.baseURL+"/user/etudiants", request).subscribe(
+    this.http.post(this.userService.baseURL+"/centreFormation/CentreFormations", request).subscribe(
 
       res => {
         this.isLoading = false
@@ -44,10 +43,10 @@ export class ListEtudiantsFormationComponent implements OnInit {
         console.log(resultat)
         resultat = res
         if(resultat.status){
-          console.log(resultat)
+          /*console.log(resultat)
           this.page = resultat.resultat.page
-          this.totalPage = resultat.resultat.pages
-          this.etudiants = resultat.resultat.docs
+          this.totalPage = resultat.resultat.pages*/
+          this.formations = resultat.resultat
         }
 
       }, err => {
@@ -61,7 +60,7 @@ export class ListEtudiantsFormationComponent implements OnInit {
   setPage(newPage: number) {
     //    this.scrollTop()
         this.page = newPage
-        this.getEtudiants()
+        this.getFormations()
   }
 
 }

@@ -6,7 +6,8 @@
       <br><br>
       <h3>Etudiant</h3>
       <ul class="aa-catg-nav">
-        <li><a [routerLink]="['/ListFormationEtudiant']">Mes formations</a></li>
+        <li><a [routerLink]="['/ListFormationEtudiant/'+userService.id]">Mes formations</a></li>
+        <li><a [routerLink]="['/ListInscriptionEtudiant/'+userService.id]">Mes inscriptions</a></li>
         <li><a >Notifications</a></li>
         <li><a [routerLink]="['/ProfilEtudiant']">Mon profil</a></li>
       </ul>

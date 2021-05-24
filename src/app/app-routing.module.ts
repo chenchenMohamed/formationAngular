@@ -6,12 +6,6 @@ import { EtudiantDetailsFormationComponent } from './siteFormation/etudiant-deta
 import { CategorieDetailsFormationComponent } from './siteFormation/categorie-details-formation/categorie-details-formation.component';
 import { FormationDetailsFormationComponent } from './siteFormation/formation-details-formation/formation-details-formation.component';
 import { FormateurDetailsFormationComponent } from './siteFormation/formateur-details-formation/formateur-details-formation.component';
-
-//pages categories
-import { IdaretAmelComponent } from './siteFormation/pages-categories/idaret-amel/idaret-amel.component';
-import { PnlComponent } from './siteFormation/pages-categories/pnl/pnl.component';
-
-
 //admin
 
 //compte
@@ -44,9 +38,20 @@ import { ContactPageComponent } from './siteFormation/contact-page/contact-page.
 
 import { DeleteFormationComponent } from './adminEnseignant/delete-formation/delete-formation.component';
 import { ListInscriptionEnseignantComponent } from './adminEnseignant/list-inscription-enseignant/list-inscription-enseignant.component';
+import { ListInscriptionEtudiantComponent } from './adminEtudiant/list-inscription-etudiant/list-inscription-etudiant.component';
+
+import { NewCentreFormationComponent } from './adminFormation/new-centre-formation/new-centre-formation.component';
+import { ListCentreFormationComponent } from './adminFormation/list-centre-formation/list-centre-formation.component';
+import { UpdateCentreFormationComponent } from './adminFormation/update-centre-formation/update-centre-formation.component';
+import { DeleteCentreFormationComponent } from './adminFormation/delete-centre-formation/delete-centre-formation.component';
 
 const routes: Routes = [
 
+  {path: 'NewCentreFormation' , component: NewCentreFormationComponent },
+  {path: 'ListCentreFormation' , component: ListCentreFormationComponent },
+  {path: 'UpdateCentreFormation/:id' , component: UpdateCentreFormationComponent },
+  {path: 'DeleteCentreFormation/:id' , component: DeleteCentreFormationComponent },
+  
   {path: 'CategoriesPage' , component: CategoriesPageComponent },
   {path: 'FormateursPage' , component: FormateursPageComponent },
   {path: 'FormationsPage' , component: FormationsPageComponent },
@@ -63,9 +68,6 @@ const routes: Routes = [
   {path: 'FormateurDetails/:id' , component: FormateurDetailsFormationComponent },
   {path: 'EtudiantDetails' , component: EtudiantDetailsFormationComponent },
 
-  //pages categories
-  {path: 'IdaretAmel' , component: IdaretAmelComponent },
-  {path: 'Pnl' , component: PnlComponent },
 
   //
   {path: 'LoginFormation' , component: LoginFormationComponent },
@@ -84,16 +86,17 @@ const routes: Routes = [
   {path: 'AddEtudiantEnseignant' , component: AddEtudiantEnseignantComponent },
 
   //etudiant
- {path: 'ListFormationEtudiant' , component: ListFormationEtudiantComponent },
- {path: 'ProfilEtudiant' , component: ProfilEtudiantComponent },
+  {path: 'ListFormationEtudiant/:id' , component: ListFormationEtudiantComponent },
+  {path: 'ListInscriptionEtudiant/:id' , component: ListInscriptionEtudiantComponent },
+  {path: 'ProfilEtudiant' , component: ProfilEtudiantComponent },
 
- //admin
- {path: 'ListEnseignantsFormation' , component: ListEnseignantsFormationComponent },
- {path: 'ListEtudiantsFormation' , component: ListEtudiantsFormationComponent },
- {path: 'ListFormationsFormation' , component: ListFormationsFormationComponent },
- {path: 'ProfilAdmin' , component: ProfilAdminComponent },
+  //admin
+  {path: 'ListEnseignantsFormation' , component: ListEnseignantsFormationComponent },
+  {path: 'ListEtudiantsFormation' , component: ListEtudiantsFormationComponent },
+  {path: 'ListFormationsFormation' , component: ListFormationsFormationComponent },
+  {path: 'ProfilAdmin' , component: ProfilAdminComponent },
 
- {path: '**', component: AccueilFormationComponent }
+  {path: '**', component: AccueilFormationComponent }
 ];
 
 @NgModule({

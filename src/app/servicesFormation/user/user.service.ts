@@ -18,6 +18,7 @@ export class UserService {
   tokenString = "tokenString"
   roleString = "roleString"
   emailString = "emailString"
+  idString = "idString"
   
   roleAdmin = "admin"
   roleEtudiant = "Etudiant"
@@ -31,16 +32,22 @@ export class UserService {
   email=new BehaviorSubject(this.varEmail)
   emailChange=this.email.asObservable()  
 
+  id=""
+
   setTokenAndRole(data){
     localStorage.setItem(this.tokenString, data.token)
     localStorage.setItem(this.roleString, data.role)
     localStorage.setItem(this.emailString, data.email)
-  
+    localStorage.setItem(this.idString, data.id)
+
+    this.id = data.id
+
     this.varRole = data.role;
     this.role.next(this.varRole)
 
     this.varEmail = data.email;
     this.email.next(this.varEmail)
+
   }
 
   deconnexion(){
@@ -54,6 +61,7 @@ export class UserService {
   inisialiseRoleAndEmail(){
     var newRole = localStorage.getItem(this.roleString)
     var newEmail = localStorage.getItem(this.emailString)
+    this.id =  localStorage.getItem(this.idString)
     
     if(newRole != this.roleEtudiant && newRole != this.roleAdmin && newRole != this.roleFormateur){
       this.role.next("")
@@ -63,6 +71,7 @@ export class UserService {
 
       this.varEmail = newEmail
       this.email.next(newEmail)
+
     }
   }
 

@@ -1,7 +1,4 @@
-
-
-
- <app-navbar-site-formation></app-navbar-site-formation>
+<app-navbar-site-formation></app-navbar-site-formation>
 
 
  <section id="aa-catg-head-banner">
@@ -9,10 +6,10 @@
    <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
-        <h2>Mes formations</h2>
+        <h2>Centres de formations</h2>
         <ol class="breadcrumb">
           <li><a href="index.html">Home</a></li>         
-          <li class="active">Mes formations</li>
+          <li class="active">Centres de formations</li>
         </ol>
       </div>
      </div>
@@ -24,6 +21,7 @@
   <section id="aa-product-category">
     <div class="container">
       <div class="row">
+
         <div class="col-lg-9 col-md-9 col-sm-8 col-md-push-3">
           <div class="aa-product-catg-content">
            
@@ -31,7 +29,7 @@
             
 
 
-             <h2>Liste de Formations</h2>
+             <h2>Liste de centres de formations</h2>
                                        
                                       
              <app-loading *ngIf="isLoading"></app-loading>
@@ -42,30 +40,36 @@
                  <thead>
                    <tr>
                      <th>Nom</th>
-                     <th>Date</th>
-                     <th>nbr</th>
-                     <th>Prix</th>
+                     <th>Téléphone</th>
+                     <th>Email</th>
+                     <th>Spécialites</th>
                      <th></th>
                    </tr>
                  </thead>
                  <tbody>
-                   <tr *ngIf="inscriptions.length == 0">
+                   <tr *ngIf="formations.length == 0">
                        
                       <th colspan="8" style="text-align: center;">Vide</th>
                        
                    </tr>
             
-                   <tr *ngFor="let item of inscriptions">
+                   <tr *ngFor="let item of formations">
                        
-                     <td>{{item.idFormation.nom}}</td>
-                     <td>{{item.idFormation.createdFormation}}</td>
-                     <td>{{item.idFormation.nbrParticipant}}</td>
-                     <td>{{item.idFormation.prixVente}} DT</td>
-                     
+                     <td>{{item.nom}}</td>
+                     <td>{{item.telephone}}</td>
+                     <td>{{item.email}}</td>
+                     <td>{{item.specialites}}</td>
+                    
                   
                      <td>
-                       <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/FormationDetails/'+item.idFormation.id" >
-                           Entrer
+                       <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/DeleteFormation/'+item.id" >
+                         <i class="fa fa-trash" style="color: white;" ></i>
+                       </a>
+                       <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/UpdateFormation/'+item.id" >
+                         <i class="fa fa-edit" style="color: white;" ></i>
+                       </a>
+                       <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/FormationDetails/'+item.id" >
+                           <i class="fa fa-eye" style="color: white;" ></i>
                        </a>
                      </td>
                       
@@ -84,22 +88,20 @@
             </div>
            </div>
         </div>
-        
-        <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9" *ngIf="role == userService.roleEtudiant">
 
-          <app-sidebar-etudiant> </app-sidebar-etudiant>
+             
+             
+                    
+        <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9">
 
-        </div>
-
-        <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9" *ngIf="role == userService.roleAdmin">
-
-          <app-sidebar-admin> </app-sidebar-admin>
+            <app-sidebar-admin> </app-sidebar-admin>
 
         </div>
        
       </div>
-   
     </div>
   </section>
  
   <app-footer-formation></app-footer-formation>
+
+

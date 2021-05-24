@@ -53,7 +53,7 @@
                   <li><a [routerLink]="['/InscriptionFormation']" *ngIf="role == ''" >Register</a></li>
                   
                   <li><a [routerLink]="['/ListFormationEnseignant']" *ngIf="role == userService.roleFormateur">{{email}}</a></li>
-                  <li><a [routerLink]="['/ListFormationEtudiant']" *ngIf="role == userService.roleEtudiant">{{email}}</a></li>
+                  <li><a [routerLink]="['/ListFormationEtudiant/'+userService.id]" *ngIf="role == userService.roleEtudiant">{{email}}</a></li>
                   <li><a [routerLink]="['/ListEnseignantsFormation']" *ngIf="role == userService.roleAdmin" >{{email}}</a></li>
                   
                   <li style="cursor: pointer;" (click)="deconnexion()" *ngIf="role != ''"><a style=" color: red; font-weight: 700;">Deconnexion</a></li>
