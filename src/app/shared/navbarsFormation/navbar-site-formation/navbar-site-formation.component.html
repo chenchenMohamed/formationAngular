@@ -49,8 +49,8 @@
                 <ul class="aa-head-top-nav-right">
                   
                   <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
-                  <li><a [routerLink]="['/LoginFormation']" *ngIf="role == ''" >Login</a></li>
-                  <li><a [routerLink]="['/InscriptionFormation']" *ngIf="role == ''" >Register</a></li>
+                  <li><a (click)="goLogin()" *ngIf="role == ''" style="cursor: pointer;">Login</a></li>
+                  <li><a (click)="goRegister()" *ngIf="role == ''" style="cursor: pointer;">Register</a></li>
                   
                   <li><a [routerLink]="['/ListFormationEnseignant']" *ngIf="role == userService.roleFormateur">{{email}}</a></li>
                   <li><a [routerLink]="['/ListFormationEtudiant/'+userService.id]" *ngIf="role == userService.roleEtudiant">{{email}}</a></li>

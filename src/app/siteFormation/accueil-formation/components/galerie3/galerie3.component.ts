@@ -48,7 +48,9 @@ export class Galerie3Component implements OnInit {
           this.page = resultat.resultat.page
           this.totalPage = resultat.resultat.pages*/
           this.centerFormations = resultat.resultat
-          this.inialiserProduits()
+          setTimeout(() => {
+            this.inialiserProduits()
+          },  500); 
         }
 
       }, err => {
@@ -73,10 +75,10 @@ export class Galerie3Component implements OnInit {
     var positionInfo = element.getBoundingClientRect();
     var height = positionInfo.height;
     this.width = positionInfo.width;
-    console.log(height)
-    console.log(this.width)
-
-    var elements = document.getElementsByClassName('centerFormations-list');
+    
+    var elements = document.getElementsByClassName('items-list');
+    
+    console.log(elements.length)
 
     if(this.width < 566){
       this.width  = this.width / 1 - 20
@@ -131,7 +133,8 @@ export class Galerie3Component implements OnInit {
     if(this.isScrolle){
       return
     }
-    
+
+    this.coifficient = entier
 
     this.isScrolle = true
     
@@ -152,44 +155,40 @@ export class Galerie3Component implements OnInit {
         this.coifficient = -1
         encient = posCurrent + (this.width + 20) * entier
     }else{
-      
-      let i = 0
-      var ok =true
-      while(i < this.centerFormations.length && ok == true){
-        if(((this.width + 20) * i) == posCurrent){
-          ok = false
-          encient = posCurrent + (this.width + 20) * entier
-        }
-        i++
-      }
-
-      if(ok){
-        i = 0
+        let i = 0
+        var ok =true
         while(i < this.centerFormations.length && ok == true){
-          if(((this.width + 20) * i) > posCurrent){
+          let difference = Math.abs(((this.width + 20) * i) - posCurrent)
+          if(difference < 2){
             ok = false
-            if( entier == 1){
-              encient = (this.width + 20) * i
-            }else{
-              encient = (this.width + 20) * (i-1)
-            }
+            encient = posCurrent + (this.width + 20) * this.coifficient
           }
           i++
         }
-      }
-      
-    } 
+  
+        if(ok){
+          i = 0
+          while(i < this.centerFormations.length && ok == true){
+            if(((this.width + 20) * i) > posCurrent){
+              ok = false
+              encient = (this.width + 20) * i
+            }
+            i++
+          }
+        }
         
-    elements[0].scroll({
-      top: 0, 
-      left: encient, 
-      behavior: 'smooth'
-    });
+     } 
+         
+      elements[0].scroll({
+        top: 0, 
+        left: encient, 
+        behavior: 'smooth'
+      });
     
    
     setTimeout(() => {
       this.isScrolle = false
-    },  300);
+    },  200);
       
   }
   
@@ -205,8 +204,6 @@ export class Galerie3Component implements OnInit {
       return
     }
 
-    console.log("end scroll auto")
-
     var elements = document.getElementsByClassName('scroll-container');
     
     var b = elements[0].scrollWidth - elements[0].clientWidth;
@@ -214,8 +211,6 @@ export class Galerie3Component implements OnInit {
     let encient = 0 
    
     let posCurrent = elements[0].scrollLeft 
-
-    console.log(elements.length)
 
     if(posCurrent == 0){
         ok = false
@@ -226,11 +221,11 @@ export class Galerie3Component implements OnInit {
         this.coifficient = -1
         encient = posCurrent + (this.width + 20) * this.coifficient
     }else{
-      
       let i = 0
       var ok =true
       while(i < this.centerFormations.length && ok == true){
-        if(((this.width + 20) * i) == posCurrent){
+        let difference = Math.abs(((this.width + 20) * i) - posCurrent)
+        if(difference < 1){
           ok = false
           encient = posCurrent + (this.width + 20) * this.coifficient
         }
@@ -250,14 +245,12 @@ export class Galerie3Component implements OnInit {
       
     } 
         
-    console.log(encient)
-
     elements[0].scroll({
       top: 0, 
       left: encient, 
       behavior: 'smooth'
     });
-    
+    console.log("end scroll auto")
    
     setTimeout(() => {
       this.scrollAuto()

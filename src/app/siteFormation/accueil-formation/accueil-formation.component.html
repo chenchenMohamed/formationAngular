@@ -80,7 +80,7 @@
           <div class="aa-subscribe-area">
             <h3>Subscribe our newsletter </h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, velit!</p>
-            <form action="" class="aa-subscribe-form">
+            <form action="" class="aa-subscribe-form" style="max-width: 100%;">
               <input type="email" name="" id="" placeholder="Enter your Email">
               <input type="submit" value="Subscribe">
             </form>
@@ -94,5 +94,9 @@
   <!-- footer -->  
   <app-footer-formation></app-footer-formation>
   <!-- / footer -->
+
+
+  <app-demande-inscrire [isOpenCommande]="isOpenCommande" [idCommande]="idCommande" (closeCommandeEvent)="closeCommande()" ></app-demande-inscrire> 
+  
 
   

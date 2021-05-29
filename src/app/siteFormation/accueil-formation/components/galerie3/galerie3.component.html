@@ -15,26 +15,16 @@
         
         <hr width="100%" style="margin:0px;">
         
-        <div *ngIf="!isLoading" class="scroll-container" style="width: 100%; overflow-x: scroll; position: relative;" id="foo" (touchstart)="setTimePauseAnimation()"  (mousedown)="setTimePauseAnimation()" >
+        <div class="scroll-container" style="width: 100%; overflow-x: scroll; position: relative;" id="foo" (touchstart)="setTimePauseAnimation()"  (mousedown)="setTimePauseAnimation()" >
           
            
             <ul style="display:inline-flex;" (mousedown)="setTimePauseAnimation()">
-                <li *ngFor="let e of centerFormations" class="items-list style-item" style="margin:10px;width:250px; display:inline; position: relative; " >
-                    
-                    <a><img   style="width: 100% !important;" [src]="userService.baseURL+'/'+e.image" alt="">
-                    <h3 class="item-text">{{e.nom}}</h3></a>
-        
-                  
-        
-                </li>
-
+               
                 <li *ngFor="let e of centerFormations" class="items-list style-item" style="margin:10px;width:250px; display:inline; position: relative; " >
                     
                   <a><img   style="width: 100% !important;" [src]="userService.baseURL+'/'+e.image" alt="">
-                  <h3 class="item-text">{{e.nom}}</h3></a>
-      
+                  <h3 class="item-text" style="text-align: center;">{{e.nom}}</h3></a>
                 
-      
                 </li>
             </ul>
         </div>

@@ -36,4 +36,14 @@ export class NavbarSiteFormationComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
+  goLogin(){
+    this.userService.setOpenModelInscrireLogin(1)
+
+  }
+
+  goRegister(){
+    this.userService.setOpenModelInscrireLogin(2)
+
+  }
+
 }

@@ -34,6 +34,14 @@ export class UserService {
 
   id=""
 
+  varOpenModelInscrireLogin = 0
+  openModelInscrireLogin=new BehaviorSubject(this.varOpenModelInscrireLogin)
+  openModelInscrireLoginChange=this.openModelInscrireLogin.asObservable() 
+  
+  setOpenModelInscrireLogin(data){
+    this.openModelInscrireLogin.next(data)
+  }
+
   setTokenAndRole(data){
     localStorage.setItem(this.tokenString, data.token)
     localStorage.setItem(this.roleString, data.role)
@@ -65,6 +73,7 @@ export class UserService {
     
     if(newRole != this.roleEtudiant && newRole != this.roleAdmin && newRole != this.roleFormateur){
       this.role.next("")
+      this.varRole = ""
     }else{
       this.varRole = newRole
       this.role.next(newRole)

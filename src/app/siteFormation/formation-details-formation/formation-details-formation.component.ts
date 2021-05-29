@@ -8,9 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../servicesFormation/user/user.service'
 import { NotificationService } from '../../servicesFormation/notification/notification.service'
 
-
-
 declare var CKEDITOR: any;
+
 @Component({
   selector: 'app-formation-details-formation',
   templateUrl: './formation-details-formation.component.html',

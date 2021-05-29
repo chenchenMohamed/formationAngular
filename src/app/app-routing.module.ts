@@ -45,7 +45,29 @@ import { ListCentreFormationComponent } from './adminFormation/list-centre-forma
 import { UpdateCentreFormationComponent } from './adminFormation/update-centre-formation/update-centre-formation.component';
 import { DeleteCentreFormationComponent } from './adminFormation/delete-centre-formation/delete-centre-formation.component';
 
+import { ListEventsComponent } from './adminFormation/list-events/list-events.component';
+import { ListCategoriesComponent } from './adminFormation/list-categories/list-categories.component';
+
+import { NewEventComponent } from './adminFormation/new-event/new-event.component';
+import { UpdateEventComponent } from './adminFormation/update-event/update-event.component';
+import { DeleteEventComponent } from './adminFormation/delete-event/delete-event.component';
+
+import { NewCategorieComponent } from './adminFormation/new-categorie/new-categorie.component';
+import { UpdateCategorieComponent } from './adminFormation/update-categorie/update-categorie.component';
+import { DeleteCategorieComponent } from './adminFormation/delete-categorie/delete-categorie.component';
+
 const routes: Routes = [
+
+  {path: 'ListEvents' , component: ListEventsComponent },
+  {path: 'ListCategories' , component: ListCategoriesComponent },
+
+  {path: 'NewEvent' , component: NewEventComponent },
+  {path: 'UpdateEvent/:id' , component: UpdateEventComponent },
+  {path: 'DeleteEvent/:id' , component: DeleteEventComponent },
+
+  {path: 'NewCategorie' , component: NewCategorieComponent },
+  {path: 'UpdateCategorie/:id' , component: UpdateCategorieComponent },
+  {path: 'DeleteCategorie/:id' , component: DeleteCategorieComponent },
 
   {path: 'NewCentreFormation' , component: NewCentreFormationComponent },
   {path: 'ListCentreFormation' , component: ListCentreFormationComponent },

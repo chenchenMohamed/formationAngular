@@ -74,12 +74,29 @@ import { ListCentreFormationComponent } from './adminFormation/list-centre-forma
 import { UpdateCentreFormationComponent } from './adminFormation/update-centre-formation/update-centre-formation.component';
 import { DeleteCentreFormationComponent } from './adminFormation/delete-centre-formation/delete-centre-formation.component';
 
+import { ListEventsComponent } from './adminFormation/list-events/list-events.component';
+import { ListCategoriesComponent } from './adminFormation/list-categories/list-categories.component';
+
+import { NewEventComponent } from './adminFormation/new-event/new-event.component';
+import { UpdateEventComponent } from './adminFormation/update-event/update-event.component';
+import { DeleteEventComponent } from './adminFormation/delete-event/delete-event.component';
+
+import { NewCategorieComponent } from './adminFormation/new-categorie/new-categorie.component';
+import { UpdateCategorieComponent } from './adminFormation/update-categorie/update-categorie.component';
+import { DeleteCategorieComponent } from './adminFormation/delete-categorie/delete-categorie.component';
+
+import { DemandeInscrireComponent } from './shared/popups/demande-inscrire/demande-inscrire.component';
+import { InscrirePopusComponent } from './shared/popups/inscrire-popus/inscrire-popus.component';
+import { LoginPopupsComponent } from './shared/popups/login-popups/login-popups.component';
+
 @NgModule({
   declarations: [
     
     SafePipe,
       
     AppComponent,
+    
+    LoginPopupsComponent,
     
     ListFormationEtudiantComponent,
     ProfilEtudiantComponent,
@@ -134,7 +151,17 @@ import { DeleteCentreFormationComponent } from './adminFormation/delete-centre-f
     NewCentreFormationComponent,
     ListCentreFormationComponent,
     UpdateCentreFormationComponent,
-    DeleteCentreFormationComponent
+    DeleteCentreFormationComponent,
+    ListEventsComponent,
+    ListCategoriesComponent,
+    NewEventComponent,
+    UpdateEventComponent,
+    DeleteEventComponent,
+    NewCategorieComponent,
+    UpdateCategorieComponent,
+    DeleteCategorieComponent,
+    DemandeInscrireComponent,
+    InscrirePopusComponent
   ],
   imports: [
     BrowserModule,
