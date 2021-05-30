@@ -88,6 +88,7 @@ import { DeleteCategorieComponent } from './adminFormation/delete-categorie/dele
 import { DemandeInscrireComponent } from './shared/popups/demande-inscrire/demande-inscrire.component';
 import { InscrirePopusComponent } from './shared/popups/inscrire-popus/inscrire-popus.component';
 import { LoginPopupsComponent } from './shared/popups/login-popups/login-popups.component';
+import { EventDetailsComponent } from './siteFormation/event-details/event-details.component';
 
 @NgModule({
   declarations: [
@@ -161,7 +162,8 @@ import { LoginPopupsComponent } from './shared/popups/login-popups/login-popups.
     UpdateCategorieComponent,
     DeleteCategorieComponent,
     DemandeInscrireComponent,
-    InscrirePopusComponent
+    InscrirePopusComponent,
+    EventDetailsComponent
   ],
   imports: [
     BrowserModule,

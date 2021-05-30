@@ -160,7 +160,25 @@
               <li><a [routerLink]="['/CategoriesPage']">Categries</a></li>
               <li><a [routerLink]="['/FormateursPage']">Formateurs</a></li>
               <li><a [routerLink]="['/FormationsPage']">Formations</a></li>
+            
+              <li><a>Events</a>
+                  
+                  <ul class="List" class="sous-list">
+                    <li *ngFor="let event of events"> 
+                      
+                      <a [routerLink]="'/EventDetails/'+event.id" style="float:left; text-decoration: underline;">{{event.date}}</a>
+                       
+                      <a [routerLink]="'/EventDetails/'+event.id" style="float:right;">{{event.titre1}}</a>
+                      
+                    </li>
+
+                  
+                  </ul>
+              
+              </li>
+            
               <li><a [routerLink]="['/CenterFormationPage']">Centers de formations</a></li>
+            
               <li><a [routerLink]="['/ProposPage']">A propos</a></li>
               <li><a [routerLink]="['/ContactPage']">Contact</a></li>
             

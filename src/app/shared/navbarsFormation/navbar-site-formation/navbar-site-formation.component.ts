@@ -28,7 +28,7 @@ export class NavbarSiteFormationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.getEvents()
   }
 
   deconnexion(){
@@ -38,11 +38,31 @@ export class NavbarSiteFormationComponent implements OnInit {
 
   goLogin(){
     this.userService.setOpenModelInscrireLogin(1)
-
   }
 
   goRegister(){
     this.userService.setOpenModelInscrireLogin(2)
+  }
+
+  events=[]
+
+  getEvents(){
+    
+    this.http.get(this.userService.baseURL+"/event/Events").subscribe(
+
+      res => {
+        let resultat:any
+        resultat = res
+        if(resultat.status){
+          console.log(resultat)
+          this.events = resultat.resultat
+        }
+
+      }, err => {
+        alert("Désole, ilya un problème de connexion internet")
+      }
+    
+    );
 
   }
 

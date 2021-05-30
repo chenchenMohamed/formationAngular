@@ -56,7 +56,11 @@ import { NewCategorieComponent } from './adminFormation/new-categorie/new-catego
 import { UpdateCategorieComponent } from './adminFormation/update-categorie/update-categorie.component';
 import { DeleteCategorieComponent } from './adminFormation/delete-categorie/delete-categorie.component';
 
+import { EventDetailsComponent } from './siteFormation/event-details/event-details.component';
+
 const routes: Routes = [
+  
+  {path: 'EventDetails/:id' , component: EventDetailsComponent },
 
   {path: 'ListEvents' , component: ListEventsComponent },
   {path: 'ListCategories' , component: ListCategoriesComponent },
