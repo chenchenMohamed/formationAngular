@@ -1,5 +1,5 @@
 
-<aside class="aa-sidebar">
+<aside class="aa-sidebar" *ngIf="role == userService.roleEtudiant">
 
     <!-- single sidebar -->
     <div class="aa-sidebar-widget">
@@ -16,3 +16,9 @@
 
 </aside>
  
+
+ 
+<app-sidebar-admin *ngIf="role == userService.roleAdmin"> </app-sidebar-admin>
+
+
+<app-sidebar-enseignant *ngIf="role == userService.roleFormateur"> </app-sidebar-enseignant>

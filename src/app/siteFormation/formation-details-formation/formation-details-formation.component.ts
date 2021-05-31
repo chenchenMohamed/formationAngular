@@ -134,7 +134,7 @@ export class FormationDetailsFormationComponent implements OnInit {
   openCommande(id){
     if(this.role == this.userService.roleFormateur){
       alert("Votre role n'est pas authorizer !!")
-    }else{
+    }else if(this.role == ""){
       this.router.navigate(['/InscriptionFormation'])
     }
 

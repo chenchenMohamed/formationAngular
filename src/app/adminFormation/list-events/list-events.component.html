@@ -39,10 +39,11 @@
                <table class="table" style="min-height: 300px;">
                  <thead>
                    <tr>
-                     <th>Nom</th>
-                     <th>Téléphone</th>
-                     <th>Email</th>
-                     <th>Spécialites</th>
+                     <th>Titre</th>
+                     <th>Nom Formateur</th>
+                     <th>Date</th>
+                     <th>Heures</th>
+                     <th></th>
                      <th></th>
                    </tr>
                  </thead>
@@ -55,11 +56,16 @@
             
                    <tr *ngFor="let item of formations">
                        
-                     <td>{{item.nom}}</td>
-                     <td>{{item.telephone}}</td>
-                     <td>{{item.email}}</td>
-                     <td>{{item.specialites}}</td>
+                     <td>{{item.titre1}}</td>
+                     <td>{{item.nomFormateur}}</td>
+                     <td>{{item.date}}</td>
+                     <td>{{item.timeDepart}} - {{item.timeEnd}}</td>
                     
+                     <td>
+                      <button class="btn btn-danger "  [routerLink]="'/ParticipantsEvent/'+item.id">
+                        Participants
+                      </button>
+                     </td>
                   
                      <td>
                        <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/DeleteCentreFormation/'+item.id" >
@@ -67,6 +73,9 @@
                        </a>
                        <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/UpdateCentreFormation/'+item.id" >
                          <i class="fa fa-edit" style="color: white;" ></i>
+                       </a>
+                       <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/EventDetails/'+item.id" >
+                        <i class="fa fa-eye" style="color: white;" ></i>
                        </a>
                      </td>
                       

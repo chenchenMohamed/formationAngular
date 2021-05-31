@@ -69,8 +69,10 @@
           
                               <br>
 
-                              <button *ngIf="!autorized"  (click)="openCommande(formation.id)" class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Inscrire </button>
-                            
+                              <button *ngIf="!dejaInscrire && !autorized"  (click)="openCommande(formation.id)" class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Rejoindre </button>
+                              <button *ngIf="dejaInscrire"  class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> On Attends confirmation</button>
+                              <button *ngIf="autorized"  class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Rejoindre Déja</button>
+                           
                             </div>
 
                             <div class="row" *ngIf="idDetails == 2">
@@ -87,8 +89,10 @@
 
                                 <br>
   
-                                <button *ngIf="!autorized"  (click)="openCommande(formation.id)" class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Inscrire </button>
-                              
+                                <button *ngIf="!dejaInscrire && !autorized"  (click)="openCommande(formation.id)" class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Rejoindre </button>
+                                <button *ngIf="dejaInscrire"  class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> On Attends confirmation</button>
+                                <button *ngIf="autorized"  class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Rejoindre Déja</button>
+                             
                               </div>
 
                               <div class="row" *ngIf="idDetails == 3">
@@ -106,8 +110,10 @@
             
                                 <br>
   
-                                <button *ngIf="!autorized"  (click)="openCommande(formation.id)" class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Inscrire </button>
-                              
+                                <button *ngIf="!dejaInscrire && !autorized"  (click)="openCommande(formation.id)" class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Rejoindre </button>
+                                <button *ngIf="dejaInscrire"  class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> On Attends confirmation</button>
+                                <button *ngIf="autorized"  class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Rejoindre Déja</button>
+                             
                               </div>
 
                               <div class="row" *ngIf="idDetails == 4">
@@ -124,8 +130,10 @@
             
                                 <br>
   
-                                <button *ngIf="!autorized"  (click)="openCommande(formation.id)" class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Inscrire </button>
-                              
+                                <button *ngIf="!dejaInscrire && !autorized"  (click)="openCommande(formation.id)" class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Rejoindre </button>
+                                <button *ngIf="dejaInscrire"  class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> On Attends confirmation</button>
+                                <button *ngIf="autorized"  class="btn btn-info" style="float: right; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; margin-top: auto;"> Rejoindre Déja</button>
+                             
                               </div>
 
 
@@ -146,8 +154,7 @@
      </div>
    </section>
 
-   
-   <app-inscription-formation-modal [isOpenCommande]="isOpenCommande" [idCommande]="idCommande" (closeCommandeEvent)="closeCommande()" ></app-inscription-formation-modal> 
+   <app-inscription-formation-modal isEvent="1" [isOpenCommande]="isOpenCommande" [idCommande]="idCommande" (closeCommandeEvent)="closeCommande()" ></app-inscription-formation-modal> 
   
    <app-footer-formation></app-footer-formation>
 

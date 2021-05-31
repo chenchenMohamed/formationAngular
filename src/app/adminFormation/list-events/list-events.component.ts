@@ -35,7 +35,7 @@ export class ListEventsComponent implements OnInit {
 
     let request = {page:this.page, limitItems: 10, listCategories:[]}
     
-    this.http.post(this.userService.baseURL+"/centreFormation/CentreFormations", request).subscribe(
+    this.http.get(this.userService.baseURL+"/event/Events").subscribe(
 
       res => {
         this.isLoading = false

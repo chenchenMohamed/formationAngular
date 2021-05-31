@@ -6,8 +6,12 @@
       <p style="font-weight: 800; font-size: 18px;">Validation</p>
       <hr style="width: 100%;">
   
-      <p *ngIf="etat == 0" >
+      <p *ngIf="etat == 0 && isEvent == '0'" >
           SVP validez Votre inscription dans cette formation !!
+      </p>
+
+      <p *ngIf="etat == 0 && isEvent == '1'" >
+        SVP validez Votre inscription dans cette evenement !!
       </p>
 
       <p *ngIf="etat == 1" >

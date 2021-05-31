@@ -14,7 +14,7 @@ import { NotificationService } from '../../../servicesFormation/notification/not
 })
 export class InscriptionFormationModalComponent implements OnInit {
 
-  
+  @Input() isEvent="0"
   @Input() isOpenCommande
   @Input() idCommande
   classCss = "modalCommande"
@@ -56,7 +56,51 @@ export class InscriptionFormationModalComponent implements OnInit {
 
   envoyerInscription(){
     
-    console.log(this.idCommande)
+     if(this.isEvent == "0"){
+       this.avecFormation()
+     }else{
+       this.avecEvenement()
+     }
+      
+  }
+
+  avecEvenement(){
+
+    if(this.isLoading){
+      return
+    }
+
+    this.isLoading = true
+
+    this.http.post(this.userService.baseURL+"/etudiantEvent/newInscription/"+this.idCommande, {}, {
+      headers: {
+          "authorization": 'Bearer '+localStorage.getItem(this.userService.tokenString)
+      }
+    }).subscribe(
+      res => {
+        this.isLoading = false
+        let response: any = res
+
+        if(response.status){
+         
+         // this.notificationService.showSuccess("Votre inscription est enregistreé et nous vous contactons dans les plus brefs délais .", this.notificationService.TypeMessage)
+          //this.closeCommande()
+
+          this.etat = 1
+
+        }else{
+          this.closeCommande()     
+        }
+      }, err => {
+        this.isLoading = false
+        this.closeCommande()   
+      }
+    );
+ 
+    
+  }
+
+  avecFormation(){
 
     if(this.isLoading){
       return
@@ -88,7 +132,8 @@ export class InscriptionFormationModalComponent implements OnInit {
         this.closeCommande()   
       }
     );
-    
+ 
+
   }
 
 

@@ -57,9 +57,11 @@ import { UpdateCategorieComponent } from './adminFormation/update-categorie/upda
 import { DeleteCategorieComponent } from './adminFormation/delete-categorie/delete-categorie.component';
 
 import { EventDetailsComponent } from './siteFormation/event-details/event-details.component';
+import { ParticipantsEventComponent } from './adminFormation/participants-event/participants-event.component';
 
 const routes: Routes = [
-  
+  {path: 'ParticipantsEvent/:id' , component: ParticipantsEventComponent },
+
   {path: 'EventDetails/:id' , component: EventDetailsComponent },
 
   {path: 'ListEvents' , component: ListEventsComponent },

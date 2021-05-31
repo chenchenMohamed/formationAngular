@@ -48,12 +48,13 @@ export class EventDetailsComponent implements OnInit {
   ngOnInit(): void {
     this._Activatedroute.paramMap.subscribe(params => { 
       this.inisialiserProduit(params.get('id')); 
+      if(this.role == this.userService.roleEtudiant){
+        this.verifiedEtudiant(params.get('id'))
+      }
     });
   }
   
   isLoading = false
-
- 
 
   inisialiserProduit(idProduit){
     
@@ -77,10 +78,12 @@ export class EventDetailsComponent implements OnInit {
 
   condidature
 
+  dejaInscrire = false
+
   verifiedEtudiant(idProduit){
 
     this.isLoading = true
-    this.http.get(this.userService.baseURL+"/etudiantFormation/getCondidature/"+idProduit, {
+    this.http.get(this.userService.baseURL+"/etudiantEvent/getCondidature/"+idProduit, {
       headers: {
           "authorization": 'Bearer '+localStorage.getItem(this.userService.tokenString)
       }
@@ -88,13 +91,18 @@ export class EventDetailsComponent implements OnInit {
       res => {
         let response:any = res
         this.isLoading = false; 
+        console.log(response)
         if(response.status){
           this.condidature = response.resultat
-   
+
+          if(this.condidature.etat == 0){
+            this.dejaInscrire = true
+          }
+          
           if(this.condidature.etat > 0){
             this.autorized = true
           }
-          console.log(response)
+        
         }else{
          // alert(this.notificationService.alertNotConnexion)
         }
@@ -121,7 +129,7 @@ export class EventDetailsComponent implements OnInit {
   openCommande(id){
     if(this.role == this.userService.roleFormateur){
       alert("Votre role n'est pas authorizer !!")
-    }else{
+    }else if(this.role == ""){
       this.router.navigate(['/InscriptionFormation'])
     }
 
