@@ -142,6 +142,12 @@ export class FormationDetailsFormationComponent implements OnInit {
     this.isOpenCommande = true;
   }
 
+  idDetails=1
+
+  changeDetails(id){
+    this.idDetails = id
+  }
+
 
 
 }

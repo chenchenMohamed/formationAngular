@@ -34,19 +34,104 @@ export class UpdateEventComponent implements OnInit {
   
   longDesc
 
-  constructor( private _Activatedroute:ActivatedRoute, private domSanitizer:DomSanitizer, private notificationService:NotificationService, private http: HttpClient, private categoriesServices: CategoriesFormationService, public userService:UserService, public productService:ProduitsFormationService) { 
+  constructor(private _Activatedroute:ActivatedRoute,  private domSanitizer:DomSanitizer, private notificationService:NotificationService, private http: HttpClient, private categoriesServices: CategoriesFormationService, public userService:UserService, public productService:ProduitsFormationService) { 
     
     this.formC = new FormGroup({
-      nom:new FormControl('',[Validators.required, Validators.min(1)]),
-      telephone:new FormControl('',[Validators.required, Validators.min(1)]),
+      nomFormateur:new FormControl('',[Validators.required, Validators.min(1)]),
+   
       adresse:new FormControl('',[Validators.required, Validators.min(1)]),
-      specialites:new FormControl('',[Validators.required, Validators.min(1)]),
-      description:new FormControl('',[Validators.required, Validators.min(1)]),
+      telephone:new FormControl('',[Validators.required, Validators.min(1)]),
       email:new FormControl('',[Validators.required, Validators.min(1)]),
+   
+      timeDepart:new FormControl('',[Validators.required, Validators.min(1)]),
+      timeEnd:new FormControl('',[Validators.required, Validators.min(1)]),
+   
+      date:new FormControl('',[Validators.required, Validators.min(1)]),
+      
+   
+      specialites:new FormControl('',[Validators.required, Validators.min(1)]),
+   
+      titre1:new FormControl('',[Validators.required, Validators.min(1)]),
+      titre2:new FormControl('',[Validators.required, Validators.min(1)]),
+     
+      ligne:new FormControl('',[Validators.required, Validators.min(1)]),
+  
       file: new FormControl('', [Validators.required]),
+      file2: new FormControl('', [Validators.required]),
+  
     })
 
   }
+
+
+  ngOnInit(): void {
+    this._Activatedroute.paramMap.subscribe(params => { 
+      this.inisialiserProduit(params.get('id')); 
+    });
+  }
+
+  event
+  
+  idCentre
+  inisialiserProduit(idProduit){
+    this.idCentre = idProduit
+    this.isLoading = true
+    this.http.get(this.userService.baseURL+"/event/getById/"+idProduit).subscribe(
+      res => {
+        let response:any = res
+        this.isLoading = false; 
+        if(response.status){
+          this.event = response.resultat
+          this.initialiserCentreFormation(this.event)
+        }else{
+         // alert(this.notificationService.alertNotConnexion)
+        }
+      }, err => {
+        //alert(this.notificationService.alertNotConnexion)
+        this.isLoading = false; 
+      }
+    );
+
+  }
+
+  initialiserCentreFormation(event){
+    this.formC = new FormGroup({
+      nomFormateur:new FormControl(event.nomFormateur,[Validators.required, Validators.min(1)]),
+   
+      adresse:new FormControl(event.adresse,[Validators.required, Validators.min(1)]),
+      telephone:new FormControl(event.telephone,[Validators.required, Validators.min(1)]),
+      email:new FormControl(event.email,[Validators.required, Validators.min(1)]),
+   
+      timeDepart:new FormControl(event.timeDepart,[Validators.required, Validators.min(1)]),
+      timeEnd:new FormControl(event.timeEnd,[Validators.required, Validators.min(1)]),
+   
+      date:new FormControl(event.date,[Validators.required, Validators.min(1)]),
+      
+   
+      specialites:new FormControl(event.specialites,[Validators.required, Validators.min(1)]),
+   
+      titre1:new FormControl(event.titre1,[Validators.required, Validators.min(1)]),
+      titre2:new FormControl(event.titre2,[Validators.required, Validators.min(1)]),
+     
+      ligne:new FormControl('',[Validators.required, Validators.min(1)]),
+  
+      file: new FormControl('', [Validators.required]),
+      file2: new FormControl('', [Validators.required]),
+  
+    })
+
+    this.imageSelected = event.image
+    this.imageSelected2 = event.imageFormateur
+
+    this.listDescriptionsDessus = []
+    for(let i = 0; i < event.descriptions.length; i++){
+      this.idLigne++
+      this.listDescriptionsDessus.push({ligne:event.descriptions[i].ligne, id:this.idLigne})
+    }
+
+  }
+
+
 
   photoURL(url) {
     return this.domSanitizer.bypassSecurityTrustUrl(url);
@@ -64,50 +149,6 @@ export class UpdateEventComponent implements OnInit {
     return this.formC.controls;
   }
 
-  ngOnInit(): void {
-    this._Activatedroute.paramMap.subscribe(params => { 
-      this.inisialiserProduit(params.get('id')); 
-    });
-  }
-  
-  idCentre
-  inisialiserProduit(idProduit){
-    this.idCentre = idProduit
-    this.isLoading = true
-    this.http.get(this.userService.baseURL+"/centreFormation/getById/"+idProduit).subscribe(
-      res => {
-        let response:any = res
-        this.isLoading = false; 
-        if(response.status){
-          this.centreFormation = response.resultat
-          this.initialiserCentreFormation(this.centreFormation)
-        }else{
-         // alert(this.notificationService.alertNotConnexion)
-        }
-      }, err => {
-        //alert(this.notificationService.alertNotConnexion)
-        this.isLoading = false; 
-      }
-    );
-
-  }
-
-  initialiserCentreFormation(centreFormation){
-    this.formC = new FormGroup({
-      nom:new FormControl(centreFormation.nom,[Validators.required, Validators.min(1)]),
-      telephone:new FormControl(centreFormation.telephone,[Validators.required, Validators.min(1)]),
-      adresse:new FormControl(centreFormation.adresse,[Validators.required, Validators.min(1)]),
-      specialites:new FormControl(centreFormation.specialites,[Validators.required, Validators.min(1)]),
-      description:new FormControl(centreFormation.description,[Validators.required, Validators.min(1)]),
-      email:new FormControl(centreFormation.email,[Validators.required, Validators.min(1)]),
-      file: new FormControl("", [Validators.required]),
-    })
-
-    this.imageSelected = centreFormation.image
-
-  }
-
-  centreFormation
   
  
   // Gestion des DescriptionDessus --fin--
@@ -141,10 +182,79 @@ export class UpdateEventComponent implements OnInit {
   }
 
 
+ // Gestion des photos --debut--
+ multiImage2
+ imageSelected2
+ imageSelectedSource2
+
+ selectedM2(event) {
+    this.multiImage2 = event.target.files;
+    
+    var files = event.target.files;
+    if (files.length === 0)
+    return;
+
+    this.imageSelectedSource2 = files[0]
+    
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+     // this.message = "Only images are supported.";
+      return;
+    }
+
+    var reader = new FileReader();
+    
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+      this.imageSelected2 = reader.result
+    }
+ }
+
+
+  
+  // Gestion des DescriptionDessus --debut--
+
+  descriptionDessusSelected = {id:-1, ligne:""}
+idLigne = 0
+  ajouteDescriptionDessus(){
+    if(this.formC.value.description != ""){
+      this.idLigne++
+      this.listDescriptionsDessus.push({ligne:this.formC.value.ligne, id:this.idLigne})
+      this.intialiseDescriptionDessus()
+    }
+  }
+
+  removeDescriptionDessus(id){
+    this.listDescriptionsDessus = this.listDescriptionsDessus.filter(x => x.id != id)
+    this.intialiseDescriptionDessus()
+  }
+
+  selectedDescriptionDessus(id){
+    let item = this.listDescriptionsDessus.filter(x => x.id == id)
+    if(item.length > 0){
+      this.descriptionDessusSelected = item[0]
+      this.formC.patchValue({ligne: this.descriptionDessusSelected.ligne});
+    }
+  }
+
+  modifieDescriptionDessus(){
+    for(let i = 0; i < this.listDescriptionsDessus.length; i++){
+      if(this.listDescriptionsDessus[i].id == this.descriptionDessusSelected.id){
+        this.listDescriptionsDessus[i].ligne = this.formC.value.ligne
+      }
+    }
+    this.intialiseDescriptionDessus()
+  }
+
+  intialiseDescriptionDessus(){
+    this.formC.patchValue({ligne: ""});
+    this.descriptionDessusSelected = {id:-1, ligne:""}
+  }
+
+  // Gestion des DescriptionDessus --fin--
+
   // Gestion des photos --fin--
 
- 
-  
   isLoading = false;
   erreurString = []
   isErreurs = false;
@@ -153,13 +263,7 @@ export class UpdateEventComponent implements OnInit {
     this.erreurString = []
     this.isErreurs = false
   
-    if(this.formC.value.nom == "") this.erreurString.push("SVP inserez votre nom")  
-    if(this.formC.value.adresse == "") this.erreurString.push("SVP inserez votre adresse")  
-    if(this.formC.value.telephone == "") this.erreurString.push("SVP inserez votre telephone")  
-    if(this.formC.value.email == "") this.erreurString.push("SVP inserez l'email")  
-    if(this.formC.value.description == "") this.erreurString.push("SVP inserez la description")  
-    if(this.formC.value.specialites == "") this.erreurString.push("SVP inserez les specialites")  
-    if(!this.multiImage) this.erreurString.push("SVP inserez l'image")  
+   if(!this.multiImage) this.erreurString.push("SVP inserez l'image")  
     
     if(this.erreurString.length > 0){
       this.isErreurs = true 
@@ -170,7 +274,7 @@ export class UpdateEventComponent implements OnInit {
 
 
 
-  addProduit(){
+  updateProduit(){
 
     if(this.isLoading){
       return 
@@ -186,11 +290,11 @@ export class UpdateEventComponent implements OnInit {
 
     if(this.imageSelectedSource){
       allImages.push({image:this.imageSelectedSource})
-    }else{
-      this.envoyerRequest(this.imageSelected)
-      return
     }
-   
+
+    if(this.imageSelectedSource2){
+      allImages.push({image:this.imageSelectedSource2})
+    }
    
     if(allImages.length > 0){
  
@@ -206,9 +310,21 @@ export class UpdateEventComponent implements OnInit {
           var arrayImages: any = res
           
           if(arrayImages.length > 0){
-            console.log(arrayImages)
-            this.imageSelected = arrayImages[0]
-            this.envoyerRequest(this.imageSelected)
+            
+           
+             let i = 0
+
+            if(this.imageSelectedSource){
+              this.imageSelected = arrayImages[i]
+            }
+        
+            if(this.imageSelectedSource2){
+              i++
+              this.imageSelected2 = arrayImages[i]
+            }
+
+            this.envoyerRequest(this.imageSelected, this.imageSelected2)
+
           }else{
             alert(this.notificationService.alertNotConnexion)
             this.isLoading = false;
@@ -222,17 +338,17 @@ export class UpdateEventComponent implements OnInit {
         }
       );
 
+    }else{
+      this.envoyerRequest(this.imageSelected, this.imageSelected2)
     }
 
   }
 
-  envoyerRequest(image){
+  envoyerRequest(image, image2){
     
-    let request:any = this.getRequest(image)
+    let request:any = this.getRequest(image, image2)
 
-   
-
-    this.http.post(this.userService.baseURL+"/centreFormation/updateCentreFormation/"+this.idCentre, request, 
+    this.http.post(this.userService.baseURL+"/event/updateEvent/"+this.event.id, request, 
     {
       headers: {
           "authorization": 'Bearer '+localStorage.getItem(this.userService.tokenString)
@@ -254,18 +370,53 @@ export class UpdateEventComponent implements OnInit {
   }
 
   
-  getRequest(image){
+  getRequest(image, image2){
 
-    let request = {image:"",  nom:"", description:"", specialites:"", adresse:"", telephone:"", email:""}
-
-    request["image"] = image
-    request["email"] = this.formC.value.email
-    request["nom"] = this.formC.value.nom
-    request["description"] = this.formC.value.description
-    request["specialites"] = this.formC.value.specialites
-    request["adresse"] = this.formC.value.adresse
-    request["telephone"] = this.formC.value.telephone
+    let request = 
+    {
+      nomFormateur:"",
+      imageFormateur:"",
+      adresse:"",
+      telephone:"",
+      email:"",
+      timeDepart:"",
+      timeEnd:"",
+      date:"",
+      specialites:"",
+      titre1:"",
+      titre2:"",
+      descriptions:[],
+      image:""
+    }
     
+    let newDescription = []
+    for(let i = 0; i < this.listDescriptionsDessus.length; i++){
+      newDescription.push({ligne:this.listDescriptionsDessus[i].ligne})
+    }
+
+    request.nomFormateur= this.formC.value.nomFormateur
+    request.imageFormateur= image2
+ 
+    request.adresse= this.formC.value.adresse
+    request.telephone= this.formC.value.telephone
+    request.email= this.formC.value.email
+ 
+    request.timeDepart= this.formC.value.timeDepart
+    request.timeEnd= this.formC.value.timeEnd
+ 
+    request.date= this.formC.value.date
+    
+ 
+    request.specialites= this.formC.value.specialites
+ 
+    request.titre1= this.formC.value.titre1
+   
+    request.titre2= this.formC.value.titre2
+   
+    request.descriptions = newDescription
+
+    request.image = image
+  
     return request
   }
 
