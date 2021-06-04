@@ -65,6 +65,14 @@
         "titre":"science de l'énergie",
         "image":"./assets/img/university/science de l'énergie.jpg",
         "route":"/CategorieDetails"
+    },
+    {
+        "id":9,
+        "titre":"Gestion-Affaires",
+        "image":"./assets/img/university/science de l'énergie.jpg",
+        "route":"/CategorieDetails"
     }
+
+
 
 ]

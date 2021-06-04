@@ -59,7 +59,11 @@ import { DeleteCategorieComponent } from './adminFormation/delete-categorie/dele
 import { EventDetailsComponent } from './siteFormation/event-details/event-details.component';
 import { ParticipantsEventComponent } from './adminFormation/participants-event/participants-event.component';
 
+import { ListEvaluationEnseignantComponent } from './adminEnseignant/list-evaluation-enseignant/list-evaluation-enseignant.component';
+
 const routes: Routes = [
+  {path: 'ListEvaluationEnseignant/:id' , component: ListEvaluationEnseignantComponent },
+
   {path: 'ParticipantsEvent/:id' , component: ParticipantsEventComponent },
 
   {path: 'EventDetails/:id' , component: EventDetailsComponent },

@@ -90,6 +90,7 @@ import { InscrirePopusComponent } from './shared/popups/inscrire-popus/inscrire-
 import { LoginPopupsComponent } from './shared/popups/login-popups/login-popups.component';
 import { EventDetailsComponent } from './siteFormation/event-details/event-details.component';
 import { ParticipantsEventComponent } from './adminFormation/participants-event/participants-event.component';
+import { ListEvaluationEnseignantComponent } from './adminEnseignant/list-evaluation-enseignant/list-evaluation-enseignant.component';
 
 @NgModule({
   declarations: [
@@ -165,7 +166,8 @@ import { ParticipantsEventComponent } from './adminFormation/participants-event/
     DemandeInscrireComponent,
     InscrirePopusComponent,
     EventDetailsComponent,
-    ParticipantsEventComponent
+    ParticipantsEventComponent,
+    ListEvaluationEnseignantComponent
   ],
   imports: [
     BrowserModule,

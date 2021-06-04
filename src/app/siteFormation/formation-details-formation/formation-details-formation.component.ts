@@ -74,6 +74,7 @@ export class FormationDetailsFormationComponent implements OnInit {
             this.autorized = true
           }else if(this.role == this.userService.roleEtudiant){
             this.verifiedEtudiant(idProduit)
+            this.initialiserEvaluation(this.formation.evaluations)
           }
           console.log(response)
         }else{
@@ -118,6 +119,18 @@ export class FormationDetailsFormationComponent implements OnInit {
   
   }
 
+  initialiserEvaluation(evaluations){
+      for(let i = 0; i < evaluations.length; i++){
+         if(evaluations[i].emailUtilisateur == this.email){
+           this.evaluation = evaluations[i].nbrEtoiles
+         }            
+      }
+
+      this.evaluations = evaluations
+  }
+
+  evaluations = []
+
   contentChanged(){
     console.log(this.myForm.value.content);
   }
@@ -148,6 +161,79 @@ export class FormationDetailsFormationComponent implements OnInit {
     this.idDetails = id
   }
 
+  evaluation=0
+  changeEvaluation(id){
+    this.evaluation = id
+    this.enregistrerEvaluation()
+  }
 
+  isLoading2 = false
+  enregistrerEvaluation(){
+
+    if(this.isLoading2){
+      return
+    }
+
+    this.isLoading2 = true
+    let evaluations = this.evaluations
+
+    let ok = false
+    for(let i = 0; i < evaluations.length; i++){
+      if(evaluations[i].emailUtilisateur == this.email){
+         evaluations[i].nbrEtoiles = this.evaluation
+         ok = true
+      }            
+    } 
+
+    if(!ok){
+        evaluations.push({
+          emailUtilisateur:this.email,
+          nbrEtoiles:this.evaluation,
+        })
+    }
+
+    this.evaluations = evaluations
+
+
+    this.http.post(this.userService.baseURL+"/produit/evaluationFormation/"+this.formation.id, this.evaluations, {
+      headers: {
+          "authorization": 'Bearer '+localStorage.getItem(this.userService.tokenString)
+      }
+    }).subscribe(
+      res => {
+        let response:any = res
+        this.isLoading2 = false
+        if(response.status){
+          this.condidature = response.resultat
+   
+          let evaluations = this.evaluations
+
+          let ok = false
+
+          for(let i = 0; i < evaluations.length; i++){
+            if(evaluations[i].emailUtilisateur == this.email && evaluations[i].nbrEtoiles == this.evaluation){
+               ok = true
+            }            
+          } 
+
+          if(!ok){
+            this.enregistrerEvaluation()
+          }
+
+          if(this.condidature.etat > 0){
+            this.autorized = true
+          }
+          console.log(response)
+        }else{
+         // alert(this.notificationService.alertNotConnexion)
+        }
+      }, err => {
+        this.isLoading2 = false
+        //alert(this.notificationService.alertNotConnexion)
+      }
+    );
+
+
+  }
 
 }

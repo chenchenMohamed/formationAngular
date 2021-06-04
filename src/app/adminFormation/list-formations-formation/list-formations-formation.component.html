@@ -47,6 +47,8 @@
                      <th>Prix</th>
                      <th></th>
                      <th></th>
+                    
+                     <th></th>
                    </tr>
                  </thead>
                  <tbody>
@@ -62,6 +64,13 @@
                      <td>{{item.createdFormation}}</td>
                      <td>{{item.nbrParticipant}}</td>
                      <td>{{item.prixVente}} DT</td>
+                    
+                     <td>
+                      <button class="btn btn-danger "  [routerLink]="'/ListEvaluationEnseignant/'+item.id">
+                        Evaluations
+                      </button>
+                    </td>
+
                      <td>
                        <button class="btn btn-danger "  [routerLink]="'/ListEtudiantEnseignant/'+item.id">
                          Participants
