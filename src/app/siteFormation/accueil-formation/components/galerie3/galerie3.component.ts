@@ -41,7 +41,6 @@ export class Galerie3Component implements OnInit {
       res => {
         this.isLoading = false
         let resultat:any
-        console.log(resultat)
         resultat = res
         if(resultat.status){
           /*console.log(resultat)
@@ -78,8 +77,6 @@ export class Galerie3Component implements OnInit {
     
     var elements = document.getElementsByClassName('items-list');
     
-    console.log(elements.length)
-
     if(this.width < 566){
       this.width  = this.width / 1 - 20
     }else  if(this.width < 860){
@@ -194,8 +191,6 @@ export class Galerie3Component implements OnInit {
   
   scrollAuto(){
     
-    console.log("start scroll auto")
-
     if(this.nbrPause != 0){
       setTimeout(() => {
         this.scrollAuto()
@@ -250,7 +245,6 @@ export class Galerie3Component implements OnInit {
       left: encient, 
       behavior: 'smooth'
     });
-    console.log("end scroll auto")
    
     setTimeout(() => {
       this.scrollAuto()
