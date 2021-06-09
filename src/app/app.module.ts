@@ -91,6 +91,7 @@ import { LoginPopupsComponent } from './shared/popups/login-popups/login-popups.
 import { EventDetailsComponent } from './siteFormation/event-details/event-details.component';
 import { ParticipantsEventComponent } from './adminFormation/participants-event/participants-event.component';
 import { ListEvaluationEnseignantComponent } from './adminEnseignant/list-evaluation-enseignant/list-evaluation-enseignant.component';
+import { SomeVideoComponent } from './siteFormation/accueil-formation/components/some-video/some-video.component';
 
 @NgModule({
   declarations: [
@@ -167,7 +168,8 @@ import { ListEvaluationEnseignantComponent } from './adminEnseignant/list-evalua
     InscrirePopusComponent,
     EventDetailsComponent,
     ParticipantsEventComponent,
-    ListEvaluationEnseignantComponent
+    ListEvaluationEnseignantComponent,
+    SomeVideoComponent
   ],
   imports: [
     BrowserModule,
