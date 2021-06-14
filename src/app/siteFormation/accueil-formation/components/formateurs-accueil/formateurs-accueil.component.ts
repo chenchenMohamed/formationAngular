@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import {CategoriesFormationService} from '../../../../servicesFormation/categoriesFormation/categories-formation.service'
+
+import {ProduitsFormationService} from '../../../../servicesFormation/produitsFormation/produits-formation.service'
+
+
 @Component({
   selector: 'app-formateurs-accueil',
   templateUrl: './formateurs-accueil.component.html',
@@ -7,7 +11,7 @@ import {CategoriesFormationService} from '../../../../servicesFormation/categori
 })
 export class FormateursAccueilComponent implements OnInit {
 
-  constructor(private categoriesFormationService:CategoriesFormationService) {
+  constructor(private categoriesFormationService:CategoriesFormationService, public produitsFormation:ProduitsFormationService) {
     
   }
 

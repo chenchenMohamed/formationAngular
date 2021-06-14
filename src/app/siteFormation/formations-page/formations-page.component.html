@@ -20,16 +20,16 @@
 </section>
    <!-- / catg header banner section -->
 
+    
    
-   <section id="aa-product">
+   <section id="aa-product" style="background-color: #7a0f3e;">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="row">
             
-            <div style="text-align: center;">
-                <h2>Les formations</h2>
-            </div>
+          <br>
+          <br>
 
             <div class="aa-product-area" *ngIf="categories.length != 0">
               <div class="aa-product-inner">
@@ -38,6 +38,8 @@
                     <li class="active"><a href="#{{categorie2.id}}" data-toggle="tab">{{categorie2.titre}}</a></li>
                     <li *ngFor="let item of categories"><a href="#{{item.id}}" data-toggle="tab">{{item.titre}}</a></li>
                  </ul>
+
+                 <br><br>
                   <!-- Tab panes -->
                   <div class="tab-content">
                     <!-- Start men product category -->

@@ -29,6 +29,7 @@ export class NavbarSiteFormationComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEvents()
+
   }
 
   deconnexion(){
@@ -64,6 +65,15 @@ export class NavbarSiteFormationComponent implements OnInit {
     
     );
 
+  }
+
+  changeRechercher(){
+    let text = (document.getElementById("searchNavbar")  as HTMLInputElement).value
+    if(text == ""){
+      return
+    }
+    this.userService.setSearch(text)
+    this.router.navigate(['/RecherchePage'])
   }
 
 }

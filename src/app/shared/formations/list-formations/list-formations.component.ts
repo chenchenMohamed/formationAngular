@@ -14,11 +14,18 @@ import { NotificationService } from '../../../servicesFormation/notification/not
 export class ListFormationsComponent implements OnInit {
 
   @Input() categories = []
+  @Input() isRecherche = "0"
 
   constructor(private notificationService:NotificationService, private http: HttpClient, private categoriesServices: CategoriesFormationService, public userService:UserService, public productService:ProduitsFormationService) { 
   }
 
   ngOnInit(): void {
+    if(this.isRecherche == "1"){
+      this.userService.search.subscribe( res => {
+        this.page = 1
+        this.getFormationsBySearch(res)
+      })
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -68,6 +75,38 @@ export class ListFormationsComponent implements OnInit {
     );
   }
  
+
+  getFormationsBySearch(search){
+    
+    if(this.isLoading){
+      return
+    }
+
+    this.isLoading = true
+
+    let request = {page:this.page, limitItems: 10, listCategories:this.categories}
+    
+    this.http.post(this.userService.baseURL+"/produit/recherche/"+search, request).subscribe(
+
+      res => {
+        this.isLoading = false
+        let resultat:any
+        console.log(resultat)
+        resultat = res
+        if(resultat.status){
+          console.log(resultat)
+          this.page = resultat.resultat.page
+          this.totalPage = resultat.resultat.pages
+          this.formations = resultat.resultat.docs
+        }
+
+      }, err => {
+        this.isLoading = false
+        alert("Désole, ilya un problème de connexion internet")
+      }
+    );
+  }
+
 
   setPage(newPage: number) {
     //    this.scrollTop()

@@ -61,7 +61,15 @@ import { ParticipantsEventComponent } from './adminFormation/participants-event/
 
 import { ListEvaluationEnseignantComponent } from './adminEnseignant/list-evaluation-enseignant/list-evaluation-enseignant.component';
 
+import { EventsPageComponent } from './siteFormation/events-page/events-page.component';
+
+import { RecherchePageComponent } from './siteFormation/recherche-page/recherche-page.component';
+
 const routes: Routes = [
+  {path: 'RecherchePage' , component: RecherchePageComponent },
+  
+  {path: 'EventsPage' , component: EventsPageComponent },
+  
   {path: 'ListEvaluationEnseignant/:id' , component: ListEvaluationEnseignantComponent },
 
   {path: 'ParticipantsEvent/:id' , component: ParticipantsEventComponent },

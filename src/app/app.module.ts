@@ -92,6 +92,8 @@ import { EventDetailsComponent } from './siteFormation/event-details/event-detai
 import { ParticipantsEventComponent } from './adminFormation/participants-event/participants-event.component';
 import { ListEvaluationEnseignantComponent } from './adminEnseignant/list-evaluation-enseignant/list-evaluation-enseignant.component';
 import { SomeVideoComponent } from './siteFormation/accueil-formation/components/some-video/some-video.component';
+import { EventsPageComponent } from './siteFormation/events-page/events-page.component';
+import { RecherchePageComponent } from './siteFormation/recherche-page/recherche-page.component';
 
 @NgModule({
   declarations: [
@@ -169,7 +171,9 @@ import { SomeVideoComponent } from './siteFormation/accueil-formation/components
     EventDetailsComponent,
     ParticipantsEventComponent,
     ListEvaluationEnseignantComponent,
-    SomeVideoComponent
+    SomeVideoComponent,
+    EventsPageComponent,
+    RecherchePageComponent
   ],
   imports: [
     BrowserModule,

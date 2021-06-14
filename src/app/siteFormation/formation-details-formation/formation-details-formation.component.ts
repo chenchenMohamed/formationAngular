@@ -27,8 +27,6 @@ export class FormationDetailsFormationComponent implements OnInit {
 
   autorized = false
   
-  
-  
   constructor(private notificationService:NotificationService, public userService:UserService, private _Activatedroute:ActivatedRoute,  private router:Router, public formBuilder:FormBuilder, private http: HttpClient) {
     this.userService.email.subscribe(res =>
       this.email = res

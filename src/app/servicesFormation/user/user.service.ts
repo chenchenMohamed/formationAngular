@@ -38,6 +38,15 @@ export class UserService {
   openModelInscrireLogin=new BehaviorSubject(this.varOpenModelInscrireLogin)
   openModelInscrireLoginChange=this.openModelInscrireLogin.asObservable() 
   
+  varSearch=""
+  search=new BehaviorSubject(this.varSearch)
+  searchChange=this.search.asObservable()  
+
+  setSearch(mot){
+    this.varSearch = mot
+    this.search.next(mot)
+  }
+
   setOpenModelInscrireLogin(data){
     this.openModelInscrireLogin.next(data)
   }

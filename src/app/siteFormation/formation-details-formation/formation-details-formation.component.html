@@ -23,7 +23,7 @@
    <app-loading *ngIf="isLoading"></app-loading>
 
    <!-- Blog Archive -->
-   <section id="aa-blog-archive" *ngIf="formation">
+   <section id="aa-blog-archive" *ngIf="formation" style="background-color: #e5e5e5;">
      <div class="container">
        <div class="row">
          <div class="col-md-12">
@@ -32,12 +32,7 @@
                <div class="col-md-12">
                  <!-- Blog details -->
                  <div class="aa-blog-content aa-blog-details">
-                     <h2><a href="#">{{formation.nom}}</a></h2>
                       <div class="aa-article-bottom">
-                       <div class="aa-post-author" style="font-size: 20px;">
-                         Formateur : <a [routerLink]="'/FormateurDetails/'+formateur.id">{{formateur.nom}}</a> <br>
-                         Specialites : <a [routerLink]="'/FormateurDetails/'+formateur.id">{{formateur.specialites}}</a>
-                       </div>
                        
                      </div>
 
@@ -50,35 +45,54 @@
                            
                            
                            
-                            <div class="row">
+                            <div class="row" >
                               <div class="col-md-12">
                                 <!-- Blog details -->
-                                <div class="aa-blog-content aa-blog-details">
-                                   <h1>{{formation.titre1}}</h1>
+                                <div>
+                                                                    <div class="row" style=" padding: 10px; border-radius: 15px;">
+
+                                    <div class="col-md-12">
                
-                                    <figure class="aa-blog-img" style="text-align: center;">
-                                      <a href="#"><img [src]="userService.baseURL +'/'+ formation.imagePrincipale" alt="fashion img" style="max-height: 300px;"></a>
-                                    </figure>
+                                      <figure class="aa-blog-img" style="text-align: center;">
+                                        <a href="#"><img [src]="userService.baseURL +'/'+ formation.imagePrincipale" alt="fashion img" style="width: 100%; border-radius: 15px;"></a>
+                                      </figure>
+                                            
+                                    </div>
+
+                                    
+                                   </div>
+ 
+                                   
+                                  
                
+
+
+
                                      <div class="aa-article-bottom">
                                    
                                     </div>
-               
+           
+                                    
                                     <div class="container">
                                        <div class="col-md-12">
                
                                            <div class="row">
+
+                                               <h1 style="color: black; font-weight: 900;">{{formation.nom}}</h1>
+                                           
+                                               <br>
+
                                                <ul class="style-list">
                                                
-                                                   <li style="display: inline;" (click)="changeDetails(1)" > <span style="color: red;" *ngIf="idDetails == 1">Descriptions</span> <span  *ngIf="idDetails != 1">Descriptions</span> </li>
-                                                   <li style="display: inline;" (click)="changeDetails(2)" ><span style="color: red;" *ngIf="idDetails == 2">Chapitres</span> <span  *ngIf="idDetails != 2">Chapitres</span>  </li>
-                                                   <li style="display: inline;" (click)="changeDetails(3)" ><span style="color: red;" *ngIf="idDetails == 3">Formateur</span> <span  *ngIf="idDetails != 3">Formateur</span>  </li>
-                                                   <li style="display: inline;" (click)="changeDetails(4)" ><span style="color: red;" *ngIf="idDetails == 4"> Evaluation</span> <span  *ngIf="idDetails != 4"> Evaluation</span> </li>
+                                                   <li style="display: inline;" (click)="changeDetails(1)" > <span class="button-style"  *ngIf="idDetails == 1">Descriptions</span> <span  *ngIf="idDetails != 1">Descriptions</span> </li>
+                                                   <li style="display: inline;" (click)="changeDetails(2)" ><span class="button-style"  *ngIf="idDetails == 2">Chapitres</span> <span  *ngIf="idDetails != 2">Chapitres</span>  </li>
+                                                   <li style="display: inline;" (click)="changeDetails(3)" ><span class="button-style"  *ngIf="idDetails == 3">Formateur</span> <span  *ngIf="idDetails != 3">Formateur</span>  </li>
+                                                   <li style="display: inline;" (click)="changeDetails(4)" ><span class="button-style"  *ngIf="idDetails == 4"> Evaluation</span> <span  *ngIf="idDetails != 4"> Evaluation</span> </li>
                                                
                                                </ul>
                                            </div>
                
-                                           <div class="row" *ngIf="idDetails == 1">
+                                           <div class="row style-block" *ngIf="idDetails == 1" >
                
                                             <ul>
                                               <li *ngFor="let ligne of formation.descriptionsDessus"> {{ligne.ligne}} </li>
@@ -89,7 +103,7 @@
                                           
                                            </div>
                
-                                           <div class="row" *ngIf="idDetails == 2">
+                                           <div class="row style-block" *ngIf="idDetails == 2">
                
                                             <div *ngFor="let item of formation.descriptionsDessous">
                                               <h3> {{item.title}} </h3>
@@ -103,7 +117,7 @@
                                           
                                              </div>
                
-                                             <div class="row" *ngIf="idDetails == 3">
+                                             <div class="row style-block" *ngIf="idDetails == 3">
                
                                                <h2 style="text-align: center;">
                                                    {{formation.titre2}}      
@@ -122,7 +136,7 @@
                                              
                                              </div>
                
-                                             <div class="row" *ngIf="idDetails == 4">
+                                             <div class="row style-block" *ngIf="idDetails == 4">
                                               <h2 style="text-align: center;">
                                                  Evaluation  
                                              </h2>
