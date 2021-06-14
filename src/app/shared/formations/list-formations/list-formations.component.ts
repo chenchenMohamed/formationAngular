@@ -100,6 +100,8 @@ export class ListFormationsComponent implements OnInit {
           this.formations = resultat.resultat.docs
         }
 
+
+        
       }, err => {
         this.isLoading = false
         alert("Désole, ilya un problème de connexion internet")
