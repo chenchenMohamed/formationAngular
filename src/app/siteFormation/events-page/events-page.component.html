@@ -33,8 +33,8 @@
                       <div class="row">
             
                         <!-- single latest blog -->
-                        <div class="col-md-4 col-sm-4" *ngFor="let item of events" style="margin-bottom: 20px; background-color: rgb(163, 162, 162); padding:0px;">
-                          <div class="aa-latest-blog-single">
+                        <div class="col-md-4 col-sm-4" *ngFor="let item of events" style="margin-bottom: 20px; padding:10px;">
+                          <div class="aa-latest-blog-single" style="background-color: rgb(163, 162, 162); padding:0px;">
                          
                           
                             <figure class="aa-blog-img"  style="position:relative;">                    
@@ -53,8 +53,8 @@
 
                               <div style="width: 100%; display: flex; flex-direction: row; flex-wrap: nowrap;">
                              
-                                  <div style="width: 60%; padding:5px;">
-                                    
+                                  <div style="width: 60%; padding:5px; height: 200px; overflow: hidden;">
+
                                     <h3 class="aa-blog-title"><a [routerLink]="'/EventDetails/'+item.id" style="color: black; font-size: 30px;">{{item.titre1}}</a></h3>
                                   
                                     <p style="color: black; font-size: 17px;"> {{item.specialites}} </p> 

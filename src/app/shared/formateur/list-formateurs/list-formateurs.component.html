@@ -11,7 +11,7 @@
             <br>
             
             <!-- single latest blog -->
-            <div class="col-md-4 col-sm-4" *ngFor="let item of formateurs" style="margin-bottom: 20px; padding:20px; background-color: rgba(0, 0, 0, 0.363); border-radius:15%;">
+            <div class="col-md-3 col-sm-3" *ngFor="let item of formateurs" style="margin-bottom: 20px; padding:20px; background-color: rgba(0, 0, 0, 0.363); border-radius:15%;">
               <div class="aa-latest-blog-single">
                 <figure class="aa-blog-img">                    
                   <a [routerLink]="'/FormateurDetails/'+item.id"><img [src]="userService.baseURL+'/'+item.image" alt="img" style="border-radius: 50%;"></a>  
