@@ -21,11 +21,15 @@ export class FormationDetailsFormationComponent implements OnInit {
   formations:any=[]
   myForm: FormGroup;
  
+  chapitre
+  posChapitre = 0
   
   email
   role
 
   autorized = false
+
+  isShowVideo = true 
   
   constructor(private notificationService:NotificationService, public userService:UserService, private _Activatedroute:ActivatedRoute,  private router:Router, public formBuilder:FormBuilder, private http: HttpClient) {
     this.userService.email.subscribe(res =>
@@ -68,6 +72,10 @@ export class FormationDetailsFormationComponent implements OnInit {
           this.formation = response.resultat
           this.formateur = response.formateur
 
+          if(this.formation.chapitres.length > 0){
+            this.chapitre = this.formation.chapitres[0]
+          }
+
           if(this.formateur.email == this.email){
             this.autorized = true
           }else if(this.role == this.userService.roleEtudiant){
@@ -84,6 +92,29 @@ export class FormationDetailsFormationComponent implements OnInit {
       }
     );
 
+  }
+
+  setNextChapitre(pas){
+    this.isShowVideo = false
+
+    setTimeout(()=>{ 
+      this.isShowVideo = true
+    }, 500);
+
+
+    this.posChapitre += pas
+
+    if(this.formation.chapitres.length == 0){
+      return
+    }
+
+    if(this.posChapitre > (this.formation.chapitres.length - 1)){
+      this.posChapitre = 0
+    }else if(this.posChapitre < 0){
+      this.posChapitre = this.formation.chapitres.length - 1
+    }
+
+    this.chapitre = this.formation.chapitres[this.posChapitre]
   }
 
   condidature

@@ -23,7 +23,7 @@
    <app-loading *ngIf="isLoading"></app-loading>
 
    <!-- Blog Archive -->
-   <section id="aa-blog-archive" *ngIf="formation" style="background-color: #e5e5e5;">
+   <section id="aa-blog-archive" *ngIf="formation">
      <div class="container">
        <div class="row">
          <div class="col-md-12">
@@ -213,24 +213,24 @@
                       
                    <!-- blog navigation -->
                    <div class="aa-blog-navigation"  *ngIf="autorized" >
-                     <a class="aa-blog-prev" href="#"><span class="fa fa-arrow-left"></span>Chapitre présedent</a>
-                     <a class="aa-blog-next" href="#">Chapitre suivant<span class="fa fa-arrow-right"></span></a>
-                   </div>
+                    <button class="aa-blog-prev" (click)="setNextChapitre(-1)"><span class="fa fa-arrow-left"></span>Chapitre présedent</button>
+                    <button class="aa-blog-next" href="" (click)="setNextChapitre(1)">Chapitre suivant<span class="fa fa-arrow-right"></span></button>
+                  </div>
                    <!-- Blog Comment threats -->
                    <div class="aa-blog-comment-threat" *ngIf="autorized">
                      <h3>Chapitres ({{formation.chapitres.length}})</h3>
                      <div class="comments">
                        <ul class="commentlist">
                       
-                        <li *ngFor="let item of formation.chapitres">
-                              <h4 class="author-name">{{item.titre}}</h4>
+                        <li >
+                              <h4 class="author-name">{{chapitre.titre}}</h4>
                              
-                              <p> {{item.description}} </p>
+                              <p> {{chapitre.description}} </p>
                                  
                                 <br>
                             
-                                <video controls style="width: 100%;">
-                                  <source [src]="userService.baseURL +'/'+ item.video" type="video/mp4">
+                                <video controls style="width: 100%;" *ngIf="isShowVideo">
+                                  <source [src]="userService.baseURL +'/'+ chapitre.video" type="video/mp4">
                                 </video>
                       
                                 <br>

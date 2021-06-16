@@ -135,7 +135,9 @@ export class InscrirePopusComponent implements OnInit {
         this.isLoading = false
         let response: any = res
         if(response.status){
+          this.isOpenCommande = false
           this.notificationService.showSuccess(this.notificationService.successCompteActive, this.notificationService.TypeFelicitation)
+          this.userService.setOpenModelInscrireLogin(1)
           this.formC.reset()
         
         }else{
