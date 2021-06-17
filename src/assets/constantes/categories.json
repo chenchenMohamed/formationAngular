@@ -2,75 +2,75 @@
 
     {
         "id":1,
-        "titre":"Communication",
+        "titre":"mangement",
         "image":"./assets/img/university/Communication.jpg",
-        "route":"/IdaretAmel"
+        "route":"/Gestion-Affaires"
     },
     {
         "id":2,
-        "titre":"consultation",
+        "titre":"devlopment Personel",
         "image":"./assets/img/university/consultation.jpg",
-        "route":"/CategorieDetails"
+        "route":"/développement personnel"
     },
     {
         "id":3,
-        "titre":"développement personnel",
+        "titre":"comminication",
         "image":"./assets/img/university/développement personnel.jpg",
-        "route":"/CategorieDetails"
+        "route":"/Communication"
     },
     {
         "id":4,
-        "titre":"enfant et famille",
+        "titre":"PNL",
         "image":"./assets/img/university/enfant et famille.jpg",
-        "route":"/CategorieDetails"
+        "route":"/PNL"
     },
     {
         "id":5,
-        "titre":"licence de formation des formateurs",
+        "titre":"energie science",
         "image":"./assets/img/university/licence de formation des formateurs.jpg",
-        "route":"/CategorieDetails"
+        "route":"/science de énergie"
     },
     {
         "id":6,
-        "titre":" multimédia",
+        "titre":"health psychologie",
         "image":"./assets/img/university/multimédia.jpg",
-        "route":"/CategorieDetails"
+        "route":"/psychologie"
     },
     {
         "id":7,
-        "titre":"PNL",
+        "titre":"hypnosis meditation",
         "image":"./assets/img/university/PNL.jpg",
-        "route":"/CategorieDetails"
+        "route":"/hypnosis&meditation"
     },
     {
         "id":8,
-        "titre":"psychologie",
+        "titre":"consulting",
         "image":"./assets/img/university/psychologie.jpg",
-        "route":"/CategorieDetails"
+        "route":"/consulting"
     },
     {
         "id":8,
-        "titre":"radio & media",
+        "titre":"Tot life coach",
         "image":"./assets/img/university/radio & media.jpg",
-        "route":"/CategorieDetails"
+        "route":"/Tot&life&coach"
     },
     {
         "id":8,
-        "titre":"santé",
+        "titre":"child family",
         "image":"./assets/img/university/santé.jpg",
-        "route":"/CategorieDetails"
+        "route":"/child&family"
     },
     {
         "id":8,
-        "titre":"science de l'énergie",
+        "titre":"Info multimedia",
         "image":"./assets/img/university/science de l'énergie.jpg",
-        "route":"/CategorieDetails"
+        "route":"/multimedia"
     },
     {
         "id":9,
-        "titre":"Gestion-Affaires",
+        "titre":"Radio media",
         "image":"./assets/img/university/science de l'énergie.jpg",
-        "route":"/CategorieDetails"
+        "route":"/radio & media"
     }
 
 
