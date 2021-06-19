@@ -75,13 +75,13 @@ export class FormationDetailsFormationComponent implements OnInit {
           if(this.formation.chapitres.length > 0){
             this.chapitre = this.formation.chapitres[0]
           }
-
-          if(this.formateur.email == this.email){
-            this.autorized = true
-          }else if(this.role == this.userService.roleEtudiant){
+          
+          if(this.role != ""){
             this.verifiedEtudiant(idProduit)
-            this.initialiserEvaluation(this.formation.evaluations)
           }
+       
+          this.initialiserEvaluation(this.formation.evaluations)
+       
           console.log(response)
         }else{
          // alert(this.notificationService.alertNotConnexion)
@@ -148,12 +148,19 @@ export class FormationDetailsFormationComponent implements OnInit {
   
   }
 
+  sommeEvaluation = 0
+
   initialiserEvaluation(evaluations){
+      
+    console.log(evaluations)
       for(let i = 0; i < evaluations.length; i++){
-         if(evaluations[i].emailUtilisateur == this.email){
+         this.sommeEvaluation += evaluations[i].nbrEtoiles 
+         if(evaluations[i].emailUtilisateur == this.email && this.role != ""){
            this.evaluation = evaluations[i].nbrEtoiles
          }            
       }
+
+      this.sommeEvaluation  = Math.round(this.sommeEvaluation / evaluations.length)
 
       this.evaluations = evaluations
   }

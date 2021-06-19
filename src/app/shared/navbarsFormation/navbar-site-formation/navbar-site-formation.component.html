@@ -141,9 +141,9 @@
   </header>
   <!-- / header section -->
   <!-- menu -->
-  <section id="menu" style="background-color: rgba(34, 34, 34, 0.342); ">
+  <section id="menu" style="position: relative; z-index: 5;">
     <div class="container">
-      <div class="menu-area">
+      <div class="menu-area" style="padding:15px; background-color: rgba(34, 34, 34, 0.342); position: absolute; top:0px; left: 0px;">
         <!-- Navbar -->
         <div class="navbar navbar-default" role="navigation">
           <div class="navbar-header">
@@ -156,7 +156,7 @@
           </div>
           <div class="navbar-collapse collapse">
             <!-- Left nav -->
-            <ul class="nav navbar-nav" style="height: 50px; background-color: rgba(34, 34, 34, 0.342);">
+            <ul class="nav navbar-nav" >
             
               <li><a [routerLink]="['/Accueil']">Accueil</a></li>
               <li><a [routerLink]="['/ProposPage']">About</a></li>
