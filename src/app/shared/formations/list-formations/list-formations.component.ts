@@ -26,15 +26,17 @@ export class ListFormationsComponent implements OnInit {
         this.getFormationsBySearch(res)
       })
     }
+
+    this.page = 1
+    this.getFormations()
+    
   }
 
   ngOnChanges(changes: SimpleChanges) {
   
-    if(this.categories.length > 0){
       this.page = 1
       this.getFormations()
-    }
-
+   
   }
 
 
@@ -50,13 +52,21 @@ export class ListFormationsComponent implements OnInit {
       return
     }
 
-    this.isLoading = true
+     this.isLoading = true
 
     let request = {page:this.page, limitItems: 10, listCategories:this.categories}
+    
+    if(this.categories.length == 0){
+      request = {page:this.page, limitItems: 10, listCategories:[]}
+    }
+
     
     this.http.post(this.userService.baseURL+"/produit/listFormation", request).subscribe(
 
       res => {
+
+        console.log(this.categories)
+
         this.isLoading = false
         let resultat:any
         console.log(resultat)
