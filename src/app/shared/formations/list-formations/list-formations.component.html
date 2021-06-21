@@ -12,7 +12,7 @@
                   <a [routerLink]="'/FormationDetails/'+item.id" ><img [src]="userService.baseURL +'/'+ item.imagePrincipale" alt="img"></a>  
                 </figure>
 
-                <div  style="text-align: center; position:relative; width: 100%;">
+                <div  style="text-align: center; position:relative; width: 100%;" *ngIf="item.formateur">
                   <img [src]="userService.baseURL +'/'+ item.formateur.image" alt="img" style="border-radius: 50%; width:100px; position:absolute; left:0; right: 0px; top:-50px; z-index: 100; margin:auto; height: 100px;">
                 </div>
 

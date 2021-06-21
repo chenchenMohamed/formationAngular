@@ -15,6 +15,8 @@ export class FormationsPageComponent implements OnInit {
   categories = []
   categorie2
 
+  categoriesEmpty = []
+
   ngOnInit(): void {
      this.categoriesFormationService.categories.subscribe(res => {
        this.categories = res

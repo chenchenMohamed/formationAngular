@@ -26,10 +26,6 @@ export class ListFormationsComponent implements OnInit {
         this.getFormationsBySearch(res)
       })
     }
-
-    this.page = 1
-    this.getFormations()
-    
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -54,7 +50,7 @@ export class ListFormationsComponent implements OnInit {
 
      this.isLoading = true
 
-    let request = {page:this.page, limitItems: 10, listCategories:this.categories}
+    let request = {page:this.page, limitItems: 12, listCategories:this.categories}
     
     if(this.categories.length == 0){
       request = {page:this.page, limitItems: 10, listCategories:[]}
@@ -69,7 +65,7 @@ export class ListFormationsComponent implements OnInit {
 
         this.isLoading = false
         let resultat:any
-        console.log(resultat)
+        console.log(request.listCategories)
         resultat = res
         if(resultat.status){
           console.log(resultat)
