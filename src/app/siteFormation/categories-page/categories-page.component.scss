@@ -209,3 +209,30 @@
   .button-slider:hover{
       color: red;
   }
+
+  .active-slider-web{
+    display: block;
+  }
+
+  .active-slider-mobile{
+    display: none;
+  }
+
+  @media only screen and (max-width: 992px) {
+    .active-slider-web {
+       display: none;
+    }
+
+    .active-slider-mobile {
+       display: block;
+    }
+  }
+
+  .active-slider-mobile a{
+    color: white;
+  }
+
+  .active-slider-mobile img{
+      max-width: 100%;
+      border-radius: 50% ;
+  }
