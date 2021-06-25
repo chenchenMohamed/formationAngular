@@ -72,7 +72,12 @@ export class UpdateFormationComponent implements OnInit {
   }
 
 
+  role=""
   ngOnInit(): void {
+    this.userService.role.subscribe(res =>{
+      this.role = res
+    })
+
     this._Activatedroute.paramMap.subscribe(params => { 
       this.inisialiserProduit(params.get('id')); 
     });

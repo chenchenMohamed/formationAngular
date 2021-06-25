@@ -47,6 +47,7 @@
                      <th>Téléphone</th>
                      <th></th>
                      <th></th>
+                     <th></th>
                    </tr>
                  </thead>
                  <tbody>
@@ -62,6 +63,17 @@
                      <td>{{item.specialites}}</td>
                      <td>{{item.email}}</td>
                      <td>{{item.telephone}}</td>
+                     
+                     <td>
+                      <button *ngIf="item.isActive == 1" class="btn btn-danger"  (click)="activerFormateur(item.id, 0)">
+                           Desactiver
+                      </button>
+
+                      <button *ngIf="item.isActive == 0" class="btn btn-info"  (click)="activerFormateur(item.id, 1)">
+                           Activer
+                      </button>
+                     </td>
+
                      <td>
                        <button class="btn btn-danger "  [routerLink]="'/FormateurDetails/'+item.id" >
                          Profil + Formations

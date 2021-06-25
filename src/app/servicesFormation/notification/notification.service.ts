@@ -29,75 +29,74 @@ export class NotificationService {
   }
 
   messagesErrorsBackend = [
-    { name:"errorLogin", message: "Échec d’authentification"}, 
-    { name:"errorRegister", message: "Votre email est déjà existe"},
-    { name:"errorUpdateCompte1", message: 'Votre compte ne existe pas'},
-    { name:"errorUpdateCompte2", message: "Votre nouveaux email existe déja"},
-    { name:"errorUpdateCompte3", message: "Votre mot de passe non correspondante"}
+    { name:"errorLogin", message: "Authentication Failure"}, 
+    { name:"errorRegister", message: "Your email already exists"},
+    { name:"errorUpdateCompte1", message: 'Your account does not exist'},
+    { name:"errorUpdateCompte2", message: "Your new email already exists"},
+    { name:"errorUpdateCompte3", message: "Your password not matching"}
   ]
 
   //erreurs compte
-  errorPassword = "SVP, le mot de passe doit comporter au moins six caractères et peut être composé de lettres et de chiffres !!"
-  errorPassowrdConfirm = "SVP, inserer votre confirmation de mot de passe !! "
-  errorConfirmPassword = "SVP, verfier votre mot de passe !! "
-  errorTelephone = "SVP, inserer votre telephone !! "
-  errorEmail = "SVP, inserer votre email !! "
-  errorNewEmail = "SVP, inserer votre nouveau email !! "
-  errorNewPassword = "SVP, inserer votre nouveau mot de passe !! "
-  errorValidationNewPassword = "SVP, validez votre nouveau mot de passe !! "
-  errorValidationNewEmail = "SVP, validez votre nouveau email !! "
-  errorNom = "SVP, inserer votre nom !! "
-  errorMessage = "SVP, inserez votre message !! "
-  errorAdresse = "SVP, inserez votre adresse !! "
+  errorPassword = "Please, the password must be at least six characters long and can consist of letters and numbers !!"
+  errorPassowrdConfirm = "Please insert your password confirmation !! "
+  errorConfirmPassword = "Please verify your password !! "
+  errorTelephone = "Please insert your phone !!"
+  errorEmail = "Please enter your email !! "
+  errorNewEmail = "Please insert your new email !! "
+  errorNewPassword = "Please enter your new password !! "
+  errorValidationNewPassword = "Please, validate your new password !! "
+  errorValidationNewEmail = "Please validate your new email !! "
+  errorNom = "Please insert your name !!"
+  errorMessage = "Please insert your message !!"
+  errorAdresse = "Please enter your address !!"
   
   //erreurs Validation commande
-  errorValidationPremierEtape = "SVP, Validez la première étape !!"
-  errorPanierVide = "Désole, Votre panier est vide !!"
+  errorValidationPremierEtape = "Please, validate the first step !!"
+  errorPanierVide ="Sorry, your cart is empty !!"
 
   //erreurs ajouter produit
-  errorNomProduit = "SVP, inserer le nom !! "
-  errorRefProduit = "SVP, inserer le ref !! "
-  errorDisponibiliteProduit = "SVP, inserer le disponibilite !! "
-  errorPrixAchatProduit = "SVP, inserer le prixAchat !! "
-  errorPrixVenteProduit = "SVP, inserer le prixVente !! "
-  errorDescriptionDessusProduit = "SVP, inserer le description !! "
-  errorCategoriesProduit =  "SVP, inserer le categorie !! "
-  errorMarqueProduit = "SVP, inserer le marque !! "
-  errorCouleurProduit = "SVP, inserer le couleur !! "
-  errorImagesProduit = "SVP, inserer les images !! "
+  errorNomProduit = "Please insert the name !!"
+  errorRefProduit = "Please insert the ref !!"
+  errorDisponibiliteProduit = "Please enter the availability !!"
+  errorPrixAchatProduit = "Please enter the pricePurchase !!"
+  errorPrixVenteProduit = "Please enter the price !!"
+  errorDescriptionDessusProduit = "Please insert description !!"
+  errorCategoriesProduit =  "Please insert the category !!"
+  errorMarqueProduit = "Please insert the marque !! "
+  errorCouleurProduit = "Please insert the color !!"
+  errorImagesProduit = "Please insert the images !!"
 
   //success ajouter au panier
-  successAjouterPanier = "Ce produit est ajouté au panier"
-  successEnleverPanier = "Ce produit est enlevé de panier"
+  successAjouterPanier = "This product is added to the basket"
+  successEnleverPanier = "This product is removed from cart"
   
-  alertNotConnexion = "Désole, ilya un problème de connexion internet"
+  alertNotConnexion = "Sorry, there is an internet connection problem"
 
-  messageLogin= "Bienvenue "
-  compteString= "Mon compte"
+  messageLogin= "Welcome "
+  compteString= "My account"
 
-  TypeFelicitation = "Félicitations"
-  TypeError = "Erreur"
+  TypeFelicitation = "Congratulations"
+  TypeError = "Error"
   TypeMessage = "Message"
 
-  successDownloadData = "Votre base de données est enregistré"
-  successCompteActive = "Votre compte est maintenant activé"
-  successUpdateCompte = "Votre modification est enregistrée"
-  successCommandeEnvoyer = "Votre commande est envoyeé !!!"
-  sucessProduitEnregistrer = "Votre produit est bien enregistrée"
-  successContactEnvayer = "Votre contact est envoyé"
-  messageYouConnecte = "Vous êtes connecté avec "
-  messageFirstStepValide = "La premier etape est valide"
-  successSaveUpdate = "Votre modification est enregistrée !!"
-
+  successDownloadData = "Your database is registered"
+  successCompteActive = "Your account is now activated"
+  successUpdateCompte ="Your modification is saved"
+  successCommandeEnvoyer = "Your order has been sent !!!"
+  sucessProduitEnregistrer = "Your product is successfully registered"
+  successContactEnvayer = "Your contact is sent"
+  messageYouConnecte = "You are connected with"
+  messageFirstStepValide = "The first step is valid"
+  successSaveUpdate = "Your modification is saved !!"
   //mot de passe oublie
-  messageErrorPasswordForgien1 = "SVP, verifiez votre email"
-  messageSuccessPasswordForgien2 = "L'email de modification est envoyé" 
+  messageErrorPasswordForgien1 = "Please check your email"
+  messageSuccessPasswordForgien2 = "The modification email is sent"
 
-  messageErrorForgotPassword = "SVP, répétez la procédure de mot de passe oublié"
+  messageErrorForgotPassword = "Please repeat the forgotten password procedure"
 
   //produits speciales
-  errorProduitSpecialUrl = "SVP, inserez URL de votre produit !! "
-  errorProduitSpecialQuantite = "SVP, inserez la quantité de votre produit !! "
-  errorProduitSpecialProduits = "SVP, inserez votres produits spéciales !! "
+  errorProduitSpecialUrl = "Please insert your product URL !!"
+  errorProduitSpecialQuantite = "Please insert the quantity of your product !!"
+  errorProduitSpecialProduits = "Please insert your special products !!"
 }
 

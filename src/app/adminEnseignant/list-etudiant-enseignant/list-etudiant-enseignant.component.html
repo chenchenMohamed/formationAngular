@@ -9,10 +9,10 @@
    <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
-        <h2>Mes Etudiants</h2>
+        <h2>the candidates</h2>
         <ol class="breadcrumb">
           <li><a href="index.html">Home</a></li>         
-          <li class="active">Mes Etudiants</li>
+          <li class="active">the candidates</li>
         </ol>
       </div>
      </div>
@@ -31,7 +31,7 @@
             
 
 
-             <h2>Liste des inscriptions</h2>
+             <h2>List of registrations</h2>
                                        
                                       
              <app-loading *ngIf="isLoading"></app-loading>
@@ -41,11 +41,11 @@
                <table class="table" style="min-height: 300px;">
                  <thead>
                    <tr>
-                     <th>Nom</th>
-                     <th>Date</th>
+                     <th>last name</th>
+                     <th>dates</th>
                      <th>Telephone</th>
-                     <th>Email</th>
-                     <th>Niveaux</th>
+                     <th>Phone</th>
+                     <th>levels</th>
                      <th></th>
                      <th></th>
                    </tr>
@@ -66,13 +66,13 @@
                      <td>{{item.idEtudiant.niveauEtudiant}}</td>
                      <td>
                        <button class="btn btn-danger " >
-                         profil
+                         profile
                        </button>
                      </td>
                   
                      <td>
                        <button class="btn btn-danger "  (click)="activerEtudiant(item.id)">
-                            desctiver
+                            deactivate
                        </button>
                      </td>
                   

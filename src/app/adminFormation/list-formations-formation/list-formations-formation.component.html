@@ -49,6 +49,8 @@
                      <th></th>
                     
                      <th></th>
+                     <th></th>
+                     <th></th>
                    </tr>
                  </thead>
                  <tbody>
@@ -87,13 +89,19 @@
                        <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/DeleteFormation/'+item.id" >
                          <i class="fa fa-trash" style="color: white;" ></i>
                        </a>
-                       <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/UpdateFormation/'+item.id" >
-                         <i class="fa fa-edit" style="color: white;" ></i>
-                       </a>
-                       <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/FormationDetails/'+item.id" >
-                           <i class="fa fa-eye" style="color: white;" ></i>
-                       </a>
                      </td>
+
+                     <td>
+                       <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/UpdateFormation/'+item.id" >
+                        <i class="fa fa-edit" style="color: white;" ></i>
+                      </a>
+                     </td>
+
+                    <td>
+                      <a class="btn btn-danger " style="margin-right: 5px;" [routerLink]="'/FormationDetails/'+item.id" >
+                          <i class="fa fa-eye" style="color: white;" ></i>
+                      </a>
+                    </td>
                       
                   </tr>
             

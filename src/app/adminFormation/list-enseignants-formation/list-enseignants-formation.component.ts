@@ -57,6 +57,47 @@ export class ListEnseignantsFormationComponent implements OnInit {
       }
     );
   }
+
+  activerFormateur(idFormateur, active){
+    
+    if(this.isLoading){
+      return
+    }
+
+    this.isLoading = true
+
+    this.http.post(this.userService.baseURL+"/user/ActiveFormateur/"+idFormateur+"/"+active, {}, 
+    {
+      headers: {
+          "authorization": 'Bearer '+localStorage.getItem(this.userService.tokenString)
+      }
+    }).subscribe(
+
+      res => {
+        this.isLoading = false
+        let resultat:any
+        console.log(resultat)
+        resultat = res
+        if(resultat.status){
+          if(active == 1){
+            alert("Votre formateur est activé")
+          }else{
+            alert("Votre formateur est desactivé")
+          }
+        }
+
+        for(let i = 0; i<this.formations.length;i++){
+          if(this.formations[i].id == idFormateur){
+            this.formations[i].isActive = active;
+          }
+        }
+
+      }, err => {
+        this.isLoading = false
+        alert("Désole, ilya un problème de connexion internet")
+      }
+    );
+  }
  
 
   setPage(newPage: number) {

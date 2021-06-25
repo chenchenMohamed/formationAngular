@@ -8,10 +8,10 @@
      <div class="aa-catg-head-banner-area">
       <div class="container">
        <div class="aa-catg-head-banner-content">
-         <h2>Modifier formation</h2>
+         <h2>Modify training</h2>
          <ol class="breadcrumb">
            <li><a href="index.html">Home</a></li>                   
-           <li class="active">Modifier formation</li>
+           <li class="active">Modify training</li>
          </ol>
        </div>
       </div>
@@ -28,29 +28,29 @@
             
             <div class="col-md-12">
              
-                <h1>Modifier Formation</h1>
+                <h1>Modify training</h1>
                 <form class="form-horizontal" [formGroup]="formC">
                     
                      <fieldset id="account">
-                         <legend>Informations Générales</legend>
+                         <legend>General information</legend>
                         
                          
                          <div class="form-group required">
-                             <label for="input-firstname" class="col-sm-2 control-label">Nom</label>
+                             <label for="input-firstname" class="col-sm-2 control-label">name training</label>
                              <div class="col-sm-10">
                                  <input type="text" class="form-control" formControlName="nom" placeholder="Nom" value="" name="firstname">
                              </div>
                          </div>
                          <div class="form-group required">
-                             <label for="input-lastname" class="col-sm-2 control-label">Specialites</label>
+                             <label for="input-lastname" class="col-sm-2 control-label">Specialties</label>
                              <div class="col-sm-10">
-                                 <input type="text" class="form-control" formControlName="ref" placeholder="Reference" value="" name="lastname">
+                                 <input type="text" class="form-control" formControlName="ref" placeholder="Specialties" value="" name="lastname">
                              </div>
                          </div>
                          <div class="form-group required">
-                             <label for="input-email" class="col-sm-2 control-label">Prix de vente</label>
+                             <label for="input-email" class="col-sm-2 control-label">Selling price</label>
                              <div class="col-sm-5">
-                                 <input type="number" class="form-control" formControlName="prixVente" placeholder="Prix en dinar tunisien" value="" name="email">
+                                 <input type="number" class="form-control" formControlName="prixVente" placeholder="Selling price" value="" name="email">
                              </div>
                              <div class="col-sm-5 control-label">
                                  <span style="font-weight: 900; margin-left: 10px;">DT</span>
@@ -59,12 +59,12 @@
                      </fieldset>
                     
                      <fieldset id="address">
-                         <legend>Déscriptions au dessus</legend>
-                         <p> Cette description affiche sous forme des paragraphes </p>
+                         <legend>Descriptions above</legend>
+                         <p> This description displayed as paragraphs </p>
                          
                          <div class="class-slected">
                              <div class="form-group">
-                                 <label for="input-company" class="col-sm-2 control-label">Paragraphe</label>
+                                 <label for="input-company" class="col-sm-2 control-label">Paragraph</label>
                                  <div class="col-sm-10">
                                      <textarea class="form-control" formControlName="description" rows="10" name="enquiry"></textarea>
                                  </div>
@@ -94,13 +94,13 @@
 
 
                      <fieldset id="address">
-                        <legend>Déscriptions au dessous</legend>
+                        <legend>Descriptions below</legend>
                         
                         <div class="class-slected">
                             <div class="form-group">
                                 <label for="input-company" class="col-sm-2 control-label">Titre</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" formControlName="descriptionTitle" placeholder="Ex: Couleur" value="" name="email">
+                                    <input type="text" class="form-control" formControlName="descriptionTitle" placeholder="" value="" name="email">
                                 </div>
                             </div>
         
@@ -112,8 +112,8 @@
                             </div>
         
                               
-                            <button type="button" class="btn btn-danger" (click)="ajouteDescriptionDessous()" *ngIf="descriptionDessousSelected.id == -1"> Ajouter Ligne</button>
-                            <button type="button" class="btn btn-danger" (click)="modifieDescriptionDessous()" *ngIf="descriptionDessousSelected.id != -1"> Modifier Ligne</button>
+                            <button type="button" class="btn btn-danger" (click)="ajouteDescriptionDessous()" *ngIf="descriptionDessousSelected.id == -1"> Add Row</button>
+                            <button type="button" class="btn btn-danger" (click)="modifieDescriptionDessous()" *ngIf="descriptionDessousSelected.id != -1"> Modify Row</button>
                         </div>
     
                         <table class="table table-bordered">
@@ -137,11 +137,11 @@
      
                      
                      <fieldset id="address">
-                         <legend>Chapitres </legend>
+                         <legend>Chapters</legend>
                          
                          <div class="class-slected">
                              <div class="form-group">
-                                 <label for="input-company" class="col-sm-2 control-label"> PDF Cours </label>
+                                 <label for="input-company" class="col-sm-2 control-label"> PDF Course </label>
                                  <div class="col-sm-5">
                                      
                                      <input 
@@ -185,7 +185,7 @@
                              </div>
                          
                              <div class="form-group required">
-                                <label for="input-firstname" class="col-sm-2 control-label">Titre</label>
+                                <label for="input-firstname" class="col-sm-2 control-label">Title</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" formControlName="titreChapitre" placeholder="Nom" value="" name="firstname">
                                 </div>
@@ -193,7 +193,7 @@
           
      
                              <div class="form-group">
-                                 <label for="input-company" class="col-sm-2 control-label">Déscription</label>
+                                 <label for="input-company" class="col-sm-2 control-label">Description</label>
                                  <div class="col-sm-10">
                                      <textarea class="form-control" formControlName="descriptionChapitre" rows="10" name="enquiry"></textarea>
                                  </div>
@@ -208,8 +208,8 @@
           
                           
                            
-                             <button type="button" class="btn btn-danger" (click)="ajouterChapitre()" *ngIf="chapitre.id == -1"> Ajouter Chapitre</button>
-                             <button type="button" class="btn btn-danger" (click)="updateChapitre()" *ngIf="chapitre.id != -1"> Modifier Chapitre</button>
+                             <button type="button" class="btn btn-danger" (click)="ajouterChapitre()" *ngIf="chapitre.id == -1"> Add Chapter</button>
+                             <button type="button" class="btn btn-danger" (click)="updateChapitre()" *ngIf="chapitre.id != -1"> Edit Chapter</button>
                          </div>
 
 
@@ -238,12 +238,13 @@
                      <fieldset id="address">
                          <legend>Promotion</legend>
                          <div class="form-group required">
-                             <label for="input-email" class="col-sm-2 control-label">Prix de promo</label>
+                             <label for="input-email" class="col-sm-2 control-label">Promo price</label>
                              <div class="col-sm-5">
-                                 <input type="number" class="form-control" formControlName="prixPromo" placeholder="Prix en dinar tunisien" value="" name="email">
+                                 <input type="number" class="form-control" formControlName="prixPromo" placeholder="Promo price
+								 " value="" name="email">
                              </div>
                              <div class="col-sm-5 control-label">
-                                 <span style="font-weight: 900; margin-left: 10px;">DT</span>
+                                 <span style="font-weight: 900; margin-left: 10px;">USD $</span>
                              </div>
                          </div>
      
@@ -257,7 +258,7 @@
                      </fieldset>
      
                      <fieldset>
-                         <legend>Categories</legend>
+                         <legend>Category</legend>
      
                          <div class="form-group" style="margin-left: 10px;">
                              
@@ -292,24 +293,27 @@
      
      
                          <br> <br>
-                         <label style="margin-left: 20px;" class="checkbox" *ngIf="verifierCategories2(productService.produitSpecialsString)"><input (click)="selectCategories2(productService.produitSpecialsString)" name="filter[]" type="checkbox" value="0" title="Specials" checked />Specials-Produit</label>
-                         <label style="margin-left: 20px;" class="checkbox" *ngIf="!verifierCategories2(productService.produitSpecialsString)"><input (click)="selectCategories2(productService.produitSpecialsString)" name="filter[]" type="checkbox" value="1" title="Specials" />Specials-Produit</label>
-     
-                         <label style="margin-left: 20px;" class="checkbox" *ngIf="verifierCategories2(productService.produitNouveauString)"><input (click)="selectCategories2(productService.produitNouveauString)" name="filter[]" type="checkbox" value="0" title="Nouveau"  checked />Nouveau-Produit</label>
-                         <label style="margin-left: 20px;" class="checkbox" *ngIf="!verifierCategories2(productService.produitNouveauString)"><input (click)="selectCategories2(productService.produitNouveauString)" name="filter[]" type="checkbox" value="1" title="Nouveau" />Nouveau-Produit</label>
-                     
-                         <label style="margin-left: 20px;" class="checkbox" *ngIf="verifierCategories2(productService.produitMeilleurVenteString)"><input (click)="selectCategories2(productService.produitMeilleurVenteString)" name="filter[]" type="checkbox" value="0" title="Meilleur-Vente"  checked />Meilleur-Vente-Produit</label>
-                         <label style="margin-left: 20px;" class="checkbox" *ngIf="!verifierCategories2(productService.produitMeilleurVenteString)"><input (click)="selectCategories2(productService.produitMeilleurVenteString)" name="filter[]" type="checkbox" value="1" title="Meilleur-Vente" />Meilleur-Vente-Produit</label>
-                     
+                         <div *ngIf="role == 'admin'">
+                            <label style="margin-left: 20px;" class="checkbox" *ngIf="verifierCategories2(productService.produitSpecialsString)"><input (click)="selectCategories2(productService.produitSpecialsString)" name="filter[]" type="checkbox" value="0" title="Specials" checked />Specials-Product</label>
+                            <label style="margin-left: 20px;" class="checkbox" *ngIf="!verifierCategories2(productService.produitSpecialsString)"><input (click)="selectCategories2(productService.produitSpecialsString)" name="filter[]" type="checkbox" value="1" title="Specials" />Specials-Product</label>
+        
+                            <label style="margin-left: 20px;" class="checkbox" *ngIf="verifierCategories2(productService.produitNouveauString)"><input (click)="selectCategories2(productService.produitNouveauString)" name="filter[]" type="checkbox" value="0" title="Nouveau"  checked />New product</label>
+                            <label style="margin-left: 20px;" class="checkbox" *ngIf="!verifierCategories2(productService.produitNouveauString)"><input (click)="selectCategories2(productService.produitNouveauString)" name="filter[]" type="checkbox" value="1" title="Nouveau" />New product</label>
+                        
+                            <label style="margin-left: 20px;" class="checkbox" *ngIf="verifierCategories2(productService.produitMeilleurVenteString)"><input (click)="selectCategories2(productService.produitMeilleurVenteString)" name="filter[]" type="checkbox" value="0" title="Meilleur-Vente"  checked />Best-Selling-Product</label>
+                            <label style="margin-left: 20px;" class="checkbox" *ngIf="!verifierCategories2(productService.produitMeilleurVenteString)"><input (click)="selectCategories2(productService.produitMeilleurVenteString)" name="filter[]" type="checkbox" value="1" title="Meilleur-Vente" />Best-Selling-Product</label>
+                        
+                         </div>
+                       
                          
                          <br>
-                         <p> <span class="style-title-resultat">Resultat :</span></p>
+                         <p> <span class="style-title-resultat">Result:</span></p>
                          
                          <table class="table table-bordered">
                              
                              <thead>
                                  <tr>
-                                     <th class="text-center">Categorie</th>
+                                     <th class="text-center">Category</th>
                                      <th class="text-center">Action</th>
                                  </tr>
                              </thead>
@@ -332,7 +336,7 @@
      
                     <fieldset style="margin-top: 30px;">
                     
-                        <legend>Image</legend>
+                        <legend>Picture</legend>
                          
                             <div class="class-slected">
                                 <div class="form-group">

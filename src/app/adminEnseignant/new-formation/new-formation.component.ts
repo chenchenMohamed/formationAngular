@@ -95,7 +95,11 @@ export class NewFormationComponent implements OnInit {
     return this.formC.controls;
   }
 
+  role=""
   ngOnInit(): void {
+    this.userService.role.subscribe(res =>{
+      this.role = res
+    })
   }
 
   
