@@ -89,7 +89,7 @@ export class Galerie3Component implements OnInit {
     
     for(let i = 0; i < elements.length; i++){
       elements[i].removeAttribute("style")
-      elements[i].setAttribute("style", "margin:10px;width:"+this.width+"px; display:inline;")
+      elements[i].setAttribute("style", "margin:10px;width:"+this.width+"px; display:inline; text-align: center;")
     }
 
     this.scrollAuto()
