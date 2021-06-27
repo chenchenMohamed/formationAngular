@@ -14,9 +14,9 @@
     },
     {
         "id":3,
-        "titre":"Devlipmment personel",
+        "titre":"Developpement personnel",
         "image":"./assets/img/university/développement personnel.jpg",
-        "route":"/Devlipmment personel"
+        "route":"/Developpement personnel"
     },
     {
         "id":4,

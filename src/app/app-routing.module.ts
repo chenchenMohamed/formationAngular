@@ -65,7 +65,12 @@ import { EventsPageComponent } from './siteFormation/events-page/events-page.com
 
 import { RecherchePageComponent } from './siteFormation/recherche-page/recherche-page.component';
 
+import { DeleteUserComponent } from './adminFormation/delete-user/delete-user.component';
+
 const routes: Routes = [
+
+  {path: 'deleteUser/:id' , component: DeleteUserComponent },
+  
   {path: 'RecherchePage' , component: RecherchePageComponent },
   
   {path: 'EventsPage' , component: EventsPageComponent },

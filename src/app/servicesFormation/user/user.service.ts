@@ -64,7 +64,6 @@ export class UserService {
 
     this.varEmail = data.email;
     this.email.next(this.varEmail)
-
   }
 
   deconnexion(){
@@ -89,7 +88,6 @@ export class UserService {
 
       this.varEmail = newEmail
       this.email.next(newEmail)
-
     }
   }
 

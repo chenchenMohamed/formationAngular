@@ -94,6 +94,7 @@ import { ListEvaluationEnseignantComponent } from './adminEnseignant/list-evalua
 import { SomeVideoComponent } from './siteFormation/accueil-formation/components/some-video/some-video.component';
 import { EventsPageComponent } from './siteFormation/events-page/events-page.component';
 import { RecherchePageComponent } from './siteFormation/recherche-page/recherche-page.component';
+import { DeleteUserComponent } from './adminFormation/delete-user/delete-user.component';
 
 @NgModule({
   declarations: [
@@ -173,7 +174,8 @@ import { RecherchePageComponent } from './siteFormation/recherche-page/recherche
     ListEvaluationEnseignantComponent,
     SomeVideoComponent,
     EventsPageComponent,
-    RecherchePageComponent
+    RecherchePageComponent,
+    DeleteUserComponent
   ],
   imports: [
     BrowserModule,
