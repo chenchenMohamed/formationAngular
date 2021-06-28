@@ -17,7 +17,7 @@ export class NotificationService {
 
   showError(message, title){
     //this.toastr.error(message, title, {positionClass: 'toast-top-center',})
-   alert(message)
+    alert(message)
   }
 
   showMessageErrorBackEnd(nameError){
@@ -29,7 +29,8 @@ export class NotificationService {
   }
 
   messagesErrorsBackend = [
-    { name:"errorLogin", message: "Authentication Failure"}, 
+    { name:"errorLogin", message: "Authentication Failure"},
+    { name:"errorLogin2", message: "Welcome, wait for your account to be activated"}, 
     { name:"errorRegister", message: "Your email already exists"},
     { name:"errorUpdateCompte1", message: 'Your account does not exist'},
     { name:"errorUpdateCompte2", message: "Your new email already exists"},

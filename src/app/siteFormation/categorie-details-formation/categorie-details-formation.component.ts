@@ -19,7 +19,7 @@ import { NotificationService } from '../../servicesFormation/notification/notifi
 })
 export class CategorieDetailsFormationComponent implements OnInit {
 
-  constructor(private notificationService:NotificationService, public userService:UserService, private _Activatedroute:ActivatedRoute,  private router:Router, public formBuilder:FormBuilder, private http: HttpClient) {
+  constructor(private notificationService:NotificationService, public userService:UserService,  private _Activatedroute:ActivatedRoute,  private router:Router, public formBuilder:FormBuilder, private http: HttpClient) {
   }
 
   categories = []

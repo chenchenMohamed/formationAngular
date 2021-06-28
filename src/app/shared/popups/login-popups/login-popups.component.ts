@@ -140,12 +140,13 @@ export class LoginPopupsComponent implements OnInit {
         if(response.status){
           this.userService.setTokenAndRole(response)
           this.message= this.notificationService.messageLogin + response.email
-        //this.router.navigate(['/'])
+          //this.router.navigate(['/'])
           this.notificationService.showSuccess(this.message, this.notificationService.TypeMessage)
           this.formC.reset() 
           this.closeCommande()   
         }else{
           this.notificationService.showMessageErrorBackEnd(response.message)  
+          this.closeCommande()  
         }
       }, err => {
         this.isLoading = false
